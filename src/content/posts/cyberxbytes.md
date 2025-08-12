@@ -19,7 +19,7 @@ The first challenge was medium level and had 6 solvers (i was the seventh)
 ![image](/blog/cyberxbytes/silent-bypass/Screenshot%202025-08-11%20204934.png)
 
 I opened the challenge, and it was a login page...
-![image](/src/assets/blog/cyberxbytes/silent-bypass/Screenshot%202025-08-08%20113232.png)
+![image](/src/content/posts/Screenshot%202025-08-08%20113232.png)
 
 When i face login pages, i usually focus on three things:
 - Default creds
