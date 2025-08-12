@@ -118,5 +118,5 @@ You need to figure out a path that will reach 100 characters correctly to use it
 
 <figure>
   <img src="/blog/htb/c/Screenshot%202025-08-10%20211349.png" alt="Flag">
-  <figcaption style="text-align: center;"> We successfully got a reverse shell </figcaption>
+  <figcaption style="text-align: center;"> Flag </figcaption>
 </figure>
