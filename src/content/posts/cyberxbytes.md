@@ -302,7 +302,8 @@ I added my email and received a link (Noticed you need to provide a real email s
 
 ![image](/blog/cyberxbytes/hackthepass/Screenshot%202025-08-11%20212301.png)
 
-I noticed this token is 32 characters; it looks like an MD5 hash. We can make sure of that by generating our MD5 hash and comparing it with the provided one. But there is the thing that exactly gets hashed? What does the server use the hash for, and then use it as a reset token?
+I noticed this token is 32 characters; it looks like an MD5 hash. We can make sure of that with sites like [hashes.com](https://hashes.com/en/tools/hash_identifier).
+Here is the thing, what exactly gets hashed? What does the server use the hash for, and then use it as a reset token?
 
 That's actually kinda wild, it's maybe the email? Maybe the email with a timestamp? Maybe the email with a secret and timestamp, which will be a real issue for us. You will never know what really gets hashed, but don't forget we have the debugger left open. We need to make some sort of error to trigger the debugger and see the code.
 
