@@ -246,7 +246,7 @@ Start by reading the `/etc/passwd` file by using this payload:
 
 ![image](/blog/cyberxbytes/obfuscated-echo/Screenshot%202025-08-11%20202910.png)
 
-To get the flag, change the `/etc/passwd` part with `flag.txt` (i spent some time here to get the right name)
+To get the flag, change the `/etc/passwd` part with `flag.txt`
 
 And we successfully got the flag.
 
