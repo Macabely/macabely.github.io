@@ -104,7 +104,7 @@ We can get use of that to omit the `.png` extension by adding a path traversal s
 
 ![image](/blog/htb/c/Screenshot%202025-08-10%20205437.png)
 
-Cool, now we need to read the flag. Wait a second, where does the flag even exist? To know that you need to run a shell on the challenge container, so you need to run the challenge locally. It's a docker container, and you will see a file called `build-docker.sh`, just run that file with sudo (of course, Docker needs to be installed)
+Cool, now we need to read the flag. Wait a second, where does the flag even exist? To know that you need to run a shell on the challenge container (or read the docker file), so you need to run the challenge locally. It's a docker container, and you will see a file called `build-docker.sh`, just run that file with sudo (of course, Docker needs to be installed)
 
 After running the container image, you need to get its id. You can do that by using this command:
 `sudo docker ps`, grab the id then run this command: `sudo docker exec -it <container_id> sh`
