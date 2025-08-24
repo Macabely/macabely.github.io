@@ -1,6 +1,6 @@
 ---
 title: HackTheBox (Nocturnal)
-published: 2025-09-05
+published: 2025-08-24
 description: 'My walkthrough on how i pwned the Nocturnal machine on HackTheBox'
 image: '/blog/htb-M/nocturnal/Pasted image 20250724155806.png'
 tags: [htb, web, linux, machines]
