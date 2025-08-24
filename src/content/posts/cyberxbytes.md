@@ -51,7 +51,7 @@ To do this, you need to intercept the request through Burp (or any proxy you use
 
 ![image](/blog/cyberxbytes/silent-bypass/Screenshot%202025-08-08%20140959.png)
 
-Noticed the request was refused by the backend too (**invalid otp**). Okay, noticed we got a flask session after the login. The server may not even be checking the OTB, and you can totally bypass it. I tried to go directly to `/admin` endpoint after the login, thinking i could bypass the OTB without the need to provide it, but i was wrong.
+Noticed the request was refused by the backend too (**invalid otp**). Okay, noticed we got a flask session after the login. The server may not even be checking the OTP, and you can totally bypass it. I tried to go directly to `/admin` endpoint after the login, thinking i could bypass the OTP without the need to provide it, but i was wrong.
 ![image](/blog/cyberxbytes/silent-bypass/Screenshot%202025-08-08%20141819.png)
 
 You probably get a special token after a successful otp request that you can use to enter the admin panel. The good thing is that the otp was just 4 digits, which is easy to brute force. 
