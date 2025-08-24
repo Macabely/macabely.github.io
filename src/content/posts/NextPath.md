@@ -17,7 +17,7 @@ First, you will see a page that really has nothing on, a dead page.
 
 ![image](/blog/htb/c/Screenshot%202025-08-10%20193719.png)
 
-When i face something like this, i usually start fuzzing, but before that, let's view the HTML source first. I ran the fuzzer in the background and started looking for endpoints in JS files or from HTML comments or something.
+When i face something like this, i usually start fuzzing, but since we have the source code, no need for that. let's view the HTML source first. I started looking for endpoints in JS files or from HTML comments or something.
 
 ![image](/blog/htb/c/Screenshot%202025-08-10%20194421.png)
 
@@ -25,7 +25,7 @@ I noticed it's a Next.js app and i found an api endpoint `/api/team?id=`. I navi
 
 ![image](/blog/htb/c/Screenshot%202025-08-10%20195047.png)
 
-I started playing with this endpoint a little bit, since the fuzzer didn't give me anything, and i didn't find anything useful on the site but this endpoint.
+I started playing with this endpoint a little bit.
 The first thing i thought was that it's an SQLi vulnerability, but before testing on SQLi, i started changing that id to other numbers, maybe we get something useful.
 When i change the id to numbers above 3, i start getting this error.
 
