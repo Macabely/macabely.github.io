@@ -21,12 +21,12 @@ When i face something like this, i usually start fuzzing, but since we have the 
 
 ![image](/blog/htb/c/Screenshot%202025-08-10%20194421.png)
 
-I noticed it's a Next.js app and i found an api endpoint `/api/team?id=`. I navigated to this api endpoint, and i realized it's just giving images of the team. 
+I noticed it's a Next.js app and i found an api endpoint `/api/team?id=`. navigating to this api endpoint, i realized it's just giving images of the team. 
 
 ![image](/blog/htb/c/Screenshot%202025-08-10%20195047.png)
 
-I started playing with this endpoint a little bit.
-The first thing i thought was that it's an SQLi vulnerability, but before testing on SQLi, i started changing that id to other numbers, maybe we get something useful.
+I start playing with this endpoint a little bit.
+The first thing i thought SQLi vulnerability, but before testing on SQLi, i started changing that id to other numbers, maybe we get something useful.  
 When i change the id to numbers above 3, i start getting this error.
 
 ![image](/blog/htb/c/Screenshot%202025-08-10%20195017.png)
@@ -81,7 +81,7 @@ Code does the following:
 
 The function is immune; there is no way we can do anything malicious using that parameter. But the thing is, when you think about it, there is literally nothing useful on the app except that parameter, it's the only one that exist, so it has to be something related to it.
 
-Since the core attack has to be related to that parameter, the first thing i thought of is **parameter pollution**. One way to do this is either to duplicate the parameter and add one in the body of the request and one in the URL, OR duplicate the parameter and add both to the URL.
+Since the core attack has to be related to that parameter, the first thing i thought of is **parameter pollution**. One way to do this is either to duplicate the parameter and add one in the body of the request and one in the URL, OR duplicate the parameter and add both in the URL.
 
 The first one didn't work for me (gave me the `no such file` error), but the second one gave me something interesting.
 
@@ -93,21 +93,23 @@ That looks promising. It gave me an `Invalid format` error, not the `no such fil
 
 One of these characters is **CRLF injection** that we could use to break the parameter syntax and make a new line `\n\r` so the server escapes the first parameter and reads the second one, which we can inject anything into it, not worrying about the filter.
 
-Now, by adding a new line `\n` in the first parameter, we need to URL-encode it first `%0a`. We can see that the server is now reading the second parameter.
+Now, by adding a new line `\n` in the first parameter, we need to **URL-encode** it first `%0a`. We can see that the server is now reading the second parameter.
 
 ![image](/blog/htb/c/Screenshot%202025-08-10%20204659.png)
 
-Great, the only thing bothering us now is the `.png` extension. Remember when we said that the filepath is 100 characters only?!
+Great, the only thing bothering us now is the `.png` extension. Remember when we said that the filepath is 100 characters only?!  
 We can get use of that to omit the `.png` extension by adding a path traversal sequence `../` that will make the filepath reach 100 characters without the png extension.
 
 `../../`.....`../etc/passwd`
 
 ![image](/blog/htb/c/Screenshot%202025-08-10%20205437.png)
 
-Cool, now we need to read the flag. Wait a second, where does the flag even exist? To know that you need to run a shell on the challenge container (or read the docker file), so you need to run the challenge locally. It's a docker container, and you will see a file called `build-docker.sh`, just run that file with sudo (of course, Docker needs to be installed)
+Cool, now we need to read the flag. Wait a second, where does the flag even exist? To know that you need to run a shell on the challenge container (or read the docker file), so you need to run the challenge locally.  
+It's a docker container, and you will see a file called `build-docker.sh`, just run that file with sudo (of course, Docker needs to be installed)
 
-After running the container image, you need to get its id. You can do that by using this command:
-`sudo docker ps`, grab the id then run this command: `sudo docker exec -it <container_id> sh`
+After running the container image, you need to get its id.  
+You can do that by using this command: `sudo docker ps`, grab the id then run this command:  
+`sudo docker exec -it <container_id> sh`
 
 Noticed that the flag exists in the root directory and also exists in other places. i noticed that the root directory is restrictive 
 ![image](/blog/htb/c/Screenshot%202025-08-10%20211004.png)
