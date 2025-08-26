@@ -2,7 +2,7 @@
 title: HackTheBox (Nocturnal)
 published: 2025-08-24
 description: 'My walkthrough on how i pwned the Nocturnal machine on HackTheBox'
-image: '/blog/htb-M/nocturnal/Pasted image 20250724155806.png'
+image: 'images/nocturnal/Pasted image 20250724155806.png'
 tags: [htb, web, linux, machines]
 category: 'HTB'
 draft: false 
@@ -16,34 +16,34 @@ Here I'm gonna walk through how I solved the **Nocturnal** machine. It's a Linux
 
 First i started with a simple Nmap scan and found the following:
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723154047.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723154047.png)
 
 As you can see there is an SSH server and web server running on port 80. By pasting the IP into the browser, you will get a domain called `nocturnal.htb`. Add the domain in the `/etc/hosts` file with the intended IP and you will get a vision on how the site looks:
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723145604.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723145604.png)
 
 ***
 # II Analyze
 
 It's a simple PHP application with a `login/register` function. Going to the register function at `/register.php` to create an account, then logging in at `/login.php` with the creds we just made.
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723145857.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723145857.png)
 
 After a successful login, we can see a simple upload function. By uploading any file you will get this error:
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723150240.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723150240.png)
 
 I actually tried to bypass  that with double extensions and other stuff but with no luck, it seems robust. I intercepted the request through burp, changed the extension to `.pdf` and uploaded the file successfully. Now we can see our file exist here:
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723150657.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723150657.png)
 
 By pressing at the link, the file gets downloaded automatically. After that i went to burp and saw this request:
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723150837.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723150837.png)
 
 You actually could see it on the browser too:
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723151003.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723151003.png)
 
 We see some interesting stuff here:
 1. `username` parameter: maybe we can change it to another username and get accessed to unauthorized files we shouldn't see. Leading to **IDOR** vulnerability.
@@ -52,7 +52,7 @@ We see some interesting stuff here:
 First i tested the `username` parameter.
 I created a new account with username "**best**", uploaded some files. Then i sent the request above (from the "test" account) and changed the username from "test" (account 1) to "best" (account 2)
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723152117.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723152117.png)
 
 The request was successful (Noticed, you need to add a valid extension in the `file` parameter. Otherwise you will get an error), revealing files from another user. We successfully got an IDOR vulnerability. Now it's time for fuzzing on that username parameter to see if there any valid names that we can see their files too.  
 _I tried first to test the `file` parameter, but you need to add a valid extension from the extensions mentioned above, making it worthless to test_.
@@ -61,29 +61,29 @@ I used ffuf here to fuzz on usernames with my wordlist using this command:
 `ffuf -w usernames.txt -u http://nocturnal.htb/view.php?username=FUZZ&file=.pdf -H "Cookie: PHPSESSID=<YOUR-SESSIOn>" -fs 2985`  
 _While testing on the `username` parameter, i found that when you add an invalid name you got a response **length: 2985**. So we need to filter that out with the `-fs 2985` flag_.
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723153359.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723153359.png)
 
 And we got some hits. `admin` and `tobias` has no files, but `amanda` dose.
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723153635.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723153635.png)
 
 By downloading the file and read it using LibreOffice (or you can just use `cat` command), you will find a password.
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723153825.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723153825.png)
 
 I thought i can use that password on the SSH server, but i was wrong. So it has to be a password that i can use to login at `amanda` account on the site. 
 Going back to the login page, logging in with `amanda` creds.  
 We successfully logged in and we have admin privileges too!
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723154342.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723154342.png)
 
 By navigating to the admin panel, found the following:
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723154554.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723154554.png)
 
 We got some PHP files that we can include and view it's source code. I Choose the admin page and i saw a `view` parameter showed up
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723154954.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723154954.png)
 
 Tried to test that parameter against `LFI`, but no luck. I copied all the code, paste it in vscode cause it's easy to read and found some interesting things:
 
@@ -207,13 +207,13 @@ The final payload will be:
 _adding CRLF (`\r\n`)at first to start in a newline on left will be smart move, But the above payload should work fine_.
 
 **Note:** If you gonna inject the payload through burp, u need to URL encoded first.
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723165437.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723165437.png)
 
 And we successfully got the hashes, time to crack it. Using [CrackStation](https://crackstation.net/) only `tobias` hash was crackable, which is fine.  
 Tried to access the SSH server with the creds i just got, and got the first flag.
 
 <figure>
-  <img src="/blog/htb-M/nocturnal/Pasted image 20250723165809.png" alt="first flag">
+  <img src="/src/content/posts/htb_m/images/nocturnal/Pasted image 20250723165809.png" alt="first flag">
   <figcaption style="text-align: center;"> User Flag </figcaption>
 </figure>
 ***
@@ -224,31 +224,31 @@ It's time for privilege escalation. The first thing i do is to use this command 
 So it's `linpease.sh` time ([PEASS-ng/linPEAS](https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS))
 I opened my local server, downloaded the tool from the victim machine and run it
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723170151.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723170151.png)
 
 While analyzing the results from `linpease.sh`, i noticed port **8080** was opened. Maybe another webserver is running?
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723170532.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723170532.png)
 
 By establishing a tunnel through SSH to that port using this command:  
 `ssh -L 4444:localhost:8080 tobias@nocturnal.htb`.  
 (Note: i used port 4444 cause i was running burp on 8080)  
 Then navigate to the localhost port 4000 on the browser, we see a login page
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723170933.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723170933.png)
 
 Tried to use `tobias` creds but it didn't work. So i went back to `linpease.sh` results. I didn't find much, most of the interesting files were forbidden.
 So what now? I went back to the login page again and start playing with it a little bit.  
 Start using response manipulation, looking for leaked endpoints with no luck.
 I start fuzzing on the username with the same `tobias` password and found out it was **admin** that worked for me as a username.
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723171834.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723171834.png)
 
 **ISPconfig:** is like a control panel for managing web hosting services on Linux servers.  
 For this type of stuff, you should look for the service version and see if there is any vulns related to it.
 But how we can know the version? By navigating to the help tab, you can see the version
 
-![Desktop View](/blog/htb-M/nocturnal/Pasted%20image%2020250723172255.png)
+![Desktop View](images/nocturnal/Pasted%20image%2020250723172255.png)
 
 Searching for vulns related to the version, found it's vulnerable to **CVE-2023-46818**. A PHP code injection vulnerability in the `records` POST parameter on `/admin/language_edit.php` endpoint:  
 ==> [ISPConfig PHP Code Injection Vulnerability](https://seclists.org/fulldisclosure/2023/Dec/2).  
@@ -257,6 +257,6 @@ I also found a POC that i can use to get a reverse shell from this CVE:
 I downloaded the POC, run it and we got the root flag.
 
 <figure>
-  <img src="/blog/htb-M/nocturnal/Pasted%20image%2020250723173009.png" alt="first flag">
+  <img src="/src/content/posts/htb_m/images/nocturnal/Pasted%20image%2020250723173009.png" alt="first flag">
   <figcaption style="text-align: center;"> Root Flag </figcaption>
 </figure>

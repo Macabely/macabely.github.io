@@ -2,7 +2,7 @@
 title: HackTheBox (NextPath)
 published: 2025-08-11
 description: 'How I solved the NextPath web challenge on HackTheBox'
-image: '/blog/htb/c/Screenshot 2025-08-10 192020.png'
+image: 'images/nextpath/Screenshot 2025-08-10 192020.png'
 tags: [htb, web, ctf]
 category: 'Web'
 draft: false 
@@ -15,21 +15,21 @@ The challenge has the source code. I usually start looking into the challenge fi
 
 First, you will see a page that really has nothing on, a dead page.
 
-![image](/blog/htb/c/Screenshot%202025-08-10%20193719.png)
+![image](images/nextpath/Screenshot%202025-08-10%20193719.png)
 
 When i face something like this, i usually start fuzzing, but since we have the source code, no need for that. let's view the HTML source first. I started looking for endpoints in JS files or from HTML comments or something.
 
-![image](/blog/htb/c/Screenshot%202025-08-10%20194421.png)
+![image](images/nextpath/Screenshot%202025-08-10%20194421.png)
 
 I noticed it's a Next.js app and i found an api endpoint `/api/team?id=`. navigating to this api endpoint, i realized it's just giving images of the team. 
 
-![image](/blog/htb/c/Screenshot%202025-08-10%20195047.png)
+![image](images/nextpath/Screenshot%202025-08-10%20195047.png)
 
 I start playing with this endpoint a little bit.
 The first thing i thought SQLi vulnerability, but before testing on SQLi, i started changing that id to other numbers, maybe we get something useful.  
 When i change the id to numbers above 3, i start getting this error.
 
-![image](/blog/htb/c/Screenshot%202025-08-10%20195017.png)
+![image](images/nextpath/Screenshot%202025-08-10%20195017.png)
 
 That's not a SQLi vulnerability, that's an LFI one, the server gets the parameter's value to read internal files in the system. Maybe it's time to read the source code now.
 While analyzing the `team.js` file, i found this code:
@@ -85,7 +85,7 @@ Since the core attack has to be related to that parameter, the first thing i tho
 
 The first one didn't work for me (gave me the `no such file` error), but the second one gave me something interesting.
 
-![image](/blog/htb/c/Screenshot%202025-08-10%20203206.png)
+![image](images/nextpath/Screenshot%202025-08-10%20203206.png)
 
 That looks promising. It gave me an `Invalid format` error, not the `no such file` one. This means the server is indeed reading the next parameter, but we need to break the first one so the server can read the second one. One way to do this is using **escape characters**:
 
@@ -95,14 +95,14 @@ One of these characters is **CRLF injection** that we could use to break the par
 
 Now, by adding a new line `\n` in the first parameter, we need to **URL-encode** it first `%0a`. We can see that the server is now reading the second parameter.
 
-![image](/blog/htb/c/Screenshot%202025-08-10%20204659.png)
+![image](images/nextpath/Screenshot%202025-08-10%20204659.png)
 
 Great, the only thing bothering us now is the `.png` extension. Remember when we said that the filepath is 100 characters only?!  
 We can get use of that to omit the `.png` extension by adding a path traversal sequence `../` that will make the filepath reach 100 characters without the png extension.
 
 `../../`.....`../etc/passwd`
 
-![image](/blog/htb/c/Screenshot%202025-08-10%20205437.png)
+![image](images/nextpath/Screenshot%202025-08-10%20205437.png)
 
 Cool, now we need to read the flag. Wait a second, where does the flag even exist? To know that you need to run a shell on the challenge container (or read the docker file), so you need to run the challenge locally.  
 It's a docker container, and you will see a file called `build-docker.sh`, just run that file with sudo (of course, Docker needs to be installed)
@@ -112,14 +112,14 @@ You can do that by using this command: `sudo docker ps`, grab the id then run th
 `sudo docker exec -it <container_id> sh`
 
 Noticed that the flag exists in the root directory and also exists in other places. i noticed that the root directory is restrictive 
-![image](/blog/htb/c/Screenshot%202025-08-10%20211004.png)
+![image](images/nextpath/Screenshot%202025-08-10%20211004.png)
 
 You need to figure out a path that will reach 100 characters correctly to use it in your payload
-![image](/blog/htb/c/Screenshot%202025-08-10%20192321.png)
+![image](images/nextpath/Screenshot%202025-08-10%20192321.png)
 
 `../../../`...`proc/40/task/46/root/`...`proc/40/root/flag.txt`
 
 <figure>
-  <img src="/blog/htb/c/Screenshot%202025-08-10%20211349.png" alt="Flag">
+  <img src="/src/content/posts/htb_c/images/nextpath/Screenshot%202025-08-10%20211349.png" alt="Flag">
   <figcaption style="text-align: center;"> Flag </figcaption>
 </figure>
