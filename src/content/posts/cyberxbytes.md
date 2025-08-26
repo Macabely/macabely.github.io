@@ -39,7 +39,7 @@ I tried common usernames, hoping the error gonna change cause in some cases, you
 After some time, i opened the devtools to look for JS files. There were no files, but i found this.
 
 <figure>
-  <img src="/src/content/posts/images/cyberx/silent-bypass/Screenshot 2025-08-08 115804.png" alt="credentials">
+  <img src="images/cyberx/silent-bypass/Screenshot 2025-08-08 115804.png" alt="credentials">
   <figcaption style="text-align: center;"> Classic </figcaption>
 </figure>
 
