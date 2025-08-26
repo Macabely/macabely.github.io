@@ -212,10 +212,10 @@ _adding CRLF (`\r\n`)at first to start in a newline on left will be smart move, 
 And we successfully got the hashes, time to crack it. Using [CrackStation](https://crackstation.net/) only `tobias` hash was crackable, which is fine.  
 Tried to access the SSH server with the creds i just got, and got the first flag.
 
-<figure>
-  <img src="/src/content/posts/htb_m/images/nocturnal/Pasted image 20250723165809.png" alt="first flag">
-  <figcaption style="text-align: center;"> User Flag </figcaption>
-</figure>
+
+![image](images/nocturnal/Pasted%20image%2020250723165809.png)
+
+
 ***
 
 # IV ROOT
@@ -256,7 +256,5 @@ I also found a POC that i can use to get a reverse shell from this CVE:
 ==> [CVE-2023-46818 Python3 Exploit for ISPConfigPHP Code Injection Vulnerability](https://github.com/ajdumanhug/CVE-2023-46818).  
 I downloaded the POC, run it and we got the root flag.
 
-<figure>
-  <img src="/src/content/posts/htb_m/images/nocturnal/Pasted%20image%2020250723173009.png" alt="first flag">
-  <figcaption style="text-align: center;"> Root Flag </figcaption>
-</figure>
+Root Flag:
+![image](images/nocturnal/Pasted%20image%2020250723173009.png)

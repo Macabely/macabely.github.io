@@ -38,10 +38,9 @@ I tried common usernames, hoping the error gonna change cause in some cases, you
 
 After some time, i opened the devtools to look for JS files. There were no files, but i found this.
 
-<figure>
-  <img src="images/cyberx/silent-bypass/Screenshot 2025-08-08 115804.png" alt="credentials">
-  <figcaption style="text-align: center;"> Classic </figcaption>
-</figure>
+Classic:
+![image](images/cyberx/silent-bypass/Screenshot 2025-08-08 115804.png)
+
 
 After using the above creds, we can log in now. Noticed you get redirected to `/otp` endpoint. The otp requires 4 digits, and the site was checking it on the front end. I tried to manipulate that and add more digits to see what happens.
 
@@ -108,10 +107,9 @@ Start the attack and see what happens.
 
 Noticed we don't get the "too many" error anymore, we just get the invalid one. By waiting until the correct otp hits, you will get the admin token and successfully get the flag
 
-<div class="image-container">
-  <img src="/src/content/posts/images/cyberx/silent-bypass/Screenshot%202025-08-07%20215745.png" alt="Alt text for the left image">
-  <img src="/src/content/posts/images/cyberx/silent-bypass/Screenshot%202025-08-07%20220037.png" alt="Alt text for the right image">
-</div>
+
+![image](images/cyberx/silent-bypass/Screenshot%202025-08-07%20215745.png)
+![image](images/cyberx/silent-bypass/Screenshot%202025-08-07%20220037.png)
 I also made a script that do the same thing:
 
 ```python frame="terminal" title="python"
