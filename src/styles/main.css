@@ -139,3 +139,10 @@
 .collapsed {
     height: var(--collapsedHeight);
 }
+
+figure figcaption {
+  text-align: center;
+  font-size: 0.8rem;
+  color: lightgrey;
+  margin-top: 0.5rem;
+}
