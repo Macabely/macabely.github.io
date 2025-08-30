@@ -122,7 +122,7 @@ That is a little weird. I requested that file and got the following:
 
 
 <figure>
-  <img src="/src/content/posts/images/cybertalents/hack-if-u-can/Screenshot%202025-08-28%20135351.png" alt="Image description">
+  <img src="/imgcaptions/cybertalents/hack-if-u-can/Screenshot%202025-08-28%20135351.png" alt="Image description">
   <figcaption>This message was printed on the root domain too</figcaption>
 </figure>
 
@@ -397,6 +397,6 @@ The attack works! Now, by changing the command to `cat /etc/passwd`, you will su
 
 
 <figure>
-  <img src="/src/content/posts/images/cybertalents/gamezone/Screenshot%202025-08-29 181238.png" alt="Image description">
+  <img src="/imgcaptions/cybertalents/gamezone/Screenshot%202025-08-29 181238.png" alt="Image description">
   <figcaption>Flag</figcaption>
 </figure>
