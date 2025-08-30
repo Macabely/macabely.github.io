@@ -1,6 +1,6 @@
 ---
 title: CyberTalents Web challenges
-published: 2025-08-29
+published: 2025-08-01
 description: 'Some web challenges i solved on CyberTalents'
 image: 'https://cybertalents.com/images/logo-footer.png'
 tags: [ctf, web]
