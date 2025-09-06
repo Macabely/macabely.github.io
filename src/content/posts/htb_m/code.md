@@ -1,7 +1,7 @@
 ---
-title: HackTheBox (Code)
+title: HTB Code Machine (Easy)
 published: 2025-08-05
-description: 'My walkthrough in the code machine on HackTheBox'
+description: 'My walkthrough in code machine on HackTheBox'
 image: 'images/code/1.jpg'
 tags: [htb, web, linux, machines]
 category: 'HTB'

@@ -1,5 +1,5 @@
 ---
-title: HackTheBox (Nocturnal)
+title: HTB Nocturnal Machine (Easy)
 published: 2025-08-24
 description: 'My walkthrough on how i pwned the Nocturnal machine on HackTheBox'
 image: 'images/nocturnal/Pasted image 20250724155806.png'

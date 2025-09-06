@@ -1,5 +1,5 @@
 ---
-title: HackTheBox (NextPath)
+title: HTB NextPath Challenge (Medium)
 published: 2025-08-11
 description: 'How I solved the NextPath web challenge on HackTheBox'
 image: 'images/nextpath/Screenshot 2025-08-10 192020.png'
