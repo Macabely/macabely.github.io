@@ -2,7 +2,7 @@
 title: CyberXbytes Web challenges
 published: 2025-08-10
 description: 'My walkthrough in web challenges on CyberXbytes'
-image: 'https://media.licdn.com/dms/image/v2/D4E16AQHpUvBouzO2Mg/profile-displaybackgroundimage-shrink_350_1400/B4EZdP_GtFHcAY-/0/1749393633136?e=1757548800&v=beta&t=jQ9KXvzoDXi-PXC858ZBnDB-6DTamSKT_0ZHcUoM35A'
+image: 'https://pbs.twimg.com/profile_banners/1808879606231150601/1749393248/1500x500'
 tags: [ctf, web]
 category: 'CTF'
 draft: false 
