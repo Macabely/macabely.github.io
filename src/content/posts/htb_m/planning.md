@@ -54,7 +54,7 @@ By executing the script and establishing a listener on port 9001:
 ![image](images/planning/Pasted%20image%2020250721140911.png)
 
 <figure>
-  <img src="/src/content/posts/htb_m/images/planning/Pasted%20image%2020250721140950.png" alt="Flag">
+  <img src="/images/htb/htb_m/planning/Pasted%20image%2020250721140950.png" alt="Flag">
   <figcaption style="text-align: center;"> We got our reverse shell </figcaption>
 </figure>
 
@@ -70,7 +70,7 @@ That looks like a docker image, let's read the environment variables to see if t
 We can see that we got a username and password, so let's login on the SSH server by this command: `ssh enzo@10.10.11.68` and then provide the password that we got before.
 
 <figure>
-  <img src="/src/content/posts/htb_m/images/planning/Pasted%20image%2020250721142850.png" alt="Flag">
+  <img src="/images/htb/htb_m/planning/Pasted%20image%2020250721142850.png" alt="Flag">
   <figcaption style="text-align: center;"> User Flag </figcaption>
 </figure>
 
@@ -118,6 +118,6 @@ Before you run the command, you need to establish a listener first, in our case 
 Noticed we got a second shell and successfully got the second flag
 
 <figure>
-  <img src="/src/content/posts/htb_m/images/planning/Pasted%20image%2020250721164452.png" alt="Flag">
+  <img src="/images/htb/htb_m/planning/Pasted%20image%2020250721164452.png" alt="Flag">
   <figcaption style="text-align: center;"> Root Flag </figcaption>
 </figure>

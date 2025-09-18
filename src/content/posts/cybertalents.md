@@ -55,7 +55,7 @@ I found an exploit that has the same code as i have. All we need is to add our p
 First, we need to know the files exists on the system, the flag is probably on the root domain. By adjusting the payload: `sth -or -exec ls / ; -quit` and adding it to the search parameter.
 
 <figure>
-  <img src="/src/content/posts/images/cybertalents/escape/Pasted%20image%2020250721225531.png" alt="Image description">
+  <img src="/images/cybertalents/escape/Pasted%20image%2020250721225531.png" alt="Image description">
   <figcaption>Flag File</figcaption>
 </figure>
 
@@ -68,7 +68,7 @@ This will print you the flag file. Now, we need to read it using this payload:
 `sth -or -exec cat /sKFmdyk7_flag.txt ; -quit`. 
 
 <figure>
-  <img src="/src/content/posts/images/cybertalents/escape/Pasted%20image%2020250721225846.png" alt="Image description">
+  <img src="/images/cybertalents/escape/Pasted%20image%2020250721225846.png" alt="Image description">
   <figcaption>Flag</figcaption>
 </figure>
 
@@ -122,7 +122,7 @@ That is a little weird. I requested that file and got the following:
 
 
 <figure>
-  <img src="/src/content/posts/images/cybertalents/hack-if-u-can/Screenshot%202025-08-28%20135351.png" alt="Image description">
+  <img src="/images/cybertalents/hack-if-u-can/Screenshot%202025-08-28%20135351.png" alt="Image description">
   <figcaption>This message was printed on the root domain too</figcaption>
 </figure>
 
@@ -397,6 +397,6 @@ The attack works! Now, by changing the command to `cat /etc/passwd`, you will su
 
 
 <figure>
-  <img src="/src/content/posts/images/cybertalents/gamezone/Screenshot%202025-08-29%20181238.png" alt="Image description">
+  <img src="/images/cybertalents/gamezone/Screenshot%202025-08-29%20181238.png" alt="Image description">
   <figcaption>Flag</figcaption>
 </figure>

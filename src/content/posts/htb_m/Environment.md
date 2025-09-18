@@ -116,7 +116,7 @@ First i tried multiple extensions but it gave me `Invalid file detected` error. 
 While testing i figured out that when you add `.` at the end of the extension, it gets deleted by the server (e.g. `test.png.` => `test.png`). And thats how you can bypass the filter by adding `.` at the end of the file (`shell.php.`)
 
 <figure>
-  <img src="/src/content/posts/htb_m/images/environment/Pasted%20image%2020250724173949.png" alt="Image description">
+  <img src="/images/htb/htb_m/environment/Pasted%20image%2020250724173949.png" alt="Image description">
   <figcaption>I left the image header cause the filter checks on the MimeType</figcaption>
 </figure>
 
@@ -131,7 +131,7 @@ But you need first to establish a listener on the port that you will get a rever
 By doing that you will successfully get a reverse shell:
 
 <figure>
-  <img src="/src/content/posts/htb_m/images/environment/Pasted%20image%2020250724175125.png" alt="Image description">
+  <img src="/images/htb/htb_m/environment/Pasted%20image%2020250724175125.png" alt="Image description">
   <figcaption>User Flag</figcaption>
 </figure>
 
@@ -196,6 +196,6 @@ So bash will source the file set in `BASH_ENV` (our malicious file) before execu
 That will likely prevent the `systeminfo` script from fully executing.
 
 <figure>
-  <img src="/src/content/posts/htb_m/images/environment/Screenshot%202025-07-24%20204038.png" alt="Image description">
+  <img src="/images/htb/htb_m/environment/Screenshot%202025-07-24%20204038.png" alt="Image description">
   <figcaption>Root Flag</figcaption>
 </figure>
