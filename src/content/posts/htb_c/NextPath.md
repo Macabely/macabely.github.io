@@ -119,5 +119,7 @@ You need to figure out a path that will reach 100 characters correctly to use it
 
 `../../../`...`proc/40/task/46/root/`...`proc/40/root/flag.txt`
 
-Flag:
-![image](images/nextpath/Screenshot%202025-08-10%20211349.png)
+<figure>
+  <img src="/src/content/posts/htb_c/images/nextpath/Screenshot%202025-08-10%20211349.png" alt="FLAG">
+  <figcaption style="text-align: center;"> FLAG </figcaption>
+</figure>

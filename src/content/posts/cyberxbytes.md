@@ -255,7 +255,7 @@ The funniest thing is, after all of that, i noticed there is a bug or a mislead 
 You can get the flag by just typing `flag.txt` in the name parameter, even if it's followed by chunk characters
 
 <figure>
-  <img src="/src/content/posts/images/cyberx/obfuscated-echo/Screenshot 2025-08-10 221504.png" alt="Flag">
+  <img src="/src/content/posts/images/cyberx/obfuscated-echo/Screenshot%202025-08-10%20221504.png" alt="Flag">
   <figcaption style="text-align: center;"> Flag </figcaption>
 </figure>
 
