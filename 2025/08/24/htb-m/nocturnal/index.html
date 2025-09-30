@@ -1,0 +1,754 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/macabely.png">
+  <link rel="icon" href="/img/macabely.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Macabely">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="My walkthrough on how i pwned the Nocturnal machine on HackTheBox">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB Nocturnal Machine (Easy)">
+<meta property="og:url" content="https://xyz-macabely.github.io/2025/08/24/htb-m/nocturnal/index.html">
+<meta property="og:site_name" content="Macabely">
+<meta property="og:description" content="My walkthrough on how i pwned the Nocturnal machine on HackTheBox">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xyz-macabely.github.io/images/htb-m/nocturnal/Pasted%20image%2020250724155806.png">
+<meta property="article:published_time" content="2025-08-23T21:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-30T10:10:18.977Z">
+<meta property="article:author" content="Macabely">
+<meta property="article:tag" content="htb">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="machines">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xyz-macabely.github.io/images/htb-m/nocturnal/Pasted%20image%2020250724155806.png">
+  
+  
+  
+  <title>HTB Nocturnal Machine (Easy) - Macabely</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xyz-macabely.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Macabely</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://x.com/Macabely97021" target="_self">
+                <i class="iconfont icon-twitter-fill"></i>
+                <span></span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/in/ali-hassan-02a479219" target="_self">
+                <i class="iconfont icon-linkedin-fill"></i>
+                <span></span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="HTB Nocturnal Machine (Easy)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          81 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">HTB Nocturnal Machine (Easy)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250724155806.png" srcset="/img/loading.gif" lazyload></p>
+<p>Here I’m gonna walk through how I solved the <strong>Nocturnal</strong> machine. It’s a Linux machine, an <em>easy</em> one from HackTheBox.</p>
+<h1 id="I-Reconnaissance"><a href="#I-Reconnaissance" class="headerlink" title="I Reconnaissance"></a>I Reconnaissance</h1><p>First i started with a simple Nmap scan and found the following:</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723154047.png" srcset="/img/loading.gif" lazyload></p>
+<p>As you can see there is an SSH server and web server running on port 80. By pasting the IP into the browser, you will get a domain called <code>nocturnal.htb</code>. Add the domain in the <code>/etc/hosts</code> file with the intended IP and you will get a vision on how the site looks:</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723145604.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="II-Analyze"><a href="#II-Analyze" class="headerlink" title="II Analyze"></a>II Analyze</h1><p>It’s a simple PHP application with a <code>login/register</code> function. Going to the register function at <code>/register.php</code> to create an account, then logging in at <code>/login.php</code> with the creds we just made.</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723145857.png" srcset="/img/loading.gif" lazyload></p>
+<p>After a successful login, we can see a simple upload function. By uploading any file you will get this error:</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723150240.png" srcset="/img/loading.gif" lazyload></p>
+<p>I actually tried to bypass  that with double extensions and other stuff but with no luck, it seems robust. I intercepted the request through burp, changed the extension to <code>.pdf</code> and uploaded the file successfully. Now we can see our file exist here:</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723150657.png" srcset="/img/loading.gif" lazyload></p>
+<p>By pressing at the link, the file gets downloaded automatically. After that i went to burp and saw this request:</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723150837.png" srcset="/img/loading.gif" lazyload></p>
+<p>You actually could see it on the browser too:</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723151003.png" srcset="/img/loading.gif" lazyload></p>
+<p>We see some interesting stuff here:</p>
+<ol>
+<li><code>username</code> parameter: maybe we can change it to another username and get accessed to unauthorized files we shouldn’t see. Leading to <strong>IDOR</strong> vulnerability.</li>
+<li><code>file</code> parameter: We may try path traversal here, trying to read system files like <code>/etc/passwd</code> leading to <strong>LFI</strong> vulnerability.</li>
+</ol>
+<p>First i tested the <code>username</code> parameter. I created a new account with username “<strong>best</strong>“, uploaded some files. Then i sent the request above (from the “test” account) and changed the username from “test” (account 1) to “best” (account 2)</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723152117.png" srcset="/img/loading.gif" lazyload></p>
+<p>The request was successful (Noticed, you need to add a valid extension in the <code>file</code> parameter. Otherwise you will get an error), revealing files from another user. We successfully got an <strong>IDOR</strong> vulnerability. </p>
+<p>Now it’s time for fuzzing on that username parameter to see if there any other valid names that we can see their files too.<br>(<em>First I tried to test the <code>file</code> parameter, but you need to add a valid extension from the extensions mentioned above, making it worthless to test</em>)</p>
+<p>I used ffuf here to fuzz on usernames with my wordlist using this command:<br><code>ffuf -w usernames.txt -u http://nocturnal.htb/view.php?username=FUZZ&amp;file=.pdf -H &quot;Cookie: PHPSESSID=&lt;YOUR-SESSIOn&gt;&quot; -fs 2985</code><br><em>While testing on the <code>username</code> parameter, i found that when you add an invalid name you got a response <strong>length: 2985</strong>. So we need to filter that out with the <code>-fs 2985</code> flag</em>.</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723153359.png" srcset="/img/loading.gif" lazyload></p>
+<p>And we got some hits. <code>admin</code> and <code>tobias</code> has no files, but <code>amanda</code> dose.</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723153635.png" srcset="/img/loading.gif" lazyload></p>
+<p>By downloading the file and read it using LibreOffice (or you can just use <code>cat</code> command), you will find a password.</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723153825.png" srcset="/img/loading.gif" lazyload></p>
+<p>I thought i can use that password on the SSH server, but i was wrong. So it has to be a password that i can use to login as <code>amanda</code> on the site. Going back to the login page, logging in with <code>amanda</code> creds. We successfully logged in and we have admin privileges too!</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723154342.png" srcset="/img/loading.gif" lazyload></p>
+<p>By navigating to the admin panel, found the following:</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723154554.png" srcset="/img/loading.gif" lazyload></p>
+<p>We got some PHP files that we can include and view it’s source code. I Choose the admin page and i saw a <code>view</code> parameter showed up</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723154954.png" srcset="/img/loading.gif" lazyload></p>
+<p>Tried to test that parameter against <code>LFI</code>, but no luck. I copied all the code, paste it in vscode cause it’s easy to read and found some interesting things:</p>
+<div class="code-wrapper"><pre><code class="hljs PHP"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sanitizeFilePath</span>(<span class="hljs-params"><span class="hljs-variable">$filePath</span></span>) </span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">basename</span>(<span class="hljs-variable">$filePath</span>); <span class="hljs-comment">// Only gets the base name of the file</span>
+&#125;</code></pre></div>
+
+<p>First of all the <code>sanitizeFilePath()</code> function. It’s using the <code>basename()</code> function on the file path to extract only the filename from a given path (<code>../../test.php</code> becomes <code>test.php</code>) preventing path traversal from happening (and i am asking why i can’t get path traversal xD). Most importantly, is the backup process:</p>
+<div class="code-wrapper"><pre><code class="hljs PHP"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;backup&#x27;</span>]) &amp;&amp; !<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;password&#x27;</span>])) &#123;
+    <span class="hljs-variable">$password</span> = <span class="hljs-title function_ invoke__">cleanEntry</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;password&#x27;</span>]);
+    <span class="hljs-variable">$backupFile</span> = <span class="hljs-string">&quot;backups/backup_&quot;</span> . <span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&#x27;Y-m-d&#x27;</span>) . <span class="hljs-string">&quot;.zip&quot;</span>;
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$password</span> === <span class="hljs-literal">false</span>) &#123;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;div class=&#x27;error-message&#x27;&gt;Error: Try another password.&lt;/div&gt;&quot;</span>;
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-variable">$logFile</span> = <span class="hljs-string">&#x27;/tmp/backup_&#x27;</span> . <span class="hljs-title function_ invoke__">uniqid</span>() . <span class="hljs-string">&#x27;.log&#x27;</span>;
+       
+        <span class="hljs-variable">$command</span> = <span class="hljs-string">&quot;zip -x &#x27;./backups/*&#x27; -r -P &quot;</span> . <span class="hljs-variable">$password</span> . <span class="hljs-string">&quot; &quot;</span> . <span class="hljs-variable">$backupFile</span> . <span class="hljs-string">&quot; .  &gt; &quot;</span> . <span class="hljs-variable">$logFile</span> . <span class="hljs-string">&quot; 2&gt;&amp;1 &amp;&quot;</span>;
+        
+        <span class="hljs-variable">$descriptor_spec</span> = [
+            <span class="hljs-number">0</span> =&gt; [<span class="hljs-string">&quot;pipe&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>], <span class="hljs-comment">// stdin</span>
+            <span class="hljs-number">1</span> =&gt; [<span class="hljs-string">&quot;file&quot;</span>, <span class="hljs-variable">$logFile</span>, <span class="hljs-string">&quot;w&quot;</span>], <span class="hljs-comment">// stdout</span>
+            <span class="hljs-number">2</span> =&gt; [<span class="hljs-string">&quot;file&quot;</span>, <span class="hljs-variable">$logFile</span>, <span class="hljs-string">&quot;w&quot;</span>], <span class="hljs-comment">// stderr</span>
+        ];
+
+        <span class="hljs-variable">$process</span> = <span class="hljs-title function_ invoke__">proc_open</span>(<span class="hljs-variable">$command</span>, <span class="hljs-variable">$descriptor_spec</span>, <span class="hljs-variable">$pipes</span>);
+        <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">is_resource</span>(<span class="hljs-variable">$process</span>)) &#123;
+            <span class="hljs-title function_ invoke__">proc_close</span>(<span class="hljs-variable">$process</span>);
+        &#125;
+
+        <span class="hljs-title function_ invoke__">sleep</span>(<span class="hljs-number">2</span>);
+
+        <span class="hljs-variable">$logContents</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-variable">$logFile</span>);
+        <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">strpos</span>(<span class="hljs-variable">$logContents</span>, <span class="hljs-string">&#x27;zip error&#x27;</span>) === <span class="hljs-literal">false</span>) &#123;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;div class=&#x27;backup-success&#x27;&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;p&gt;Backup created successfully.&lt;/p&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;a href=&#x27;&quot;</span> . <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$backupFile</span>) . <span class="hljs-string">&quot;&#x27; class=&#x27;download-button&#x27; download&gt;Download Backup&lt;/a&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h3&gt;Output:&lt;/h3&gt;&lt;pre&gt;&quot;</span> . <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$logContents</span>) . <span class="hljs-string">&quot;&lt;/pre&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/div&gt;&quot;</span>;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;div class=&#x27;error-message&#x27;&gt;Error creating the backup.&lt;/div&gt;&quot;</span>;
+        &#125;
+
+        <span class="hljs-title function_ invoke__">unlink</span>(<span class="hljs-variable">$logFile</span>);
+    &#125;
+&#125;</code></pre></div>
+
+<ol>
+<li><p>The backup creation is created through POST method. First it checks on if the <code>backup</code> parameter present and if the <code>password</code> parameter is not empty (so you create a backup with a password).</p>
+</li>
+<li><p>Then it checks&#x2F;Sanitize that password provided by the user using <code>cleanEntry()</code> function (we will get into that later). If it’s not Sanitized, you will get an error otherwise you are good to go.</p>
+</li>
+<li><p>It creates the backup file on <code>/backups</code> having that form: <code>backup_</code> following by the date(Y-m-d) and a zip extension (<code>backups/backup_2025-02-11.zip</code>).</p>
+</li>
+<li><p>A temporary log file gets created.</p>
+</li>
+<li><p>After that we have a zip command: </p>
+<ul>
+<li><code>zip -x &#39;./backups/*&#39;</code>: Excludes the backups directory from the archive.</li>
+<li><code>-r</code>: Recursively includes all files in the current directory.</li>
+<li><code>-P $password</code>: Sets the password for the ZIP file (gets it from the password parameter after Sanitization ).</li>
+</ul>
+</li>
+<li><p>Then the command gets executed using <code>proc_open()</code> function, waits 2 sec and checks the logs to see if there any error happened through the command execution process.</p>
+</li>
+<li><p>The log file gets deleted.</p>
+</li>
+</ol>
+<p>We actually have a potential command injection vulnerability here that we can use on the <strong>password</strong> parameter, but we need to bypass the <code>cleanEntry()</code> function first:</p>
+<div class="code-wrapper"><pre><code class="hljs PHP"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cleanEntry</span>(<span class="hljs-params"><span class="hljs-variable">$entry</span></span>) </span>&#123;
+    <span class="hljs-variable">$blacklist_chars</span> = [<span class="hljs-string">&#x27;;&#x27;</span>, <span class="hljs-string">&#x27;&amp;&#x27;</span>, <span class="hljs-string">&#x27;|&#x27;</span>, <span class="hljs-string">&#x27;$&#x27;</span>, <span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;`&#x27;</span>, <span class="hljs-string">&#x27;&#123;&#x27;</span>, <span class="hljs-string">&#x27;&#125;&#x27;</span>, <span class="hljs-string">&#x27;&amp;&amp;&#x27;</span>];
+
+    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$blacklist_chars</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$char</span>) &#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">strpos</span>(<span class="hljs-variable">$entry</span>, <span class="hljs-variable">$char</span>) !== <span class="hljs-literal">false</span>) &#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">// Malicious input detected</span>
+        &#125;
+    &#125;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>(<span class="hljs-variable">$entry</span>, ENT_QUOTES, <span class="hljs-string">&#x27;UTF-8&#x27;</span>);
+&#125;</code></pre></div>
+<p>The <code>cleanEntry()</code> function using a blacklist to sanitize the password, that’s not really a smart move since blacklisting is less secure than whitelisting. They should use <code>escapeshellarg()</code> function or something to prevent command injection from happening. After some time analyzing the other PHP pages, i found this line of code in <code>register.php</code> page:</p>
+<div class="code-wrapper"><pre><code class="hljs PHP"><span class="hljs-meta">&lt;?php</span> 
+<span class="hljs-title function_ invoke__">session_start</span>();
+<span class="hljs-variable">$db</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SQLite3</span>(<span class="hljs-string">&#x27;../nocturnal_database/nocturnal_database.db&#x27;</span>);
+
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;REQUEST_METHOD&#x27;</span>] == <span class="hljs-string">&#x27;POST&#x27;</span>) &#123;
+    <span class="hljs-variable">$username</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;username&#x27;</span>];
+    <span class="hljs-variable">$password</span> = <span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;password&#x27;</span>]);
+
+    <span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$db</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(<span class="hljs-string">&quot;INSERT INTO users (username, password) VALUES (:username, :password)&quot;</span>);
+    <span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">bindValue</span>(<span class="hljs-string">&#x27;:username&#x27;</span>, <span class="hljs-variable">$username</span>, SQLITE3_TEXT);
+    <span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">bindValue</span>(<span class="hljs-string">&#x27;:password&#x27;</span>, <span class="hljs-variable">$password</span>, SQLITE3_TEXT);
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>()) &#123;
+        <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;success&#x27;</span>] = <span class="hljs-string">&#x27;User registered successfully!&#x27;</span>;
+        <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Location: login.php&#x27;</span>);
+        <span class="hljs-keyword">exit</span>();
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-variable">$error</span> = <span class="hljs-string">&#x27;Failed to register user.&#x27;</span>;
+    &#125;
+&#125;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
+
+<p>The server using SQLite3 as a DBMS and there is this little tiny file <code>nocturnal_database.db</code> that contains creds that we may use to access the SSH server. Also passwords gets MD5 hash which maybe crackable.</p>
+<p>So the goal here to use the command injection vulnerability to read the <code>nocturnal_database.db</code> file, revealing the password hashes. The thing is <code>nocturnal_database.db</code> is a sqlite3 database file, we need to use sqlite3 to dump it. We can’t just add sqlite3, it will not work. We can use bash here, the bash command should look like this:<br><code>bash -c &quot;sqlite3 ../nocturnal_database/nocturnal_database.db .dump&quot;</code><br>But spaces are blacklisted, how we gonna bypass this?</p>
+<h1 id="III-Exploit"><a href="#III-Exploit" class="headerlink" title="III Exploit"></a>III Exploit</h1><h2 id="Escape-Characters"><a href="#Escape-Characters" class="headerlink" title="Escape Characters"></a>Escape Characters</h2><p>Using escape characters may help us here. Replacing the space <code>&quot; &quot;</code> with tab “<code>\t</code>“ could work. The final payload will be:<br><code>bash\t-c\t&quot;sqlite3\t../nocturnal_database/nocturnal_database.db\t.dump&quot;</code><br><em>adding CRLF (<code>\r\n</code>)at first to start in a newline on left will be smart move, But the above payload should work fine</em>.</p>
+<p><strong>Note:</strong> If you gonna inject the payload through burp, u need to URL encoded first.<br><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723165437.png" srcset="/img/loading.gif" lazyload></p>
+<p>And we successfully got the hashes, time to crack it. Using <a target="_blank" rel="noopener" href="https://crackstation.net/">CrackStation</a> only <code>tobias</code> hash was crackable, which is fine.<br>Tried to access the SSH server with the creds i just got, and got the first flag.</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723165809.png" srcset="/img/loading.gif" lazyload alt="User Flag"></p>
+<h1 id="IV-ROOT"><a href="#IV-ROOT" class="headerlink" title="IV ROOT"></a>IV ROOT</h1><p>It’s time for privilege escalation. The first thing i do is to use this command <code>sudo -l</code> to see what commands i have access to, noticed i have no access on sudo. So it’s <code>linpease.sh</code> time (<a target="_blank" rel="noopener" href="https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS">PEASS-ng&#x2F;linPEAS</a>)<br>I opened my local server, downloaded the tool from the victim machine and run it</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723170151.png" srcset="/img/loading.gif" lazyload></p>
+<p>While analyzing the results from <code>linpease.sh</code>, i noticed port <strong>8080</strong> was opened. Maybe another webserver is running?</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723170532.png" srcset="/img/loading.gif" lazyload></p>
+<p>By establishing a tunnel through SSH to that port using this command:<br><code>ssh -L 4444:localhost:8080 tobias@nocturnal.htb</code>.<br>Then navigate to the localhost port 4000 on the browser, we see a login page</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723170933.png" srcset="/img/loading.gif" lazyload></p>
+<p>Tried to use <code>tobias</code> creds but it didn’t work. So i went back to <code>linpease.sh</code> results. I didn’t find much, most of the interesting files were forbidden.</p>
+<p>So what now? I went back to the login page again and start playing with it a little bit. Start using response manipulation, looking for leaked endpoints with no luck.</p>
+<p>I start fuzzing on the username with the same <code>tobias</code> password and found out it was <strong>admin</strong> that worked for me as a username.</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723171834.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>ISPconfig:</strong> is like a control panel for managing web hosting services on Linux servers.<br>For this type of stuff, you should look for the service version and see if there is any vulns related to it.<br>But how we can know the version? By navigating to the help tab, you can see the version</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723172255.png" srcset="/img/loading.gif" lazyload></p>
+<p>Searching for vulns related to the version, found it’s vulnerable to <strong>CVE-2023-46818</strong>. A PHP code injection vulnerability in the <code>records</code> POST parameter on <code>/admin/language_edit.php</code> endpoint:<br>&#x3D;&#x3D;&gt; <a target="_blank" rel="noopener" href="https://seclists.org/fulldisclosure/2023/Dec/2">ISPConfig PHP Code Injection Vulnerability</a>.<br>I also found a POC that i can use to get a reverse shell from this CVE:<br>&#x3D;&#x3D;&gt; <a target="_blank" rel="noopener" href="https://github.com/ajdumanhug/CVE-2023-46818">CVE-2023-46818 Python3 Exploit for ISPConfigPHP Code Injection Vulnerability</a>.<br>I downloaded the POC, run it and we got the root flag.</p>
+<p><img src="/images/htb-m/nocturnal/Pasted%20image%2020250723173009.png" srcset="/img/loading.gif" lazyload alt="Root Flag"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/HTB/" class="category-chain-item">HTB</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/web/" class="print-no-link">#web</a>
+      
+        <a href="/tags/htb/" class="print-no-link">#htb</a>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+        <a href="/tags/machines/" class="print-no-link">#machines</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/08/31/htb-m/planning/" title="HTB Planning Machine (Easy)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTB Planning Machine (Easy)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/08/10/cyberxbytes/" title="CyberXbytes Web challenges">
+                        <span class="hidden-mobile">CyberXbytes Web challenges</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
