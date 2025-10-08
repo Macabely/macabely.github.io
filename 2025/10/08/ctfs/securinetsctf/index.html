@@ -1,0 +1,1297 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/macabely.png">
+  <link rel="icon" href="/img/macabely.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Macabely">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Some web challenges i solved in SecurinetsCTF 2025">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SecurinetsCTF 2025">
+<meta property="og:url" content="https://xyz-macabely.github.io/2025/10/08/ctfs/securinetsctf/index.html">
+<meta property="og:site_name" content="Macabely">
+<meta property="og:description" content="Some web challenges i solved in SecurinetsCTF 2025">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xyz-macabely.github.io/images/ctfs/securinetsctf2025/banner_1.png">
+<meta property="article:published_time" content="2025-10-07T21:00:00.000Z">
+<meta property="article:modified_time" content="2025-10-08T11:33:54.207Z">
+<meta property="article:author" content="Macabely">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xyz-macabely.github.io/images/ctfs/securinetsctf2025/banner_1.png">
+  
+  
+  
+  <title>SecurinetsCTF 2025 - Macabely</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xyz-macabely.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Macabely</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://x.com/Macabely97021" target="_self">
+                <i class="iconfont icon-twitter-fill"></i>
+                <span></span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/in/ali-hassan-02a479219" target="_self">
+                <i class="iconfont icon-linkedin-fill"></i>
+                <span></span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SecurinetsCTF 2025"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          28k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          231 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">SecurinetsCTF 2025</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-05%20140022.png" srcset="/img/loading.gif" lazyload></p>
+<p>I participated in <code>SecurinetsCTF</code> this year and solved the web category.</p>
+<h1 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h1><p>This challenge was about an info disclosure vulnerability that led to admin creds being exposed which can be used later to access the <code>/data</code> endpoint trough directory listing and get the flag.</p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-05%20170117.png" srcset="/img/loading.gif" lazyload></p>
+<p>We have a simple page with login&#x2F;register functions. I started by registering an account and noticed there was no password, i was redirected directly to the <code>/hmoe</code> directory which has my password.</p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-05%20170558.png" srcset="/img/loading.gif" lazyload><br><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-05%20170654.png" srcset="/img/loading.gif" lazyload></p>
+<p>You have also a <code>/profile</code> endpoint that prints your data:</p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-05%20173828.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>/publish</code> has a function that can creates articles and you can collaborate with existing users if you want.<br><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20142656.png" srcset="/img/loading.gif" lazyload></p>
+<p>Time to read the code. First i read the dockerfile:</p>
+<div class="code-wrapper"><pre><code class="hljs dockerfile"><span class="hljs-comment"># Use official Python base image</span>
+<span class="hljs-keyword">FROM</span> python:<span class="hljs-number">3.11</span>-slim
+
+<span class="hljs-comment"># Set working directory inside container</span>
+<span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /app</span>
+
+<span class="hljs-comment"># Copy project files</span>
+<span class="hljs-keyword">COPY</span><span class="language-bash"> . /app</span>
+
+<span class="hljs-comment"># Install dependencies</span>
+<span class="hljs-keyword">RUN</span><span class="language-bash"> pip install --no-cache-dir -r requirements.txt</span>
+
+<span class="hljs-comment"># Set environment variables</span>
+<span class="hljs-comment">#ENV FLASK_APP=app.py</span>
+<span class="hljs-comment">#ENV FLASK_RUN_HOST=0.0.0.0</span>
+
+<span class="hljs-comment"># Expose port</span>
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">5000</span>
+
+<span class="hljs-keyword">RUN</span><span class="language-bash"> useradd -m karrab &amp;&amp; \</span>
+<span class="language-bash">    <span class="hljs-built_in">chown</span> -R karrab:karrab /app</span>
+<span class="hljs-keyword">USER</span> karrab
+
+<span class="hljs-comment"># Run the app</span>
+<span class="hljs-keyword">CMD</span><span class="language-bash"> [<span class="hljs-string">&quot;python&quot;</span>, <span class="hljs-string">&quot;app.py&quot;</span>]</span>
+</code></pre></div>
+
+<p>It has our entryPoint which is <code>app.py</code>, i opened that file and it has nothing interesting</p>
+<div class="code-wrapper"><pre><code class="hljs PYTHON"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">from</span> models <span class="hljs-keyword">import</span> init_db, DB_FILE
+<span class="hljs-keyword">from</span> auth <span class="hljs-keyword">import</span> create_auth_routes
+<span class="hljs-keyword">from</span> routes <span class="hljs-keyword">import</span> create_main_routes
+
+app = Flask(__name__)
+app.secret_key = <span class="hljs-string">&#x27;somesecret&#x27;</span>
+
+
+create_auth_routes(app)
+create_main_routes(app)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(DB_FILE):
+        init_db()
+    app.run(debug=<span class="hljs-literal">False</span>, host=<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>)
+</code></pre></div>
+
+<p>We have an <code>app.secret_key</code> that can be used to generate a flask session but i didn’t really focus on that too much, cause the key is probably not the same in production.</p>
+<p>Then i start reading the <code>models.py</code> source code (i will only show the important parts):</p>
+<div class="code-wrapper"><pre><code class="hljs py">...
+DB_FILE = <span class="hljs-string">&#x27;db.sqlite&#x27;</span>
+DB_DIR = <span class="hljs-string">&#x27;db&#x27;</span>
+DATA_DIR = <span class="hljs-string">&#x27;data&#x27;</span>
+
+os.makedirs(DB_DIR, exist_ok=<span class="hljs-literal">True</span>)
+os.makedirs(DATA_DIR, exist_ok=<span class="hljs-literal">True</span>)
+...
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">get_user_by_username</span>(<span class="hljs-params">username</span>):
+    <span class="hljs-keyword">with</span> sqlite3.connect(DB_FILE) <span class="hljs-keyword">as</span> conn:
+        c = conn.cursor()
+        c.execute(<span class="hljs-string">&quot;SELECT uuid, username, email, phone_number, password, role FROM users WHERE username=?&quot;</span>, (username,))
+        row = c.fetchone()
+        <span class="hljs-keyword">if</span> row:
+            <span class="hljs-keyword">return</span> &#123;
+                <span class="hljs-string">&#x27;uuid&#x27;</span>: row[<span class="hljs-number">0</span>],
+                <span class="hljs-string">&#x27;username&#x27;</span>: row[<span class="hljs-number">1</span>],
+                <span class="hljs-string">&#x27;email&#x27;</span>: row[<span class="hljs-number">2</span>],
+                <span class="hljs-string">&#x27;phone_number&#x27;</span>: row[<span class="hljs-number">3</span>],
+                <span class="hljs-string">&#x27;password&#x27;</span>: row[<span class="hljs-number">4</span>],
+                <span class="hljs-string">&#x27;role&#x27;</span>: row[<span class="hljs-number">5</span>]
+            &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">get_user_by_uuid</span>(<span class="hljs-params">uuid_</span>):
+    <span class="hljs-keyword">with</span> sqlite3.connect(DB_FILE) <span class="hljs-keyword">as</span> conn:
+        c = conn.cursor()
+        c.execute(<span class="hljs-string">&quot;SELECT uuid, username, email, phone_number, password, role FROM users WHERE uuid=?&quot;</span>, (uuid_,))
+        row = c.fetchone()
+        <span class="hljs-keyword">if</span> row:
+            <span class="hljs-keyword">return</span> &#123;
+                <span class="hljs-string">&#x27;uuid&#x27;</span>: row[<span class="hljs-number">0</span>],
+                <span class="hljs-string">&#x27;username&#x27;</span>: row[<span class="hljs-number">1</span>],
+                <span class="hljs-string">&#x27;email&#x27;</span>: row[<span class="hljs-number">2</span>],
+                <span class="hljs-string">&#x27;phone_number&#x27;</span>: row[<span class="hljs-number">3</span>],
+                <span class="hljs-string">&#x27;password&#x27;</span>: row[<span class="hljs-number">4</span>],
+                <span class="hljs-string">&#x27;role&#x27;</span>: row[<span class="hljs-number">5</span>]
+            &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span></code></pre></div>
+
+<p>The code first generated two dirs (db and data) then it has two functions:</p>
+<ol>
+<li><code>get_user_by_username()</code> function</li>
+</ol>
+<ul>
+<li>This function takes a username and get’s all the data related to that username from the database.</li>
+</ul>
+<ol start="2">
+<li><code>get_user_by_uuid()</code> function</li>
+</ol>
+<ul>
+<li>Do the same thing but with uuids instead</li>
+</ul>
+<p>After that i opened the <code>auth.py</code> file:</p>
+<div class="code-wrapper"><pre><code class="hljs py">...
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">admin_required</span>(<span class="hljs-params">f</span>):
+<span class="hljs-meta">    @wraps(<span class="hljs-params">f</span>)</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">decorated_function</span>(<span class="hljs-params">*args, **kwargs</span>):
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> session.get(<span class="hljs-string">&#x27;uuid&#x27;</span>):
+            <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&#x27;/login&#x27;</span>)
+        
+        user = get_user_by_uuid(session[<span class="hljs-string">&#x27;uuid&#x27;</span>])
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> user <span class="hljs-keyword">or</span> user[<span class="hljs-string">&#x27;role&#x27;</span>] != <span class="hljs-string">&#x27;0&#x27;</span>:
+            <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Admin access required&#x27;</span>&#125;), <span class="hljs-number">403</span>
+            
+        <span class="hljs-keyword">return</span> f(*args, **kwargs)
+    <span class="hljs-keyword">return</span> decorated_function
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">create_auth_routes</span>(<span class="hljs-params">app</span>):
+<span class="hljs-meta">    @app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/login&#x27;</span>, methods=[<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;POST&#x27;</span>]</span>)</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">login</span>():
+        <span class="hljs-keyword">if</span> session.get(<span class="hljs-string">&#x27;uuid&#x27;</span>):
+            user = get_user_by_uuid(session[<span class="hljs-string">&#x27;uuid&#x27;</span>])
+            <span class="hljs-keyword">if</span> user:
+                <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&#x27;/home&#x27;</span>)
+            
+        <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&#x27;POST&#x27;</span>:
+            username = request.form.get(<span class="hljs-string">&#x27;username&#x27;</span>)
+            password = request.form.get(<span class="hljs-string">&#x27;password&#x27;</span>)
+            user = get_user_by_username(username)
+            <span class="hljs-keyword">if</span> user <span class="hljs-keyword">and</span> user[<span class="hljs-string">&#x27;password&#x27;</span>] == password:
+                session[<span class="hljs-string">&#x27;uuid&#x27;</span>] = user[<span class="hljs-string">&#x27;uuid&#x27;</span>]
+                <span class="hljs-keyword">if</span> user[<span class="hljs-string">&#x27;role&#x27;</span>] == <span class="hljs-string">&#x27;0&#x27;</span>:
+                    <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&#x27;/admin&#x27;</span>)
+                <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&#x27;/home&#x27;</span>)
+            <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;login.html&#x27;</span>, error=<span class="hljs-string">&#x27;Invalid credentials&#x27;</span>)
+        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;login.html&#x27;</span>)
+
+...
+
+<span class="hljs-meta">    @app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/confirm-register&#x27;</span>, methods=[<span class="hljs-string">&#x27;POST&#x27;</span>]</span>)</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">confirm_register</span>():
+        username = request.form[<span class="hljs-string">&#x27;username&#x27;</span>]
+        email = request.form.get(<span class="hljs-string">&#x27;email&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>)
+        alphabet = string.ascii_letters + string.digits + <span class="hljs-string">&#x27;!@#$%^&amp;*&#x27;</span>
+        password = <span class="hljs-string">&#x27;&#x27;</span>.join(secrets.choice(alphabet) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">12</span>))
+        role = request.form.get(<span class="hljs-string">&#x27;role&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>)
+
+        role_map = &#123;
+            <span class="hljs-string">&#x27;1&#x27;</span>: <span class="hljs-string">&#x27;editor&#x27;</span>,
+            <span class="hljs-string">&#x27;2&#x27;</span>: <span class="hljs-string">&#x27;user&#x27;</span>,
+        &#125;
+
+        <span class="hljs-keyword">if</span> role == <span class="hljs-string">&#x27;0&#x27;</span>:
+            <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Admin registration is not allowed.&#x27;</span>&#125;), <span class="hljs-number">403</span>
+
+        <span class="hljs-keyword">if</span> role <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> role_map:
+            <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Invalid role id.&#x27;</span>&#125;), <span class="hljs-number">400</span>
+
+        uid = <span class="hljs-built_in">str</span>(uuid4())
+
+        <span class="hljs-keyword">try</span>:
+            <span class="hljs-keyword">with</span> sqlite3.connect(DB_FILE) <span class="hljs-keyword">as</span> db:
+                db.execute(<span class="hljs-string">&#x27;INSERT INTO users (uuid, username, email, password, role) VALUES (?, ?, ?, ?, ?)&#x27;</span>,
+                           (uid, username, email, password, role))
+                db.commit()
+        <span class="hljs-keyword">except</span> sqlite3.IntegrityError:
+            <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Username already exists.&#x27;</span>&#125;), <span class="hljs-number">400</span>
+
+        session[<span class="hljs-string">&#x27;uuid&#x27;</span>] = uid
+        session[<span class="hljs-string">&#x27;first_login&#x27;</span>] = <span class="hljs-literal">True</span>
+        session[<span class="hljs-string">&#x27;first_login_password&#x27;</span>] = password
+
+        <span class="hljs-keyword">return</span> jsonify(&#123;
+            <span class="hljs-string">&#x27;success&#x27;</span>: <span class="hljs-literal">True</span>,
+            <span class="hljs-string">&#x27;redirect&#x27;</span>: <span class="hljs-string">&#x27;/home&#x27;</span>
+        &#125;), <span class="hljs-number">200</span>
+
+<span class="hljs-meta">    @app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/logout&#x27;</span></span>)</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">logout</span>():
+        session.clear()
+        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&#x27;/&#x27;</span>)</code></pre></div>
+
+<p>We have an <code>admin_required()</code> function. This is like a <strong>higher-order function</strong> that wraps another function <code>(f)</code> to add pre-execution checks. It’s probably used to protect routes that only admins can access.</p>
+<p>The function has two checks:</p>
+<ul>
+<li>First check: If no uuid in session, redirect to <code>/login</code> (user not logged in).</li>
+<li>Second check: Fetch user by uuid from DB. If no user or role <code>!= &#39;0&#39;</code>, return a JSON error with HTTP 403 (Forbidden) status. If checks pass, call the original f with its arguments.</li>
+</ul>
+<p>So we know <code>role=0</code> means you are an admin.</p>
+<p>Further more, we have <code>create_auth_routes()</code> function which has multiple routes:</p>
+<ol>
+<li><code>/login</code> route:</li>
+</ol>
+<ul>
+<li>That’s where login requests gets handled, first it checks if there is a valid uuid in the session or not. If there, you will get redirected directly to <code>/home</code></li>
+<li>Extract <strong>username</strong> and <strong>password</strong> parameters from the request, then it query user by username parameter. If user exists and it’s password matches, set <code>session[&#39;uuid&#39;]</code> to persist login. If you have a role of 0, you will get redirected to <code>/admin</code> if not then to <code>/home</code>.</li>
+</ul>
+<ol start="2">
+<li><code>/confirm-register</code> route:</li>
+</ol>
+<ul>
+<li>Extract form data: username (required), email (optional, defaults to empty), role (defaults to ‘2’ for user) and the password is generated random.</li>
+<li>If you set the role to 0, you will get an error saying “Admin registration is not allowed.” which indicate that you can’t register an admin account.</li>
+<li>If you didn’t add any role you will get an error saying “Invalid role id.” so you need to set a role (it’s already set to 2 by default).</li>
+<li>Your data then get inserted into the database.</li>
+<li>On success: a <strong>uuid</strong> session is set for login, <strong>first_login&#x3D;True</strong> and <strong>first_login_password</strong> which get assign to the real password.</li>
+</ul>
+<p>That’s why we saw the password is printed in the home page of the app after a register. In the register you don’t set a password, the server generates it for you and assign it to <strong>first_login_password</strong> session. </p>
+<p>If the server sees you with a <strong>first_login_password</strong> session (which you will get only once after a register), it will render it in <code>/home</code> meaning it will render your password in <code>/home</code> according to the <code>home.html</code> file:</p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-05%20182930.png" srcset="/img/loading.gif" lazyload></p>
+<p>Okay, all we got from that is the register mechanism defaults the role to 2 (which evaluated to user) and we cannot register an account with role&#x3D;0 (which evaluated to admin), but we can register an account with role&#x3D;1 (which evaluated to editor). We will see later how is that can be helpful.</p>
+<p>The last file is <code>routes.py</code> which have the app’s routes (i will only show the important parts)</p>
+<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/db&#x27;</span></span>)</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">list_db_files</span>():
+        <span class="hljs-string">&quot;&quot;&quot;Public directory listing for /db&quot;&quot;&quot;</span>
+        files = []
+        <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> Path(DB_DIR).glob(<span class="hljs-string">&#x27;*&#x27;</span>):
+            <span class="hljs-keyword">if</span> file.is_file():
+                files.append(&#123;
+                    <span class="hljs-string">&#x27;name&#x27;</span>: file.name,
+                    <span class="hljs-string">&#x27;size&#x27;</span>: file.stat().st_size,
+                    <span class="hljs-string">&#x27;modified&#x27;</span>: datetime.fromtimestamp(file.stat().st_mtime).strftime(<span class="hljs-string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)
+                &#125;)
+        
+        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;directory.html&#x27;</span>, path=<span class="hljs-string">&#x27;/db&#x27;</span>, files=files, is_public=<span class="hljs-literal">True</span>)
+
+<span class="hljs-meta">    @app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/data&#x27;</span></span>)</span>
+<span class="hljs-meta">    @admin_required</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">list_data_files</span>():
+        files = []
+        <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> Path(DATA_DIR).glob(<span class="hljs-string">&#x27;*&#x27;</span>):
+            <span class="hljs-keyword">if</span> file.is_file():
+                files.append(&#123;
+                    <span class="hljs-string">&#x27;name&#x27;</span>: file.name,
+                    <span class="hljs-string">&#x27;size&#x27;</span>: file.stat().st_size,
+                    <span class="hljs-string">&#x27;modified&#x27;</span>: datetime.fromtimestamp(file.stat().st_mtime).strftime(<span class="hljs-string">&#x27;%Y-%m-%d %H:%M:%S&#x27;</span>)
+                &#125;)
+        
+        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;directory.html&#x27;</span>, path=<span class="hljs-string">&#x27;/data&#x27;</span>, files=files, is_public=<span class="hljs-literal">False</span>)
+...</code></pre></div>
+<p>We have two routes which have directory listing issue, where you can list all the files exists in those routes. </p>
+<p>The <code>/db</code> has a database file and <code>/data</code> probably has the flag but it’s <code>@admin_required</code> so we need to be an admin to access that route. </p>
+<p>Following with the code:</p>
+<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/users/&lt;string:target_uuid&gt;&#x27;</span></span>)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">get_user_details</span>(<span class="hljs-params">target_uuid</span>):
+    current_uuid = session.get(<span class="hljs-string">&#x27;uuid&#x27;</span>)
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> current_uuid:
+        <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Unauthorized&#x27;</span>&#125;), <span class="hljs-number">401</span>
+        
+    current_user = get_user_by_uuid(current_uuid)
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> current_user <span class="hljs-keyword">or</span> current_user[<span class="hljs-string">&#x27;role&#x27;</span>] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-string">&#x27;1&#x27;</span>):
+        <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Invalid user role&#x27;</span>&#125;), <span class="hljs-number">403</span>
+            
+    <span class="hljs-keyword">with</span> sqlite3.connect(DB_FILE) <span class="hljs-keyword">as</span> conn:
+        conn.row_factory = sqlite3.Row
+        c = conn.cursor()
+        c.execute(<span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">            SELECT uuid, username, email, phone_number, role, password</span>
+<span class="hljs-string">            FROM users </span>
+<span class="hljs-string">            WHERE uuid = ?</span>
+<span class="hljs-string">        &quot;&quot;&quot;</span>, (target_uuid,))
+        user = c.fetchone()
+            
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> user:
+        <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;User not found&#x27;</span>&#125;), <span class="hljs-number">404</span>
+            
+    <span class="hljs-keyword">return</span> jsonify(&#123;
+        <span class="hljs-string">&#x27;uuid&#x27;</span>: user[<span class="hljs-string">&#x27;uuid&#x27;</span>],
+        <span class="hljs-string">&#x27;username&#x27;</span>: user[<span class="hljs-string">&#x27;username&#x27;</span>],
+        <span class="hljs-string">&#x27;email&#x27;</span>: user[<span class="hljs-string">&#x27;email&#x27;</span>],
+        <span class="hljs-string">&#x27;phone_number&#x27;</span>: user[<span class="hljs-string">&#x27;phone_number&#x27;</span>],
+        <span class="hljs-string">&#x27;role&#x27;</span>: user[<span class="hljs-string">&#x27;role&#x27;</span>],
+        <span class="hljs-string">&#x27;password&#x27;</span>: user[<span class="hljs-string">&#x27;password&#x27;</span>]
+    &#125;)</code></pre></div>
+<p>We have a <code>/users/&lt;UUID&gt;</code> route which is using the <code>get_user_by_uuid()</code> function (seeing before in <em>models.py</em>) to fetch the user data from the database and bring it back, including the password. </p>
+<p>That’s great, all we need is the <strong>uuid</strong> of the admin to get the admin creds and login with it (<strong>Notice</strong>: this route is only restricted to roles 1 (editor) or 0 (admin)). Following the code:</p>
+<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/publish&#x27;</span>, methods=[<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;POST&#x27;</span>]</span>)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">publish</span>():
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> session.get(<span class="hljs-string">&#x27;uuid&#x27;</span>):
+        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&#x27;/login&#x27;</span>)
+    
+    user = get_user_by_uuid(session[<span class="hljs-string">&#x27;uuid&#x27;</span>])
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> user:
+        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&#x27;/login&#x27;</span>)
+        
+    <span class="hljs-keyword">if</span> user[<span class="hljs-string">&#x27;role&#x27;</span>] == <span class="hljs-string">&#x27;0&#x27;</span>:
+        <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Admins cannot publish articles&#x27;</span>&#125;), <span class="hljs-number">403</span>
+        
+    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&#x27;POST&#x27;</span>:
+        title = request.form.get(<span class="hljs-string">&#x27;title&#x27;</span>)
+        content = request.form.get(<span class="hljs-string">&#x27;content&#x27;</span>)
+        collaborator = request.form.get(<span class="hljs-string">&#x27;collaborator&#x27;</span>)
+            
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> title <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> content:
+            <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Title and content are required&#x27;</span>&#125;), <span class="hljs-number">400</span>
+            
+        <span class="hljs-keyword">try</span>:
+            <span class="hljs-keyword">with</span> sqlite3.connect(DB_FILE) <span class="hljs-keyword">as</span> conn:
+                c = conn.cursor()
+                c.execute(<span class="hljs-string">&quot;SELECT COUNT(*) FROM articles WHERE author_uuid = ?&quot;</span>, (session[<span class="hljs-string">&#x27;uuid&#x27;</span>],))
+                article_count = c.fetchone()[<span class="hljs-number">0</span>]
+                    
+                <span class="hljs-keyword">if</span> (article_count &gt;= <span class="hljs-number">20</span>):
+                    <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;You have reached the maximum limit of 20 articles&#x27;</span>&#125;), <span class="hljs-number">403</span>
+                    
+                <span class="hljs-keyword">if</span> collaborator:
+                    collab_user = get_user_by_username(collaborator)
+                    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> collab_user:
+                        <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Collaborator not found&#x27;</span>&#125;), <span class="hljs-number">404</span>
+                        
+                    request_uuid = <span class="hljs-built_in">str</span>(uuid4())
+                    article_uuid = <span class="hljs-built_in">str</span>(uuid4())
+                    c.execute(<span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">                        INSERT INTO collab_requests (uuid, article_uuid, title, content, from_uuid, to_uuid)</span>
+<span class="hljs-string">                        VALUES (?, ?, ?, ?, ?, ?)</span>
+<span class="hljs-string">                    &quot;&quot;&quot;</span>, (request_uuid, article_uuid, title, content, session[<span class="hljs-string">&#x27;uuid&#x27;</span>], collab_user[<span class="hljs-string">&#x27;uuid&#x27;</span>]))
+                    conn.commit()
+                    <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;message&#x27;</span>: <span class="hljs-string">&#x27;Collaboration request sent&#x27;</span>&#125;)
+                <span class="hljs-keyword">else</span>:
+                    article_uuid = <span class="hljs-built_in">str</span>(uuid4())
+                    c.execute(<span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">                        INSERT INTO articles (uuid, title, content, author_uuid)</span>
+<span class="hljs-string">                        VALUES (?, ?, ?, ?)</span>
+<span class="hljs-string">                    &quot;&quot;&quot;</span>, (article_uuid, title, content, session[<span class="hljs-string">&#x27;uuid&#x27;</span>]))
+                    conn.commit()
+                    <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;message&#x27;</span>: <span class="hljs-string">&#x27;Article published successfully&#x27;</span>&#125;)
+        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+            <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-built_in">str</span>(e)&#125;), <span class="hljs-number">500</span>
+        
+    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;publish.html&#x27;</span>)
+
+<span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/collaborations&#x27;</span></span>)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">view_collaborations</span>():
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> session.get(<span class="hljs-string">&#x27;uuid&#x27;</span>):
+        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&#x27;/login&#x27;</span>)
+        
+    user = get_user_by_uuid(session[<span class="hljs-string">&#x27;uuid&#x27;</span>])
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> user:
+        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&#x27;/login&#x27;</span>)
+    <span class="hljs-keyword">if</span> user[<span class="hljs-string">&#x27;role&#x27;</span>] == <span class="hljs-string">&#x27;0&#x27;</span>:
+        <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Admins cannot collaborate&#x27;</span>&#125;), <span class="hljs-number">403</span>
+        
+    <span class="hljs-keyword">with</span> sqlite3.connect(DB_FILE) <span class="hljs-keyword">as</span> conn:
+        conn.row_factory = sqlite3.Row
+        c = conn.cursor()
+            
+        c.execute(<span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">            SELECT cr.*, u.username as requester_name </span>
+<span class="hljs-string">            FROM collab_requests cr</span>
+<span class="hljs-string">            JOIN users u ON cr.from_uuid = u.uuid</span>
+<span class="hljs-string">            WHERE cr.to_uuid = ? AND cr.status = &#x27;pending&#x27;</span>
+<span class="hljs-string">        &quot;&quot;&quot;</span>, (session[<span class="hljs-string">&#x27;uuid&#x27;</span>],))
+        incoming_requests = [<span class="hljs-built_in">dict</span>(row) <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> c.fetchall()]
+            
+        c.execute(<span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">            SELECT cr.*, u.username as recipient_name </span>
+<span class="hljs-string">            FROM collab_requests cr</span>
+<span class="hljs-string">            JOIN users u ON cr.to_uuid = u.uuid</span>
+<span class="hljs-string">            WHERE cr.from_uuid = ? AND cr.status = &#x27;pending&#x27;</span>
+<span class="hljs-string">        &quot;&quot;&quot;</span>, (session[<span class="hljs-string">&#x27;uuid&#x27;</span>],))
+        outgoing_requests = [<span class="hljs-built_in">dict</span>(row) <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> c.fetchall()]
+        
+    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&#x27;collaborations.html&#x27;</span>, incoming_requests=incoming_requests, outgoing_requests=outgoing_requests)
+
+<span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/collab/accept/&lt;string:request_uuid&gt;&#x27;</span>, methods=[<span class="hljs-string">&#x27;POST&#x27;</span>]</span>)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">accept_collaboration</span>(<span class="hljs-params">request_uuid</span>):
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> session.get(<span class="hljs-string">&#x27;uuid&#x27;</span>):
+        <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Unauthorized&#x27;</span>&#125;), <span class="hljs-number">401</span>
+        
+    user = get_user_by_uuid(session[<span class="hljs-string">&#x27;uuid&#x27;</span>])
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> user:
+        <span class="hljs-keyword">return</span> redirect(<span class="hljs-string">&#x27;/login&#x27;</span>)
+    <span class="hljs-keyword">if</span> user[<span class="hljs-string">&#x27;role&#x27;</span>] == <span class="hljs-string">&#x27;0&#x27;</span>:
+        <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Admins cannot collaborate&#x27;</span>&#125;), <span class="hljs-number">403</span>
+        
+    <span class="hljs-keyword">try</span>:
+        <span class="hljs-keyword">with</span> sqlite3.connect(DB_FILE) <span class="hljs-keyword">as</span> conn:
+            conn.row_factory = sqlite3.Row
+            c = conn.cursor()
+                
+            c.execute(<span class="hljs-string">&quot;SELECT * FROM collab_requests WHERE uuid = ?&quot;</span>, (request_uuid,))
+            request = c.fetchone()
+                
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> request:
+                <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-string">&#x27;Request not found&#x27;</span>&#125;), <span class="hljs-number">404</span>
+                
+            c.execute(<span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">                INSERT INTO articles (uuid, title, content, author_uuid, collaborator_uuid)</span>
+<span class="hljs-string">                VALUES (?, ?, ?, ?, ?)</span>
+<span class="hljs-string">            &quot;&quot;&quot;</span>, (request[<span class="hljs-string">&#x27;article_uuid&#x27;</span>], request[<span class="hljs-string">&#x27;title&#x27;</span>], request[<span class="hljs-string">&#x27;content&#x27;</span>], request[<span class="hljs-string">&#x27;from_uuid&#x27;</span>], request[<span class="hljs-string">&#x27;to_uuid&#x27;</span>]))
+                
+            c.execute(<span class="hljs-string">&quot;UPDATE collab_requests SET status = &#x27;accepted&#x27; WHERE uuid = ?&quot;</span>, (request_uuid,))
+            conn.commit()
+                
+            <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;message&#x27;</span>: <span class="hljs-string">&#x27;Collaboration accepted&#x27;</span>&#125;)
+    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+        <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&#x27;error&#x27;</span>: <span class="hljs-built_in">str</span>(e)&#125;), <span class="hljs-number">500</span></code></pre></div>
+
+<p>In the <code>/publish</code> route where you can send a post request to publish your article, it has a collaborator method. This method uses the <code>get_user_by_username()</code> function (seeing before in <em>models.py</em>) where you provide a username and the function fetch data related to that username from the database. After you make a request, there is a database query gets executed where all the data related to that article (title, content, uuid …etc) get inserted into the <strong>collab_requests</strong> table. </p>
+<p>Later in <code>/collaborations</code> these article data with the author and collaborator (<em>if exist</em>) data including the uuids will be rendered by the template engine. </p>
+<p>If we looked at <code>article.html</code> file you will see the collaborator uuid is being disclosed by the template engine.</p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20132847.png" srcset="/img/loading.gif" lazyload></p>
+<p>So simply we can publish an article and set the collaborator to admin and the template engine will give us the admin uuid on that article we published so we can use it on <code>/users/&lt;UUID&gt;</code>!</p>
+<p>That’s mostly right, there is a tiny issue. To view the article as mentioned in <code>article.html</code>, the article needs to be <strong>accepted</strong>. When you publish an article, it’s statue is being at <strong>Pending</strong> until someone accepts it. </p>
+<p>Here where <code>/collab/accept/&lt;string:request_uuid&gt;</code> route in the code above comes useful. This route doesn’t require restrict authentication, you just need to be logged in and you can accept any article you want.</p>
+<p>So far the goal is like the following</p>
+<ol>
+<li>login with role&#x3D;1 (editor) to have access on <code>/users/&lt;UUID&gt;</code> route.</li>
+<li>send a <code>/publish</code> request and add admin as collaborator.</li>
+<li>get the <strong>request.uuid</strong> and accept it through <code>/collab/accept/&lt;string:request_uuid&gt;</code>.</li>
+<li>view the article after being accepted and get the collaborator.uuid (admin’s uuid).</li>
+<li>disclose the admin data through <code>/users/&lt;admin uuid&gt;</code>.</li>
+<li>login as admin and access <code>/data</code> to get the flag.</li>
+</ol>
+<p>All the points above is doable but point <em>3</em>, how we can get the <strong>request.uuid</strong>? I mentioned in <code>/collaborations</code> that all the data about the article is being fetched and rendered by the template engine. If you looked at <code>collaborations.html</code> file you will see that after you make a <code>/publish</code> request, the article will be at state <strong>“pending”</strong> and it’s uuid will be disclosed:<br><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20135353.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h2><p>When you register an account you will see no role parameter to set it to 1. You will see username, email and phone_number</p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20135628.png" srcset="/img/loading.gif" lazyload></p>
+<p>Notice when you remove the phone_number parameter and add role instead, set it to 0 evaluated to admin which is not allowed (as mentioned before)</p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20140106.png" srcset="/img/loading.gif" lazyload></p>
+<p>You can simply switch it to 1 evaluated to editor. Noticed we got the <code>first_login_password</code> session </p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20140242.png" srcset="/img/loading.gif" lazyload></p>
+<p>After you send a <code>/publish</code> request, you can see the request.uuid from the html source code. Get that uuid and send a request to <code>/collab/accept/&lt;request.uuid&gt;</code>. After that the article will be accepted and you can see it at your <code>/home</code> dir. View the article and get the admin uuid.<br><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20141054.png" srcset="/img/loading.gif" lazyload></p>
+<p>Now you can request <code>/users/a8ec97ad-e893-4d4e-8613-c23bfb14671b</code> to get the admin creds:</p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20141443.png" srcset="/img/loading.gif" lazyload></p>
+<p>After that you can login as admin and go to <code>/data</code> you will get the files:</p>
+<ol>
+<li>secrets.zip &#x3D;&#x3D;&gt; protected with password</li>
+<li>dbconnect.exe</li>
+</ol>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20141634.png" srcset="/img/loading.gif" lazyload></p>
+<p>After doing strings on <code>dbconnect.exe</code> you will get a password which you can use to unzip the <code>secrets.zip</code> file and get the flag<br><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20142238.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="S3cret5"><a href="#S3cret5" class="headerlink" title="S3cret5"></a>S3cret5</h1><p>The second challenge was the last one in web category. It’s about a Client Side Path Traversal vulnerability that led a user to be an admin and a blind sqli to extract the flag.</p>
+<p>At first the challenge represent a registration&#x2F;login form</p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20182508.png" srcset="/img/loading.gif" lazyload></p>
+<p>After registering an account and login you will be redirected to <code>/user/profile/?id=&lt;ur-id&gt;</code> and you have an update function where you can update your description</p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20185508.png" srcset="/img/loading.gif" lazyload></p>
+<p>You also have access on <code>/secrets</code> route where you can add a secret.</p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-06%20185818.png" srcset="/img/loading.gif" lazyload></p>
+<p>Time to read the source code…</p>
+<p>At this challenge we have bunch of js files, i will only highlight the important lines. When i face a source code with a lot of files, i start asking myself where is the flag?</p>
+<p><code>init-db.js</code>:</p>
+<div class="code-wrapper"><pre><code class="hljs JAVASCRIPT"><span class="hljs-keyword">await</span> pool.<span class="hljs-title function_">query</span>(<span class="hljs-string">`</span>
+<span class="hljs-string">      CREATE TABLE IF NOT EXISTS flags (</span>
+<span class="hljs-string">        id SERIAL PRIMARY KEY,</span>
+<span class="hljs-string">        flag TEXT NOT NULL</span>
+<span class="hljs-string">      )</span>
+<span class="hljs-string">    `</span>);
+
+    <span class="hljs-comment">// Logs table</span>
+    <span class="hljs-keyword">await</span> pool.<span class="hljs-title function_">query</span>(<span class="hljs-string">`</span>
+<span class="hljs-string">      CREATE TABLE IF NOT EXISTS logs (</span>
+<span class="hljs-string">        id SERIAL PRIMARY KEY,</span>
+<span class="hljs-string">        userId INT REFERENCES users(id),</span>
+<span class="hljs-string">        action TEXT NOT NULL,</span>
+<span class="hljs-string">        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP</span>
+<span class="hljs-string">      )</span>
+<span class="hljs-string">    `</span>);
+
+    <span class="hljs-comment">// Insert hardcoded flag if not exists</span>
+    <span class="hljs-keyword">const</span> flag = <span class="hljs-string">&quot;CTF&#123;hardcoded_flag_here&#125;&quot;</span>;
+    <span class="hljs-keyword">await</span> pool.<span class="hljs-title function_">query</span>(
+      <span class="hljs-string">`INSERT INTO flags (flag) VALUES ($1) ON CONFLICT DO NOTHING`</span>,
+      [flag]
+    );
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;✅ Flag ensured in flags table&quot;</span>);</code></pre></div>
+<p>The server create a table called flags and insert the flag inside that table, which got me thinking this is a sqli, so i need to find where is that sqli happens?</p>
+<p><code>/helpers/filterHelper.js</code>:</p>
+<div class="code-wrapper"><pre><code class="hljs JAVASCRIPT">...
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">filterBy</span>(<span class="hljs-params">table, filterBy, keyword, paramIndexStart = <span class="hljs-number">1</span></span>) &#123;
+  <span class="hljs-keyword">if</span> (!filterBy || !keyword) &#123;
+    <span class="hljs-keyword">return</span> &#123; <span class="hljs-attr">clause</span>: <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attr">params</span>: [] &#125;;
+  &#125;
+
+  <span class="hljs-keyword">const</span> clause = <span class="hljs-string">` WHERE <span class="hljs-subst">$&#123;table&#125;</span>.&quot;<span class="hljs-subst">$&#123;filterBy&#125;</span>&quot; LIKE $<span class="hljs-subst">$&#123;paramIndexStart&#125;</span>`</span>;
+  <span class="hljs-keyword">const</span> params = [<span class="hljs-string">`%<span class="hljs-subst">$&#123;keyword&#125;</span>%`</span>];
+
+  <span class="hljs-keyword">return</span> &#123; clause, params &#125;;
+&#125;
+...</code></pre></div>
+<p>There is a <code>filterBy()</code> function which has <code>filterBy</code> parameter, that parameter got appended in a sql query inside double quotes which is leading to sqli. So we need access on the <code>filterBy</code> parameter.</p>
+<p>Further more i found that parameter is called in <code>adminController.js</code> file, where you can use it to filter the messages. The thing is this function is only accessed by admin roles.</p>
+<p><code>adminController.js</code>:</p>
+<div class="code-wrapper"><pre><code class="hljs JAVASCRIPT">...
+<span class="hljs-built_in">exports</span>.<span class="hljs-property">showall</span> = <span class="hljs-title function_">async</span> (req, res) =&gt; &#123;
+  <span class="hljs-keyword">if</span> (req.<span class="hljs-property">user</span>.<span class="hljs-property">role</span> !== <span class="hljs-string">&quot;admin&quot;</span>) &#123;
+    <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">403</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Access denied&quot;</span>);
+  &#125;
+
+  <span class="hljs-keyword">try</span> &#123;
+    <span class="hljs-keyword">const</span> rows = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Msg</span>.<span class="hljs-title function_">findAll</span>();
+    res.<span class="hljs-title function_">render</span>(<span class="hljs-string">&quot;admin-msgs&quot;</span>, &#123;
+      <span class="hljs-attr">msgs</span>: rows,
+      <span class="hljs-attr">filterBy</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">keyword</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">csrfToken</span>: req.<span class="hljs-title function_">csrfToken</span>(),
+    &#125;);
+  &#125; <span class="hljs-keyword">catch</span> (err) &#123;
+    res.<span class="hljs-title function_">status</span>(<span class="hljs-number">400</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Bad request&quot;</span>);
+  &#125;
+&#125;;
+...</code></pre></div>
+<p>So we need a way to get admin. </p>
+<p>Following the code, in <code>/controllers/userController.js</code> file i found a function called <code>addAdmin</code> where you can update user’s roles to admin per id</p>
+<div class="code-wrapper"><pre><code class="hljs JAVASCRIPT">...
+<span class="hljs-built_in">exports</span>.<span class="hljs-property">addAdmin</span> = <span class="hljs-title function_">async</span> (req, res) =&gt; &#123;
+  <span class="hljs-keyword">try</span> &#123;
+    <span class="hljs-keyword">const</span> &#123; userId &#125; = req.<span class="hljs-property">body</span>;
+
+    <span class="hljs-keyword">if</span> (req.<span class="hljs-property">user</span>.<span class="hljs-property">role</span> !== <span class="hljs-string">&quot;admin&quot;</span>) &#123;
+      <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">403</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&quot;Access denied&quot;</span> &#125;);
+    &#125;
+
+    <span class="hljs-keyword">const</span> updatedUser = <span class="hljs-keyword">await</span> <span class="hljs-title class_">User</span>.<span class="hljs-title function_">updateRole</span>(userId, <span class="hljs-string">&quot;admin&quot;</span>);
+    res.<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;Role updated&quot;</span>, <span class="hljs-attr">user</span>: updatedUser &#125;);
+  &#125; <span class="hljs-keyword">catch</span> (err) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(err);
+    res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&quot;Failed to update role&quot;</span> &#125;);
+  &#125;
+&#125;;</code></pre></div>
+
+<p>While reading the files i found this code in <code>profile.ejs</code> file:</p>
+<div class="code-wrapper"><pre><code class="hljs JAVASCRIPT">...
+ <span class="hljs-keyword">const</span> urlParams = <span class="hljs-keyword">new</span> <span class="hljs-title class_">URLSearchParams</span>(<span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">search</span>);
+    <span class="hljs-keyword">const</span> profileIds = urlParams.<span class="hljs-title function_">getAll</span>(<span class="hljs-string">&quot;id&quot;</span>);
+    <span class="hljs-keyword">const</span> profileId = profileIds[profileIds.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>]; 
+
+    
+      <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&quot;/log/&quot;</span>+profileId, &#123;
+        <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;POST&quot;</span>,
+        <span class="hljs-attr">headers</span>: &#123; <span class="hljs-string">&quot;Content-Type&quot;</span>: <span class="hljs-string">&quot;application/json&quot;</span> &#125;,
+        <span class="hljs-attr">credentials</span>: <span class="hljs-string">&quot;include&quot;</span>,
+        <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(&#123;
+          <span class="hljs-attr">userId</span>: <span class="hljs-string">&quot;&lt;%= user.id %&gt;&quot;</span>, 
+          <span class="hljs-attr">action</span>: <span class="hljs-string">&quot;Visited user profile with id=&quot;</span> + profileId,
+          <span class="hljs-attr">_csrf</span>: csrfToken
+        &#125;)
+      &#125;)
+      .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.<span class="hljs-title function_">json</span>())
+      .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">json</span> =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Log created:&quot;</span>, json))
+      .<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Log error:&quot;</span>, err));
+...
+<span class="hljs-keyword">const</span> promoteBtn = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;promoteBtn&quot;</span>);
+    <span class="hljs-keyword">const</span> promoteMessage = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;promoteMessage&quot;</span>);
+    <span class="hljs-keyword">if</span> (promoteBtn) &#123;
+      promoteBtn.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-title function_">async</span> () =&gt; &#123;
+        <span class="hljs-keyword">try</span> &#123;
+          <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&quot;/admin/addAdmin&quot;</span>, &#123;
+            <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;POST&quot;</span>,
+            <span class="hljs-attr">headers</span>: &#123;
+              <span class="hljs-string">&quot;Content-Type&quot;</span>: <span class="hljs-string">&quot;application/json&quot;</span>,
+              <span class="hljs-string">&quot;CSRF-Token&quot;</span>: csrfToken
+            &#125;,
+            <span class="hljs-attr">credentials</span>: <span class="hljs-string">&quot;include&quot;</span>,
+            <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(&#123; <span class="hljs-attr">userId</span>: <span class="hljs-string">&quot;&lt;%= user.id %&gt;&quot;</span> &#125;)
+          &#125;);
+          <span class="hljs-keyword">const</span> json = <span class="hljs-keyword">await</span> res.<span class="hljs-title function_">json</span>();
+          promoteMessage.<span class="hljs-property">innerText</span> = res.<span class="hljs-property">ok</span> ? json.<span class="hljs-property">message</span> : json.<span class="hljs-property">error</span>;
+        &#125; <span class="hljs-keyword">catch</span> (err) &#123;
+          promoteMessage.<span class="hljs-property">innerText</span> = <span class="hljs-string">&quot;Error: &quot;</span> + err.<span class="hljs-property">message</span>;
+        &#125;
+      &#125;);
+    &#125;</code></pre></div>
+
+<p>This code basically looks for url parameters and get the ones named <strong>id</strong>. <code>getAll(&quot;id&quot;)</code> retrieves all values associated with the key <strong>“id”</strong>. This is used instead of <code>get(&quot;id&quot;)</code> i don’t know why? Maybe just in case if the URL have multiple id parameters (e.g., ?id&#x3D;1&amp;id&#x3D;2&amp;id&#x3D;3), which could happen in complex routing or multi-profile views.<br>So the <code>profileIds</code> variable will be an array.</p>
+<p>Then there is another variable called <code>profileId</code> which will grab the last (most recent) ID from the array using array indexing (<code>length - 1</code> is the index of the final element). After all the <code>profileId</code> variable will be used in a <code>fetch()</code> call. </p>
+<p>After that there is a promote button (which is only visible to admin users) when you click, will call <strong>addAdmin</strong> function exists in <code>/admin/addAdmin</code> to make the user admin with the user id provided.</p>
+<p>That’s actually pretty dangerous cause we have access on that id parameter. Remember above after a successful login we get redirected to <code>/user/profile/?id=&lt;ur-id&gt;</code>, i can change that id to anything i want, not just numbers which could lead to Client-Side path traversal.</p>
+<p><strong>Noticed:</strong> i tried to change that id to other ids but it was restricted through out this code in <code>userController.js</code> file:</p>
+<div class="code-wrapper"><pre><code class="hljs JAVASCRIPT">...
+<span class="hljs-built_in">exports</span>.<span class="hljs-property">getProfile</span> = <span class="hljs-title function_">async</span> (req, res) =&gt; &#123;
+  <span class="hljs-keyword">try</span> &#123;
+    <span class="hljs-keyword">const</span> userId = <span class="hljs-built_in">parseInt</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">id</span>);
+
+    <span class="hljs-comment">// Only allow access if current user is the same or admin</span>
+    <span class="hljs-keyword">if</span> (req.<span class="hljs-property">user</span>.<span class="hljs-property">id</span> !== userId &amp;&amp; req.<span class="hljs-property">user</span>.<span class="hljs-property">role</span> !== <span class="hljs-string">&quot;admin&quot;</span>) &#123;
+      <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">403</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&quot;Access denied&quot;</span> &#125;);
+    &#125;
+...</code></pre></div>
+<p><em>Take a note of this code, we will get to it later</em></p>
+<p>We have a pure vision now, the only thing we need is to manipulate someone with admin access to visit the <strong>addAdmin</strong> function and make us admin.</p>
+<p>Following the code i found that puppeteer is used and only access <code>http://localhost:3000</code>:</p>
+<div class="code-wrapper"><pre><code class="hljs JAVASCRIPT"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>);
+<span class="hljs-keyword">const</span> router = express.<span class="hljs-title class_">Router</span>();
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">User</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;../models/User&quot;</span>);
+<span class="hljs-keyword">const</span> puppeteer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;puppeteer&quot;</span>);
+<span class="hljs-keyword">const</span> jwt = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;jsonwebtoken&quot;</span>);
+<span class="hljs-keyword">const</span> authMiddleware = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;../middleware/authMiddleware&quot;</span>);
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">JWT_SECRET</span> = process.<span class="hljs-property">env</span>.<span class="hljs-property">JWT_SECRET</span> || <span class="hljs-string">&quot;supersecret&quot;</span>;
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, authMiddleware, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;
+  res.<span class="hljs-title function_">render</span>(<span class="hljs-string">&quot;reportPage&quot;</span>, &#123; <span class="hljs-attr">csrfToken</span>: req.<span class="hljs-title function_">csrfToken</span>() &#125;);
+&#125;);
+
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/&quot;</span>, authMiddleware, <span class="hljs-title function_">async</span> (req, res) =&gt; &#123;
+  <span class="hljs-keyword">const</span> &#123; url &#125; = req.<span class="hljs-property">body</span>;
+
+  <span class="hljs-keyword">if</span> (!url || !url.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&quot;http://localhost:3000&quot;</span>)) &#123;
+    <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">400</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Invalid URL&quot;</span>);
+  &#125;
+
+  <span class="hljs-keyword">try</span> &#123;
+    <span class="hljs-keyword">const</span> admin = <span class="hljs-keyword">await</span> <span class="hljs-title class_">User</span>.<span class="hljs-title function_">findById</span>(<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">if</span> (!admin) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;Admin not found&quot;</span>);
+
+    <span class="hljs-keyword">const</span> token = jwt.<span class="hljs-title function_">sign</span>(&#123; <span class="hljs-attr">id</span>: admin.<span class="hljs-property">id</span>, <span class="hljs-attr">role</span>: admin.<span class="hljs-property">role</span> &#125;, <span class="hljs-variable constant_">JWT_SECRET</span>, &#123; <span class="hljs-attr">expiresIn</span>: <span class="hljs-string">&quot;1h&quot;</span> &#125;);
+
+    <span class="hljs-comment">// Launch Puppeteer</span>
+    <span class="hljs-keyword">const</span> browser = <span class="hljs-keyword">await</span> puppeteer.<span class="hljs-title function_">launch</span>(&#123;
+      <span class="hljs-attr">headless</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">args</span>: [<span class="hljs-string">&quot;--no-sandbox&quot;</span>, <span class="hljs-string">&quot;--disable-setuid-sandbox&quot;</span>],
+    &#125;);
+
+    <span class="hljs-keyword">const</span> page = <span class="hljs-keyword">await</span> browser.<span class="hljs-title function_">newPage</span>();
+
+    <span class="hljs-comment">// Set admin token cookie</span>
+    <span class="hljs-keyword">await</span> page.<span class="hljs-title function_">setCookie</span>(&#123;
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;token&quot;</span>,
+      <span class="hljs-attr">value</span>: token,
+      <span class="hljs-attr">domain</span>: <span class="hljs-string">&quot;localhost&quot;</span>,
+      <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/&quot;</span>,
+    &#125;);
+
+    <span class="hljs-comment">// Visit the reported URL</span>
+    <span class="hljs-keyword">await</span> page.<span class="hljs-title function_">goto</span>(url, &#123; <span class="hljs-attr">waitUntil</span>: <span class="hljs-string">&quot;networkidle2&quot;</span> &#125;);
+
+    <span class="hljs-keyword">await</span> browser.<span class="hljs-title function_">close</span>();
+
+    res.<span class="hljs-title function_">status</span>(<span class="hljs-number">200</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Thanks for your report&quot;</span>);
+  &#125; <span class="hljs-keyword">catch</span> (error) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(error);
+    res.<span class="hljs-title function_">status</span>(<span class="hljs-number">200</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Thanks for your report&quot;</span>);
+  &#125;
+&#125;);
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = router;</code></pre></div>
+
+<p>The bot has admin access and only visits <code>http://localhost:3000</code>. We Need to manipulate the bot through CSPT and make him get us admin. There will be two payloads that may work:</p>
+<ol>
+<li><code>http://localhost:3000/user/profile?id=&lt;our-id&gt;&amp;id=../admin/addAdmin</code> Why this works?</li>
+</ol>
+<ul>
+<li>This payload will work through a discrepancy in parsing between server-side and client-side. Remember the code in <code>userController.js</code>?</li>
+<li>The <strong>server-side</strong> is using <code>req.query.id</code> to get the first <strong>id parameter</strong>, which is <code>id=&lt;our-id&gt;</code> in our case.</li>
+<li>The <strong>client-side</strong> is using <code>profileId</code> (remember the array?) to get the last <strong>id parameter</strong> in place which will be equivalent to <code>id=../admin/addAdmin</code>.<br>This later will be placed into <code>&quot;/log/&quot;+profileId</code> &#x3D;&#x3D;&gt; <code>/log/../admin/addAdmin</code> which will be normalized to <code>/admin/addAdmin</code> at the end.</li>
+</ul>
+<ol start="2">
+<li><code>http://localhost:3000/user/profile?id=&lt;our-id&gt;/../../admin/addAdmin</code> Why this works?</li>
+</ol>
+<ul>
+<li>This will work through the same cause (discrepancy in parsing).</li>
+<li>The <strong>server-side</strong> is using <code>req.query.id</code> which is placed into a <code>parseInt()</code> function. So let’s say the <strong>id</strong> will be 95, the <code>parseInt()</code> function will parse only that number. <code>parseInt(95/../../admin/addAdmin)</code> &#x3D;&gt; <strong>95</strong>.<br>At the end the <code>user.id</code> will be <strong>95</strong>.</li>
+<li>The <strong>client-side</strong> is using <code>profileId</code> and added it directly into a path,<br>so <code>&quot;/log/&quot;+profileId</code> &#x3D;&#x3D;&gt; <code>/log/95/../../admin/addAdmin</code> which will be normalized to <code>/admin/addAdmin</code> at the end.</li>
+</ul>
+<p>Combining all of these information, we have the exploit now to be an admin and get the flag.</p>
+<h2 id="Exploit-1"><a href="#Exploit-1" class="headerlink" title="Exploit"></a>Exploit</h2><p>Go to <code>/report</code> endpoint and add this <code>http://localhost:3000/user/profile?id=95&amp;id=../admin/addAdmin</code> in the url parameter:</p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-07%20190638.png" srcset="/img/loading.gif" lazyload alt="Noticed: our id is 95"></p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-07%20191127.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-07%20191214.png" srcset="/img/loading.gif" lazyload alt="It worked!"></p>
+<p>Cool! We are admin now, time for sqli. I start using the filter by function to trigger the sqli </p>
+<p><img src="/images/ctfs/securinetsctf2025/Screenshot%202025-10-08%20135453.png" srcset="/img/loading.gif" lazyload></p>
+<p>In that part i spend like 2-3 hours trying to create the right payload <code>type&quot;||&#39;&#39;||&quot;type</code>, how it works?</p>
+<p>The <code>filterBy()</code> function in <code>filterHelper.js</code> files uses this query:</p>
+<div class="code-wrapper"><pre><code class="hljs JAVASCRIPT"><span class="hljs-keyword">function</span> <span class="hljs-title function_">filterBy</span>(<span class="hljs-params">table, filterBy, keyword, paramIndexStart = <span class="hljs-number">1</span></span>) &#123;
+  <span class="hljs-keyword">if</span> (!filterBy || !keyword) &#123;
+    <span class="hljs-keyword">return</span> &#123; <span class="hljs-attr">clause</span>: <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attr">params</span>: [] &#125;;
+  &#125;
+
+  <span class="hljs-keyword">const</span> clause = <span class="hljs-string">` WHERE <span class="hljs-subst">$&#123;table&#125;</span>.&quot;<span class="hljs-subst">$&#123;filterBy&#125;</span>&quot; LIKE $<span class="hljs-subst">$&#123;paramIndexStart&#125;</span>`</span>;
+  <span class="hljs-keyword">const</span> params = [<span class="hljs-string">`%<span class="hljs-subst">$&#123;keyword&#125;</span>%`</span>];
+
+  <span class="hljs-keyword">return</span> &#123; clause, params &#125;;
+&#125;</code></pre></div>
+<p>This function get called later in <code>Msg.js</code> file to complete the query</p>
+<div class="code-wrapper"><pre><code class="hljs JAVASCRIPT">...
+<span class="hljs-keyword">const</span> &#123; <span class="hljs-attr">filterBy</span>: filterHelper &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;../helpers/filterHelper&quot;</span>); <span class="hljs-comment">// keep helper</span>
+...
+ <span class="hljs-comment">// Find all messages with optional filter</span>
+  <span class="hljs-attr">findAll</span>: <span class="hljs-title function_">async</span> (filterField = <span class="hljs-literal">null</span>, keyword = <span class="hljs-literal">null</span>) =&gt; &#123;
+    <span class="hljs-keyword">const</span> &#123; clause, params &#125; = <span class="hljs-title function_">filterHelper</span>(<span class="hljs-string">&quot;msgs&quot;</span>, filterField, keyword);
+
+    <span class="hljs-keyword">const</span> query = <span class="hljs-string">`</span>
+<span class="hljs-string">      SELECT msgs.id, msgs.msg, msgs.type, msgs.createdAt, users.username</span>
+<span class="hljs-string">      FROM msgs</span>
+<span class="hljs-string">      INNER JOIN users ON msgs.userId = users.id</span>
+<span class="hljs-string">      <span class="hljs-subst">$&#123;clause || <span class="hljs-string">&quot;&quot;</span>&#125;</span></span>
+<span class="hljs-string">      ORDER BY msgs.createdAt DESC</span>
+<span class="hljs-string">    `</span>;
+
+
+    <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> db.<span class="hljs-title function_">query</span>(query, params || []);
+    <span class="hljs-keyword">return</span> res.<span class="hljs-property">rows</span>;
+  &#125;,
+&#125;;</code></pre></div>
+
+<ul>
+<li>The query should look like this: <code>WHERE msgs.&quot;${filterBy}&quot; LIKE $1</code>.</li>
+<li>When you add the payload, it will be <code>WHERE msgs.&quot;type&quot;||&#39;&#39;||&quot;type&quot; LIKE $1</code> which will be normalized later to <code>WHERE msgs.type || &#39;&#39; || msgs.type LIKE $1</code>. The second <code>msgs.type</code> will happened because the FROM clause only includes msgs and users, and the parser resolves unqualified column identifiers against the available tables in scope. There is a <strong>type column</strong> on <strong>msgs</strong> (and users does not have a type column in this schema), so the identifier “type” resolves to the <strong>type column</strong> of the <strong>msgs table</strong> — effectively <code>msgs.type</code>.</li>
+<li>After all we have a valid text expression, so the WHERE clause parses and runs fine. We can inject another sql query inside the single quotes here: <code>|| &#39;&lt;payload&gt;&#39; ||</code>.</li>
+</ul>
+<p>After some testing the injection was time based, so you can use a payload like this and extract the flag character by character: <code>type&quot;||(CASE WHEN (substring((SELECT flag FROM flags LIMIT 1),1,1)=&#39;S&#39;) THEN pg_sleep(2) ELSE &#39;&#39; END)||&quot;type</code> (after url encoding). I wrote a script for this, but for some reason it didn’t work or extract the flag so i did it manually :)</p>
+<div class="code-wrapper"><pre><code class="hljs TEXT">Secueinets&#123;239c12b45ff0ff9fbd477bd9e754ed13&#125;</code></pre></div>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/ctf/" class="print-no-link">#ctf</a>
+      
+        <a href="/tags/web/" class="print-no-link">#web</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/09/28/ctfs/olympicsctf/" title="OlympicsCTF 2025">
+                        <span class="hidden-mobile">OlympicsCTF 2025</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
