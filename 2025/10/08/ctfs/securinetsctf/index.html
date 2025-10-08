@@ -28,7 +28,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://xyz-macabely.github.io/images/ctfs/securinetsctf2025/banner_1.png">
 <meta property="article:published_time" content="2025-10-07T21:00:00.000Z">
-<meta property="article:modified_time" content="2025-10-08T11:33:54.207Z">
+<meta property="article:modified_time" content="2025-10-08T11:51:07.147Z">
 <meta property="article:author" content="Macabely">
 <meta property="article:tag" content="ctf">
 <meta property="article:tag" content="web">
@@ -914,9 +914,9 @@ router.<span class="hljs-title function_">post</span>(<span class="hljs-string">
 <li><code>http://localhost:3000/user/profile?id=&lt;our-id&gt;&amp;id=../admin/addAdmin</code> Why this works?</li>
 </ol>
 <ul>
-<li>This payload will work through a discrepancy in parsing between server-side and client-side. Remember the code in <code>userController.js</code>?</li>
-<li>The <strong>server-side</strong> is using <code>req.query.id</code> to get the first <strong>id parameter</strong>, which is <code>id=&lt;our-id&gt;</code> in our case.</li>
-<li>The <strong>client-side</strong> is using <code>profileId</code> (remember the array?) to get the last <strong>id parameter</strong> in place which will be equivalent to <code>id=../admin/addAdmin</code>.<br>This later will be placed into <code>&quot;/log/&quot;+profileId</code> &#x3D;&#x3D;&gt; <code>/log/../admin/addAdmin</code> which will be normalized to <code>/admin/addAdmin</code> at the end.</li>
+<li>This payload will work through a discrepancy in parsing between <strong>server-side</strong> and <strong>client-side</strong>. Remember the code in <code>userController.js</code>?</li>
+<li>The <strong>server-side</strong> is using <code>req.query.id</code> to get the <strong>first id parameter</strong>, which is <code>id=&lt;our-id&gt;</code> in our case.</li>
+<li>The <strong>client-side</strong> is using <code>profileId</code> (remember the array?) to get the <strong>last id parameter</strong> in place which will be equivalent to <code>id=../admin/addAdmin</code>.<br>This later will be placed into <code>&quot;/log/&quot;+profileId</code> &#x3D;&#x3D;&gt; <code>/log/../admin/addAdmin</code> which will be normalized to <code>/admin/addAdmin</code> at the end.</li>
 </ul>
 <ol start="2">
 <li><code>http://localhost:3000/user/profile?id=&lt;our-id&gt;/../../admin/addAdmin</code> Why this works?</li>
@@ -968,9 +968,12 @@ router.<span class="hljs-title function_">post</span>(<span class="hljs-string">
 &#125;;</code></pre></div>
 
 <ul>
-<li>The query should look like this: <code>WHERE msgs.&quot;${filterBy}&quot; LIKE $1</code>.</li>
-<li>When you add the payload, it will be <code>WHERE msgs.&quot;type&quot;||&#39;&#39;||&quot;type&quot; LIKE $1</code> which will be normalized later to <code>WHERE msgs.type || &#39;&#39; || msgs.type LIKE $1</code>. The second <code>msgs.type</code> will happened because the FROM clause only includes msgs and users, and the parser resolves unqualified column identifiers against the available tables in scope. There is a <strong>type column</strong> on <strong>msgs</strong> (and users does not have a type column in this schema), so the identifier “type” resolves to the <strong>type column</strong> of the <strong>msgs table</strong> — effectively <code>msgs.type</code>.</li>
-<li>After all we have a valid text expression, so the WHERE clause parses and runs fine. We can inject another sql query inside the single quotes here: <code>|| &#39;&lt;payload&gt;&#39; ||</code>.</li>
+<li><p>The query should look like this: <code>WHERE msgs.&quot;${filterBy}&quot; LIKE $1</code>.</p>
+</li>
+<li><p>When you add the payload, it will be <code>WHERE msgs.&quot;type&quot;||&#39;&#39;||&quot;type&quot; LIKE $1</code> which will be normalized later to <code>WHERE msgs.type || &#39;&#39; || msgs.type LIKE $1</code>. The second <code>msgs.type</code> will happened because the FROM clause only includes msgs and users, and the parser resolves unqualified column identifiers against the available tables in scope. There is a <strong>type column</strong> on <strong>msgs</strong> (and users does not have a type column in this schema), so the identifier “type” resolves to the <strong>type column</strong> of the <strong>msgs table</strong> — effectively <code>msgs.type</code>.</p>
+</li>
+<li><p>After all we have a valid text expression, so the WHERE clause parses and runs fine. We can inject another sql query inside the single quotes here: <code>|| &#39;&lt;payload&gt;&#39; ||</code>.</p>
+</li>
 </ul>
 <p>After some testing the injection was time based, so you can use a payload like this and extract the flag character by character: <code>type&quot;||(CASE WHEN (substring((SELECT flag FROM flags LIMIT 1),1,1)=&#39;S&#39;) THEN pg_sleep(2) ELSE &#39;&#39; END)||&quot;type</code> (after url encoding). I wrote a script for this, but for some reason it didn’t work or extract the flag so i did it manually :)</p>
 <div class="code-wrapper"><pre><code class="hljs TEXT">Secueinets&#123;239c12b45ff0ff9fbd477bd9e754ed13&#125;</code></pre></div>
