@@ -28,7 +28,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://xyz-macabely.github.io/images/0/logo.png">
 <meta property="article:published_time" content="2025-09-29T21:00:00.000Z">
-<meta property="article:modified_time" content="2025-10-15T15:22:30.249Z">
+<meta property="article:modified_time" content="2025-10-15T15:26:29.597Z">
 <meta property="article:author" content="Macabely">
 <meta property="article:tag" content="ctf">
 <meta property="article:tag" content="web">
@@ -707,7 +707,7 @@
   &#125;</code></pre></div>
 
 <ul>
-<li>The fetch request will be like this: fetch(<code>/api/userData/../../uploads/&lt;id&gt;.jpg</code>). Fetch doesn’t normalize the path, the browser does. So at the end the fetch request be like:<br>fetch(<code>/uploads/&lt;id&gt;.jpg</code>) making CSPT possible.</li>
+<li>The fetch request will be like this: <strong>fetch(<code>/api/userData/../../uploads/&lt;id&gt;.jpg</code>)</strong>. Fetch doesn’t normalize the path, the browser does. So at the end the fetch request be like: <strong>fetch(<code>/uploads/&lt;id&gt;.jpg</code>)</strong> making CSPT possible.</li>
 <li>The backend will receive the request with <code>/uploads/&lt;id&gt;.jpg</code> as a username, it connects to the database and it supposed to get tha data related to that username which will clearly results an error cause it’s not a valid username, right?</li>
 </ul>
 <div class="note note-primary">
@@ -809,9 +809,9 @@ onerror=<span class="hljs-built_in">eval</span>(<span class="hljs-title function
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/ctf/" class="print-no-link">#ctf</a>
-      
         <a href="/tags/web/" class="print-no-link">#web</a>
+      
+        <a href="/tags/ctf/" class="print-no-link">#ctf</a>
       
     </div>
   
